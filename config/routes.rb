@@ -1,18 +1,16 @@
 Rails.application.routes.draw do
   namespace :admin do
-      resources :options
-      resources :participants
-      resources :participations
-      resources :users
+    resources :options
+    resources :participants
+    resources :participations
+    resources :users
+    root to: "users#index"
+  end
 
-      root to: "users#index"
-    end
-
-    root to: "pages#home"
+  root to: "pages#home"
 
   devise_for :users
 
-  root to: "pages#home"
   resources :payments, only: [:new, :create] do
     collection do
       get :success
