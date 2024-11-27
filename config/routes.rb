@@ -24,7 +24,11 @@ Rails.application.routes.draw do
 
   resources :tickets
 
-  resources :events, only: [:new, :index, :create, :show] do
+  resources :events, only: ["show"] do
+    resources :tickets, only: ["index", "new", "create"]
+  end
+
+  resources :events, only: [:new, :index, :create] do
     resources :options, only: [:new, :index, :create, :show]
   end
 

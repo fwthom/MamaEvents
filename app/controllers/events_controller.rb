@@ -22,6 +22,9 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    @tickets = Ticket.where(event_id: @event)
+
+    # @restaurant.bookings.where(user: current_user)
   end
 
   private
