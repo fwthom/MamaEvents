@@ -11,6 +11,7 @@
 User.destroy_all
 Event.destroy_all
 Charity.destroy_all
+Ticket.destroy.all
 
 User.create!(
   email: "calpin@lewagon.org",
@@ -38,3 +39,14 @@ Event.create!(
   date: Date.new(2024, 10, 05),
   charity_id: Charity.first
 )
+
+puts "------- creating Tickets ------------------"
+  10.times do
+    Ticket.create!(
+      name: "Course 10km",
+      description: "Une course de 10 km",
+      unit_price: 12.0,
+      event_id:Event.last.id
+    )
+  end
+puts "-------#{Ticket.count} Tickets --------"
