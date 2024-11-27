@@ -11,4 +11,7 @@ Rails.application.routes.draw do
   # root "posts#index"
   resources :tickets
 
+  resources :events, only: [:new, :index, :create, :show] do
+    resources :options, only: [:new, :index, :create, :show]
+  end
 end
