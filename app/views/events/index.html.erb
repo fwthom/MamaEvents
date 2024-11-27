@@ -1,7 +1,15 @@
 <h1>Events#index</h1>
 <p>Find me in app/views/events/index.html.erb</p>
+<h2>Tous les évènements</h2>
 <% @events.each do |event|%>
+<p>___________________________</p>
 <%= event.name  %>
 <%= event.description %>
 <%= event.date %>
+<%= link_to "ouvrir", event_path(event) %>
 <% end %>
+<p>___________________________</p>
+<h2>actions</h2>
+<%= link_to "créer un évènement", events_new_path %>
+
+
