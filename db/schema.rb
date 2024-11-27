@@ -24,6 +24,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_27_100128) do
     t.string "logo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_charities_on_user_id"
+
   end
 
   create_table "events", force: :cascade do |t|
@@ -38,14 +41,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_27_100128) do
     t.index ["charity_id"], name: "index_events_on_charity_id"
   end
 
-
   create_table "names", force: :cascade do |t|
     t.string "description"
     t.decimal "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
 
   create_table "options", force: :cascade do |t|
     t.string "name"
@@ -128,6 +129,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_27_100128) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+
+  add_foreign_key "charities", "users"
   add_foreign_key "events", "charities"
   add_foreign_key "options", "tickets"
   add_foreign_key "orders", "options", column: "options_id"
