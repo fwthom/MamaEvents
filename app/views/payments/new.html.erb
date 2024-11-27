@@ -1,14 +1,10 @@
-<div class="container mt-5" data-controller="stripe">
-  <h1>Donate</h1>
-  <form data-stripe-target="form" data-action="stripe#submit">
-    <div class="mb-3">
-      <label for="amount" class="form-label">Donation Amount (EUR)</label>
-      <input type="number" id="amount" name="amount" class="form-control" step="0.01" placeholder="Enter amount in EUR" required>
-    </div>
+<div class="container mt-5">
+  <% if @payable.is_a?(Donation) %>
+    <h1>Faire un don</h1>
+    <p>Merci pour votre don de <%= number_to_currency(@payable.amount, unit: "€") %>.</p>
+    <p><strong>Donateur:</strong> <%= @payable.first_name %> <%= @payable.last_name %></p>
+    <p><strong>Adresse:</strong> <%= @payable.address %>, <%= @payable.postal_code %></p>
+  <% end %>
 
-    <div id="payment-element" data-stripe-target="paymentElement"></div>
-    <div class="text-danger mt-3" data-stripe-target="error"></div>
-
-    <button type="submit" class="btn btn-primary mt-3">Donate Now</button>
-  </form>
+  <%= render "payments/stripe_form", payment: @payment %>
 </div>

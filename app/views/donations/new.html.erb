@@ -1,0 +1,34 @@
+<div class="container mt-5">
+  <h1 class="mb-4">Faire un don</h1>
+
+  <%= simple_form_for @donation, url: donations_path, method: :post, html: { class: 'form-horizontal' } do |f| %>
+  <div class="mb-3">
+    <%= f.input :first_name, label: "Prénom", input_html: { class: 'form-control' }, wrapper: false %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.input :last_name, label: "Nom", input_html: { class: 'form-control' }, wrapper: false %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.input :address, label: "Adresse", input_html: { class: 'form-control' }, wrapper: false %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.input :postal_code, label: "Code Postal", input_html: { class: 'form-control' }, wrapper: false %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.input :city, label: "Ville", input_html: { class: 'form-control' }, wrapper: false %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.input :amount, label: "Montant du don (€)", input_html: { class: 'form-control', step: '0.01' }, wrapper: false %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.button :submit, "Faire un don", class: "btn btn-primary" %>
+  </div>
+  <% end %>
+
+</div>
