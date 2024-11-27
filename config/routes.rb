@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+  namespace :admin do
+      resources :options
+      resources :participants
+      resources :participations
+      resources :users
+
+      root to: "participants#index"
+    end
+
   devise_for :users
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -9,9 +18,13 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+  resources :participants
+
   resources :tickets
 
   resources :events, only: [:new, :index, :create, :show] do
     resources :options, only: [:new, :index, :create, :show]
   end
+
 end
