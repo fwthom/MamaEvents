@@ -10,6 +10,7 @@
 
 User.destroy_all
 Charity.destroy_all
+Event.destoy_all
 
 User.create!(
   email: "jean@lewagon.org",
@@ -23,3 +24,18 @@ Charity.create!(
   phone_number: "+1234567890",
   # user_id: User.first.id
 )
+
+Event.create!(
+  name: "MAMA 2025",
+  description: "Passer un moment convivial de sport avec la marche ou la course, mais également de fête (musique, tombola et barbecue pour clôturer la journée).",
+  date: Date.new(2025, 10, 20),
+  charity_id: Charity.first
+)
+
+Event.create!(
+  name: "YUL 2024",
+  description: "Passer un moment convivial de sport avec la marche ou la course, mais également de fête (musique, tombola et barbecue pour clôturer la journée).",
+  date: Date.new(2024, 10, 05),
+  charity_id: Charity.first
+)
+
