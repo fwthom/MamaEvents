@@ -9,9 +9,9 @@
 #   end
 
 User.destroy_all
+Ticket.destroy_all
 Event.destroy_all
 Charity.destroy_all
-Ticket.destroy.all
 
 
 User.create!(
