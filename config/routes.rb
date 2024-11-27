@@ -4,6 +4,8 @@ Rails.application.routes.draw do
     resources :participants
     resources :participations
     resources :users
+    resources :donations
+    resources :payments
     root to: "users#index"
   end
 
@@ -11,6 +13,7 @@ Rails.application.routes.draw do
 
   devise_for :users
 
+  resources :donations, only: [:new, :create]
   resources :payments, only: [:new, :create] do
     collection do
       get :success
