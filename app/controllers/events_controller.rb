@@ -22,6 +22,9 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    @tickets = @event.tickets
+    @options = @event.options
+    @option = Option.new
   end
 
   private
