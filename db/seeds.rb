@@ -45,8 +45,8 @@ Event.create!(
 puts "------- creating Tickets ------------------"
     Ticket.create!(
       name: "Course 10km",
-      description: "Une course de 10 km",
-      unit_price: 12.0,
+      description: "sportifs c'est parti",
+      unit_price: 12,
       event_id:Event.last.id
     )
     Ticket.create!(
