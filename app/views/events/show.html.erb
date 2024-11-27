@@ -14,27 +14,21 @@
   <%= ticket.unit_price %>
   <%= link_to "éditer", edit_ticket_path(ticket) %>
 <% end %>
+  <p>___________________________</p>
 
-<%= @tickets.first.options.first %>
-
-
-<h2>options</h2>
+<h2>options sur cet event</h2>
 <% @options.each do |option| %>
-  <p>___________________________</p>
-  <p><%= option.name  %></p>
-  <p><%= option.description  %></p>
+  <h4><%= option.name %></h4>
+  <p><%= option.description %></p>
   <p><%= option.unit_price %></p>
-<% end %>
+  <ul>
+    <% option.tickets.each do |ticket|%>
+    <li><%=  ticket.name%></li>
+    <% end %>
+  </ul>
+  <%= link_to "modifier cette option", edit_option_path(option), class:"btn btn-primary" %>
+  <%= link_to "supprimer", option_path(option), data: { turbo_method: :delete}, class:"btn btn-alert" %>
   <p>___________________________</p>
-
-<%= simple_form_for [@option] do |f| %>
-  <%= f.input :name %>
-  <%= f.input :description %>
-  <%= f.input :category, as: :select, collection: ["Alimentaire", "Vestimentaire", "Autre"] %>
-  <%= f.input :unit_price %>
-  <%= f.association :tickets %>
-  <%= f.association :ticket_id, collection: @tickets, input_html: {multiple: true}, :as => :check_boxes %> 
-  <%= f.submit "Enregistrer", class:"rounded-button primary"%>
 <% end %>
 
-<h2>publication</h2>
+<%= render 'option_form' %>

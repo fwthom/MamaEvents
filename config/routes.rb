@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   # root "posts#index"
   resources :tickets
 
-  resources :options, only: [:new, :create]
+  resources :options, only: [:new, :create, :edit, :update, :destroy]
   resources :events, only: [:new, :index, :create, :show] do
     resources :tickets
   end

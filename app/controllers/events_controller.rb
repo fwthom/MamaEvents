@@ -21,8 +21,8 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.find(params[:id])
-    @tickets = @event.tickets
+    set_event
+    set_tickets
     set_options
     @option = Option.new
   end
@@ -36,12 +36,16 @@ class EventsController < ApplicationController
     params.require(:event).permit(:name, :description, :date)
   end
 
+  def set_event
+    @event = Event.find(params[:id])
+  end
+
+  def set_tickets
+    @tickets = @event.tickets
+  end
+
   def set_options
-    all_options = []
-    @event.tickets.each do |ticket|
-      all_options += ticket.options
-    end
-    @options = all_options.uniq
+    @options = @tickets.flat_map(&:options).uniq
   end
 
 end

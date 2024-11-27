@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_11_27_100128) do
+ActiveRecord::Schema[7.1].define(version: 2024_11_27_163957) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -48,10 +48,17 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_27_100128) do
     t.string "description"
     t.string "category"
     t.decimal "unit_price"
-    t.bigint "ticket_id", null: false
+    t.bigint "ticket_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["ticket_id"], name: "index_options_on_ticket_id"
+  end
+
+  create_table "options_tickets", id: false, force: :cascade do |t|
+    t.bigint "ticket_id", null: false
+    t.bigint "option_id", null: false
+    t.index ["option_id", "ticket_id"], name: "index_options_tickets_on_option_id_and_ticket_id"
+    t.index ["ticket_id", "option_id"], name: "index_options_tickets_on_ticket_id_and_option_id", unique: true
   end
 
   create_table "orders", force: :cascade do |t|
