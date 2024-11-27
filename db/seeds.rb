@@ -7,3 +7,34 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+User.destroy_all
+Event.destroy_all
+Charity.destroy_all
+
+User.create!(
+  email: "calpin@lewagon.org",
+  password: "password" 
+)
+
+Charity.create!(
+  name: "Mes Amis Mes Amours",
+  description: "An organization dedicated to providing aid to those in need.",
+  contact_email: "contact@helpinghands.org",
+  phone_number: "+1234567890",
+  # user_id: User.first.id
+)
+
+Event.create!(
+  name: "MAMA 2025",
+  description: "Passer un moment convivial de sport avec la marche ou la course, mais également de fête (musique, tombola et barbecue pour clôturer la journée).",
+  date: Date.new(2025, 10, 20),
+  charity_id: Charity.first
+)
+
+Event.create!(
+  name: "YUL 2024",
+  description: "Passer un moment convivial de sport avec la marche ou la course, mais également de fête (musique, tombola et barbecue pour clôturer la journée).",
+  date: Date.new(2024, 10, 05),
+  charity_id: Charity.first
+)
