@@ -27,6 +27,7 @@ class ParticipantDashboard < Administrate::BaseDashboard
     email
     first_name
     last_name
+    team
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES

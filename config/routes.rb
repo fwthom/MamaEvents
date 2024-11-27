@@ -1,17 +1,11 @@
 Rails.application.routes.draw do
   namespace :admin do
-      resources :charities
-      resources :events
       resources :options
-      resources :orders
       resources :participants
       resources :participations
-      resources :payments
-      resources :teams
-      resources :tickets
       resources :users
 
-      root to: "charities#index"
+      root to: "participants#index"
     end
 
   devise_for :users
