@@ -15,23 +15,25 @@
   <%= link_to "éditer", edit_ticket_path(ticket) %>
 <% end %>
 
-<h2>options</h2>
-<%= link_to "créer ticket", new_ticket_path(@event) %>
-<% @options.each do |option|%>
-  <p>___________________________</p>
-  <%= option.name  %>
-  <%= option.description  %>
-  <%= option.unit_price %>
-<% end %>
+<%= @tickets.first.options.first %>
 
+
+<h2>options</h2>
+<% @options.each do |option| %>
+  <p>___________________________</p>
+  <p><%= option.name  %></p>
+  <p><%= option.description  %></p>
+  <p><%= option.unit_price %></p>
+<% end %>
+  <p>___________________________</p>
 
 <%= simple_form_for [@option] do |f| %>
   <%= f.input :name %>
   <%= f.input :description %>
   <%= f.input :category, as: :select, collection: ["Alimentaire", "Vestimentaire", "Autre"] %>
   <%= f.input :unit_price %>
-  <%= f.association :tickets, collection: @tickets, input_html: {multiple: true}, :as => :check_boxes %>
-  <%# <%= f.association :ticket_id, collection: @tickets, input_html: {multiple: true}, :as => :check_boxes %> 
+  <%= f.association :tickets %>
+  <%= f.association :ticket_id, collection: @tickets, input_html: {multiple: true}, :as => :check_boxes %> 
   <%= f.submit "Enregistrer", class:"rounded-button primary"%>
 <% end %>
 

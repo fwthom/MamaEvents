@@ -9,6 +9,7 @@
 #   end
 
 User.destroy_all
+Option.destroy_all
 Ticket.destroy_all
 Event.destroy_all
 Charity.destroy_all
@@ -69,3 +70,12 @@ puts "------- creating Tickets ------------------"
     )
 puts "-------#{Ticket.count} Tickets --------"
 
+puts "------- creating Options ------------------"
+
+    Option.create!(
+      name: "Frites",
+      description: "Délicieuses et croustillantes",
+      unit_price: 4.0,
+      ticket_id: Ticket.first.id
+    )
+puts "-------#{Option.count} Options --------"
