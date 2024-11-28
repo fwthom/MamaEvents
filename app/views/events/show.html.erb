@@ -1,28 +1,44 @@
-<h1>Events#show</h1>
-<p>Find me in app/views/events/show.html.erb</p>
+<h1>SHOW.html de <%= @event.name %></h1>
 
-<div class="container ">
-    <div class="row">
-        <div class="col-xl-2"></div>
-        <div class="col-xl-3 border border-4 m-3">
-        <%= @event.name  %>
-        <%= @event.description %>
-        <%= @event.date %>
-        <ul>
-        <% @tickets.each do |ticket|  %>
-          <li><%= ticket.name %>
-          <%= ticket.description %>
-          <%= ticket.unit_price %>
-          </li>
-        <% end %>
-        </ul>
-        <%# AMENE AUX COURSES DE L'EVENT %>
-          <%= link_to 'courses', event_tickets_path(@event.id) %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xl-2 col-lg-0  m-3"></div>
+    <div class=" event-dashboard-card col-xl-3 col-lg-3 m-3 border border-2">
+    <%= render'dashboard-participants' %>
+
+    <%# AMENE AUX PARTICIPANTS DE L'EVENT %>
+
+    </div>
+
+    <div class="col-xl-1 col-lg-0  m-3"></div>
+
+
+      <div class="col-xl-3 col-lg-3  m-3">
+       <%= render'dashboard-benevoles' %>
+
+      <%# AMENE AUX BENEVOLES DE L'EVENT %>
+
+      </div>
+    <div class="col-xl-2 col-lg-0  m-3"></div>
+  </div>
+
+
+
+ <div class="row">
+<div class="col-xl-2 col-lg-0  m-3"></div>
+        <div class="col-xl-3 col-lg-3 m-3">
+
+        <%= render'dashboard-benevoles' %>
+
+        <%# AMENE AUX OPTIONS DE L'EVENT %>
+
       </div>
 
-<div class="col-xl-1"></div>
+<div class="col-xl-1 col-lg-0 m-3"></div>
 
-      <div class="col-xl-3 border border-4 m-3">
+
+      <div class="col-xl-3 col-lg-3 m-3">
         <%= @event.name%>
         <%= @event.description %>
         <%= @event.date %>
@@ -34,46 +50,13 @@
           </li>
         <% end %>
         </ul>
-        <%# AMENE AUX COURSES DE L'EVENT %>
+        <%# AMENE AUX ACTIONS DE L'EVENT %>
           <%= link_to 'courses', event_tickets_path(@event.id) %>
       </div>
-      <div class="col-xl-2"></div>
+<div class="col-xl-1 col-lg-0 m-3"></div>
     </div>
-<div class="row">
-        <div class="col-xl-2"></div>
-        <div class="col-xl-3 border border-4 m-3">
-        <%= @event.name  %>
-        <%= @event.description %>
-        <%= @event.date %>
-        <ul>
-        <% @tickets.each do |ticket|  %>
-          <li><%= ticket.name %>
-          <%= ticket.description %>
-          <%= ticket.unit_price %>
-          </li>
-        <% end %>
-        </ul>
-        <%# AMENE AUX COURSES DE L'EVENT %>
-          <%= link_to 'courses', event_tickets_path(@event.id) %>
-      </div>
 
-<div class="col-xl-1"></div>
 
-      <div class="col-xl-3 border border-4 m-3">
-        <%= @event.name%>
-        <%= @event.description %>
-        <%= @event.date %>
-        <ul>
-        <% @tickets.each do |ticket|  %>
-          <li><%= ticket.name %>
-          <%= ticket.description %>
-          <%= ticket.unit_price %>
-          </li>
-        <% end %>
-        </ul>
-        <%# AMENE AUX COURSES DE L'EVENT %>
-          <%= link_to 'courses', event_tickets_path(@event.id) %>
-      </div>
-      <%# <div class="col-xl-2 border border-4"></div> %>
-    </div>
-</div>
+
+
+  </div>
