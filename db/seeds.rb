@@ -1,28 +1,28 @@
-
 Option.destroy_all
 Ticket.destroy_all
 Event.destroy_all
 Charity.destroy_all
+User.destroy_all
 
 User.create!(
   email: "calpin@lewagon.org",
   password: "password"
 )
-
 # Create a charity
 charity = Charity.create!(
   name: "Mes Amis Mes Amours",
   description: "An organization dedicated to providing aid to those in need.",
   contact_email: "contact@helpinghands.org",
   phone_number: "+1234567890"
-)
+  )
+
 
 # Create the single event YUL 2024
 event = Event.create!(
   name: "YUL 2024",
   description: "Passer un moment convivial de sport avec la marche ou la course, mais également de fête (musique, tombola et barbecue pour clôturer la journée).",
   date: Date.new(2024, 10, 05),
-  charity_id: charity.id
+  charity: charity
 )
 
 
@@ -31,28 +31,28 @@ ticket1 = Ticket.create!(
   name: "Marche 5km (Présentiel)",
   description: "Une marche de 5 km en présentiel",
   unit_price: 12.0,
-  event_id: event.id
+  event: event
 )
 
 ticket2 = Ticket.create!(
   name: "Course 5km (Présentiel)",
   description: "Une course de 5 km en présentiel",
   unit_price: 12.0,
-  event_id: event.id
+  event: event
 )
 
 ticket3 = Ticket.create!(
   name: "Course 10km (Présentiel)",
   description: "Une course de 10 km en présentiel",
   unit_price: 15.0,
-  event_id: event.id
+  event: event
 )
 
 ticket4 = Ticket.create!(
   name: "Dossard numérique (Distanciel)",
   description: "Participez à l'événement à distance et recevez un dossard numérique.",
   unit_price: 5.0,
-  event_id: event.id
+  event: event
 )
 
 # Create options (alimentaire et vestimentaire)
