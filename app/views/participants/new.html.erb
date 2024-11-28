@@ -5,11 +5,12 @@
 
 
 <div class="container border border-3">
-  <%= simple_form_for([@charity, @event, @participant]) do |f| %>
+  <%= simple_form_for([@charity, @event, @participant], local: true) do |f| %>
 
   <%= f.input :first_name, label: 'prénom' %>
   <%= f.input :last_name, label: 'nom' %>
   <%= f.input :email %>
+
 
   <%= f.submit %>
 <% end %>

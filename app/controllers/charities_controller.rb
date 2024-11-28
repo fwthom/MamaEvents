@@ -3,6 +3,7 @@ class CharitiesController < ApplicationController
 
   def show
     @charity = Charity.find(params[:id])
+    @events = Event.where(charity_id: params[:id])
   end
   def new
     @charity = Charity.new

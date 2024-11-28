@@ -1,2 +1,12 @@
-<h1>SHOW.html de <%= @event.name %></h1>
-TEST
+<h1>SHOW.html de charity/event</h1>
+<h1>Association <%= @charity.name %></h1>
+<h2>Evènement <%= @event.name %></h2>
+
+<% @tickets.each do |ticket| %>
+<%= ticket.name %>
+<% end %>
+
+<h1>
+<%= link_to "S'inscrire", new_charity_event_participant_path(@charity, @event) %>
+
+</h1>
