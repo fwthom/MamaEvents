@@ -1,1 +1,19 @@
 // Specific CSS for your home-page
+.titre-home {
+  align-items: center;
+  border-bottom: 1px solid $very-rose;
+  margin: 16px;
+  text-align: right;
+  color: $very-rose-hover;
+}
+
+.titre-home img {
+  height: 400px;
+  margin-left: 16px;
+}
+
+.text-home {
+  text-align: justify;
+  margin: 16px;
+  color: $lichen;
+}

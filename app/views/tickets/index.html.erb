@@ -1,19 +1,14 @@
-<%# INDEX.html DES EVENTS  %>
+<%= render 'events/top-navbar' %>
 
 
 <h1 style="text-align:center">Courses de <%= @tickets.first.event.name %></h1>
 <div class="container">
-
   <div class="row">
-
-
       <% @tickets.each do |ticket|  %>
         <span class="col-sm-12 col-xl-4 my-2">
           <%= render'cardTicket', ticket: ticket %>
         </span>
       <% end %>
-
   </div>
-                    <%# AFFICHAGE DU BOUTON ET FORMULAIRE D'AJOUT DE TICKET/COURSE %>
         <%= render'newTicket' %>
 </div>
