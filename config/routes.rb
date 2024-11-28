@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   resources :participants
+  resources :participations
 
   resources :options, only: [:new, :create, :edit, :update, :destroy]
   resources :events, only: [:new, :index, :create, :show] do
