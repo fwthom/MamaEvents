@@ -21,30 +21,27 @@ before_action :set_event, only: [:show]
 
   def show
     set_event
+  end
+
+  def details
+    @event = Event.find(params[:event_id])
+  end
+
+  def tickets
     set_tickets
-    set_options
-    @option = Option.new
   end
 
   private
   def set_event
-    @event = Event.find(params[:event_id])
+    @event = Event.find(params[:id])
   end
 
   def event_params
     params.require(:event).permit(:name, :description, :date)
   end
 
-  def set_event
-    @event = Event.find(params[:id])
-  end
-
   def set_tickets
     @tickets = @event.tickets
-  end
-
-  def set_options
-    @options = @tickets.flat_map(&:options).uniq
   end
 
 end
