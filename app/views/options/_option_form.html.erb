@@ -1,4 +1,6 @@
-<%= simple_form_for @option, url: (@option.new_record? ? options_path : option_path(@option)) do |f| %>
+<%= simple_form_for [@event, @option], 
+  url: @option.new_record? ? event_options_path(@event) : event_option_path(@event, @option),
+  method: @option.new_record? ? :post : :patch do |f| %>  
   <%= f.input :name %>
   <%= f.input :description %>
   <%= f.input :category, as: :select, collection: ["Alimentaire", "Vestimentaire", "Autre"] %>

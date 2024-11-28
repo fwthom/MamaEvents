@@ -22,31 +22,30 @@ skip_before_action :authenticate_user!
   end
 
   def show
-    @event = Event.find(params[:id])
     @charity = @event.charity
-    @tickets = Ticket.where(event_id: params[:id])
+    set_tickets
     @option = Option.new
   end
 
-  private
-  # def set_event
-  #   @event = Event.where(id: params[:id])
-  # end
+  def details
+    @event = Event.find(params[:event_id])
+  end
 
+  def tickets
+    set_tickets
+  end
+
+  private
+ 
   def event_params
     params.require(:event).permit(:name, :description, :date)
   end
-
-  # def set_event
-  #   @event = Event.find(params[:id])
-  # end
-
-  # def set_tickets
-  #   @tickets = @event.tickets
-  # end
-
-  def set_options
-    @options = @tickets.flat_map(&:options).uniq
+  
+  def set_event
+    @event = Event.find(params[:id])
   end
-
+  
+  def set_tickets
+    @tickets = @event.tickets
+  end
 end
