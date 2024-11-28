@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-before_action :set_event, only: [:show, :details]
+before_action :set_event, only: [:show]
   def new
     @event = Event.new
   end
@@ -21,18 +21,19 @@ before_action :set_event, only: [:show, :details]
 
   def show
     set_event
-    set_tickets
-    set_options
-    @option = Option.new
   end
 
   def details
-    
+    @event = Event.find(params[:event_id])
+  end
+
+  def tickets
+    set_tickets
   end
 
   private
   def set_event
-    @event = Event.find(params[:event_id])
+    @event = Event.find(params[:id])
   end
 
   def event_params
@@ -41,10 +42,6 @@ before_action :set_event, only: [:show, :details]
 
   def set_tickets
     @tickets = @event.tickets
-  end
-
-  def set_options
-    @options = @tickets.flat_map(&:options).uniq
   end
 
 end

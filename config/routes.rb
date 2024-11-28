@@ -29,11 +29,12 @@ Rails.application.routes.draw do
 
   resources :participants
 
-  resources :options, only: [:new, :create, :edit, :update, :destroy]
   resources :events, only: [:new, :create, :index, :edit, :update, :show] do
+    resources :options, only: [:new, :create, :index, :edit, :update, :destroy]
     resources :tickets
   end
-
   get "/events/:event_id/details", to: "events#details", as: :event_details
+
+
 
 end
