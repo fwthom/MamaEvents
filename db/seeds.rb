@@ -1,11 +1,9 @@
-# Clean up existing records
-User.destroy_all
+
 Option.destroy_all
 Ticket.destroy_all
 Event.destroy_all
 Charity.destroy_all
 
-# Create a user
 User.create!(
   email: "calpin@lewagon.org",
   password: "password"
@@ -26,6 +24,7 @@ event = Event.create!(
   date: Date.new(2024, 10, 05),
   charity_id: charity.id
 )
+
 
 # Create tickets for the event (both presentiel and distanciel)
 ticket1 = Ticket.create!(
