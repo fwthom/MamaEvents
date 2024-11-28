@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-before_action :set_event, only: [:show]
+before_action :set_event, only: [:show, :details]
   def new
     @event = Event.new
   end
@@ -26,6 +26,10 @@ before_action :set_event, only: [:show]
     @option = Option.new
   end
 
+  def details
+    
+  end
+
   private
   def set_event
     @event = Event.find(params[:event_id])
@@ -33,10 +37,6 @@ before_action :set_event, only: [:show]
 
   def event_params
     params.require(:event).permit(:name, :description, :date)
-  end
-
-  def set_event
-    @event = Event.find(params[:id])
   end
 
   def set_tickets

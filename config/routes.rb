@@ -34,4 +34,6 @@ Rails.application.routes.draw do
     resources :tickets
   end
 
+  get "/events/:event_id/details", to: "events#details", as: :event_details
+
 end
