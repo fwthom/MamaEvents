@@ -1,0 +1,21 @@
+.top-navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.top-navbar-item {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  cursor: pointer;
+
+  :hover {
+    border-bottom: 0.6rem solid $very-rose-hover;
+  }
+
+  :active {
+    border-bottom: 0.6rem solid $very-rose;
+  }
+}
