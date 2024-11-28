@@ -8,8 +8,16 @@ as defined by the routes in the `admin/` namespace
 %>
 
 <nav class="navigation">
-  <%= link_to(t("administrate.navigation.dashboard"), root_url, class: "button button--alt button--nav") if defined?(root_url) %>
-
+  <%= link_to(
+    t("administrate.navigation.home", default: "Home"),
+    admin_home_path,
+    class: "navigation__link navigation__link--#{params[:action] == 'home' ? 'active' : ''}"
+  ) %>
+  <%= link_to(
+    t("administrate.navigation.events", default: "Events"),
+    admin_events_path,
+    class: "navigation__link navigation__link--#{params[:action] == 'events' ? 'active' : ''}"
+  ) %>
   <% Administrate::Namespace.new(namespace).resources_with_index_route.each do |resource| %>
     <%= link_to(
       display_resource_name(resource),
