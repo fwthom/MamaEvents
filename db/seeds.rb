@@ -1,4 +1,5 @@
 
+User.destroy_all
 Option.destroy_all
 Ticket.destroy_all
 Event.destroy_all
