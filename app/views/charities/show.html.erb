@@ -1,0 +1,18 @@
+<h1>Show de
+<%= @charity.name %>
+</h1>
+<h2>et index de ses events</h2>
+
+<div class="container">
+<% @events.each do |event| %>
+
+<%= link_to 'Event', charity_event_path(@charity, event) %>
+<div class="card">
+<%= event.name %>
+<%= event.id %>
+</div>
+
+</div>
+
+
+<% end %>
