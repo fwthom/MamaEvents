@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus";
 import { loadStripe } from "@stripe/stripe-js";
 
 export default class extends Controller {
-  static targets = ["paymentElement", "form", "error"];
+  static targets = ["paymentElement", "form", "error", "amount"];
 
   async connect() {
     console.log("Stripe controller connected");
@@ -19,6 +19,16 @@ export default class extends Controller {
     event.preventDefault();
 
     try {
+      const amount = this.amountTarget?.value;
+
+      // Debug the value of amount
+      console.log("Amount Target Value:", amount);
+
+      if (!amount || isNaN(parseFloat(amount))) {
+        this.errorTarget.textContent = "Invalid or missing amount.";
+        return;
+      }
+
       const { paymentMethod, error } = await this.stripe.createPaymentMethod({
         type: "card",
         card: this.card,
@@ -36,7 +46,7 @@ export default class extends Controller {
           "X-CSRF-Token": document.querySelector("meta[name='csrf-token']").content,
         },
         body: JSON.stringify({
-          amount: this.formTarget.amount.value,
+          amount: parseFloat(amount), // Ensure the amount is a valid number
           payment_method_id: paymentMethod.id,
         }),
       });

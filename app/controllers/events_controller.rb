@@ -1,6 +1,5 @@
 class EventsController < ApplicationController
-
-  # before_action :set_event, only: [:show]
+before_action :set_event, only: [:show]
   def new
     @event = Event.new
   end
@@ -21,10 +20,10 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.find(params[:id])
-    @tickets = Ticket.where(event_id: @event)
-
-    # @restaurant.bookings.where(user: current_user)
+    set_event
+    set_tickets
+    set_options
+    @option = Option.new
   end
 
   private
@@ -35,4 +34,17 @@ class EventsController < ApplicationController
   def event_params
     params.require(:event).permit(:name, :description, :date)
   end
+
+  def set_event
+    @event = Event.find(params[:id])
+  end
+
+  def set_tickets
+    @tickets = @event.tickets
+  end
+
+  def set_options
+    @options = @tickets.flat_map(&:options).uniq
+  end
+
 end
