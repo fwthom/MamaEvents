@@ -11,18 +11,21 @@ as defined by the routes in the `admin/` namespace
   <%= link_to(
     t("administrate.navigation.home", default: "Home"),
     admin_home_path,
-    class: "navigation__link navigation__link--#{params[:action] == 'home' ? 'active' : ''}"
+    class: "navigation__link navigation__link--#{nav_link_state('resource')}"
   ) %>
   <%= link_to(
     t("administrate.navigation.events", default: "Events"),
     admin_events_path,
     class: "navigation__link navigation__link--#{params[:action] == 'events' ? 'active' : ''}"
   ) %>
+
   <% Administrate::Namespace.new(namespace).resources_with_index_route.each do |resource| %>
+    <% next if resource.to_s == "users" %>
     <%= link_to(
       display_resource_name(resource),
       resource_index_route(resource),
       class: "navigation__link navigation__link--#{nav_link_state(resource)}"
     ) if accessible_action?(model_from_resource(resource), :index) %>
   <% end %>
+
 </nav>
