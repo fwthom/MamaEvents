@@ -1,7 +1,7 @@
 class OptionsController < ApplicationController
   before_action :set_event, only: [:new, :create, :edit, :index, :update, :destroy]
   before_action :set_option, only: [:edit, :update, :destroy]
-  before_action :set_tickets, only: [:new, :edit]
+  before_action :set_tickets, only: [:new, :edit, :index]
   
   def new
     @option = Option.new
@@ -11,7 +11,7 @@ class OptionsController < ApplicationController
     if @option.save!
       redirect_to event_options_path(@event)
     else
-      render new_event_option_path(@event), status: :unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -21,12 +21,11 @@ class OptionsController < ApplicationController
   end
 
   def edit 
-    set_tickets
   end
 
   def update
     if @option.update(option_params)
-      redirect_to event_path(@event)
+      redirect_to event_options_path(@event)
     else
       render :edit, status: :unprocessable_entity
     end

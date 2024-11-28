@@ -3,19 +3,27 @@
   align-items: center;
   justify-content: center;
   margin-bottom: 16px;
+  gap: 20px;
 }
 
 .top-navbar-item {
-  list-style: none;
   display: flex;
-  gap: 20px;
+  text-align: center;
+  font-size: 2.4 rem;
+  color: inherit ;
+  text-decoration: none;
   cursor: pointer;
-
-  :hover {
-    border-bottom: 0.6rem solid $very-rose-hover;
-  }
 
   :active {
     border-bottom: 0.6rem solid $very-rose;
   }
+}
+
+#navbar-link {
+  color: $very-rose-hover;
+  border-bottom: 0.6rem solid $very-rose-hover;
+}
+
+a {
+  text-decoration: none;
 }
