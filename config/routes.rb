@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     resources :donations
     resources :payments
     root to: "users#index"
+    get "home", to: "custom_pages#home", as: :home
+    get "events", to: "custom_pages#events", as: :events
   end
 
   root to: "pages#home"
