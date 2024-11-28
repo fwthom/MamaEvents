@@ -1,6 +1,7 @@
 <h1>Events#show</h1>
 <p>Find me in app/views/events/show.html.erb</p>
 
+
 <div class="container ">
     <div class="row">
         <div class="col-xl-2"></div>
@@ -31,6 +32,20 @@
           <li><%= ticket.name %>
           <%= ticket.description %>
           <%= ticket.unit_price %>
+            <h2>options sur cet event</h2>
+<% @options.each do |option| %>
+  <h4><%= option.name %></h4>
+  <p><%= option.description %></p>
+  <p><%= option.unit_price %></p>
+  <ul>
+    <% option.tickets.each do |ticket|%>
+    <li><%=  ticket.name%></li>
+    <% end %>
+  </ul>
+  <%= link_to "modifier cette option", edit_option_path(option), class:"btn btn-primary" %>
+  <%= link_to "supprimer", option_path(option), data: { turbo_method: :delete}, class:"btn btn-alert" %>
+  <p>___________________________</p>
+<% end %>
           </li>
         <% end %>
         </ul>
@@ -77,3 +92,6 @@
       <%# <div class="col-xl-2 border border-4"></div> %>
     </div>
 </div>
+
+<%= render 'option_form' %>
+

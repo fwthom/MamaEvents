@@ -1,0 +1,13 @@
+<%= simple_form_for @option, url: (@option.new_record? ? options_path : option_path(@option)) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.input :category, as: :select, collection: ["Alimentaire", "Vestimentaire", "Autre"] %>
+  <%= f.input :unit_price %>
+  <%= f.input :ticket_ids, 
+              as: :check_boxes, 
+              collection: @tickets, 
+              label_method: :name, 
+              value_method: :id, 
+              label: "Sélectionner des tickets" %>  
+    <%= f.submit "Enregistrer", class:"rounded-button primary"%>
+<% end %>
