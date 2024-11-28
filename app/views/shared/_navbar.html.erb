@@ -4,12 +4,8 @@
       <%= image_tag "logo.png" %>
     <% end %>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto">
+    <div class="navbar-center collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mx-auto">
           <li class="nav-item active">
             <%= link_to "L'association", "#", class: "nav-link" %>
           </li>
@@ -21,5 +17,11 @@
           </li>
       </ul>
     </div>
+
+    <%= link_to "Contact us", "#", class: "nav-contact" %>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
   </div>
 </div>
