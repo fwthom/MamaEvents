@@ -12,4 +12,8 @@
 @import "pages/index";
 @import "components/tableau";
 @import "components/event-dashboard-card";
-@import "administrate"
+@import "administrate";
+
+body {
+  background-color: $background-rose;
+}
