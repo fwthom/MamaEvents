@@ -1,22 +1,27 @@
 class ParticipantsController < ApplicationController
+  skip_before_action :authenticate_user!
+
+
   def index
-    @particpants = Participant.all
-    @charity = Charity.all
+    @participants = Participant.all
   end
 
   def show
     @participant = Participant.find(params[:id])
+
   end
 
   def new
     @participant = Participant.new
+    @charity =  Charity.all
+
   end
 
   def create
     @participant = Participant.new(participant_params)
     @participant.user = current_user
     if @participant.save!
-      redirect_to @participant, notice: 'participant was successfully created.'
+      redirect_to @event, notice: 'participant was successfully created.'
     else
       render :new
     end

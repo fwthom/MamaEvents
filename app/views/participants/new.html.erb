@@ -1,13 +1,18 @@
 <h1>Participants#new</h1>
-<p>Find me in app/views/participants/new.html.erb</p>
 
-<div class="container">
-<%= console %>
-<%= @charity.first.name %>
+<%=  @charity.name %>
+
+ICIIIIII
+
+<div class="container border border-3">
+
+
+
 <%= simple_form_for(@participant) do |f| %>
   <%= f.input :first_name, label: 'prénom' %>
   <%= f.input :last_name, label: 'nom' %>
   <%= f.input :email %>
+  <% f.input :charity  %>
   <%= f.submit %>
 <% end %>
 
