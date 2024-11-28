@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
 before_action :set_event, only: [:show]
+skip_before_action :authenticate_user!
   def new
     @event = Event.new
   end

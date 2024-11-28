@@ -13,16 +13,18 @@ class ParticipantsController < ApplicationController
 
   def new
     @participant = Participant.new
-    @charity =  Charity.all
-
+    @event = Event.find(params[:event_id])
+    @charity = Charity.find(params[:charity_id])
   end
 
   def create
     @participant = Participant.new(participant_params)
-    @participant.user = current_user
+    @event = Event.find(params[:event_id])
+    @participant.event = @event
     if @participant.save!
       redirect_to @event, notice: 'participant was successfully created.'
     else
+      raise
       render :new
     end
   end
@@ -52,6 +54,6 @@ class ParticipantsController < ApplicationController
   end
 
   def participant_params
-    params.require(:stone).permit(:first_name, :last_name, :email)
+    params.require(:participant).permit(:first_name, :last_name, :email)
   end
 end
