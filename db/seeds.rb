@@ -29,34 +29,20 @@ charity = Charity.create!(
 )
 
 # Create the 3 event YUL 2024
-event = Event.create!(
+event_1 = Event.create!(
   name: "YUL 2024",
   description: "Passer un moment convivial de sport avec la marche ou la course, mais également de fête (musique, tombola et barbecue pour clôturer la journée).",
   date: Date.new(2025, 10, 05),
   charity: charity
 )
 
-event = Event.create!(
+event_2 = Event.create!(
   name: "YUL 2025",
   description: "Passer un moment convivial de sport avec la marche ou la course, mais également de fête (musique, tombola et barbecue pour clôturer la journée).Passer un moment convivial de sport avec la marche ou la course, mais également de fête (musique, tombola et barbecue pour clôturer la journée).Passer un moment convivial de sport avec la marche ou la course, mais également de fête (musique, tombola et barbecue pour clôturer la journée).",
   date: Date.new(2024, 10, 05),
   charity: charity
 )
 
-event = Event.create!(
-  name: "MAMA 2025",
-  description: "Passer un moment convivial de sport avec la marche ou la course, mais également de fête (musique, tombola et barbecue pour clôturer la journée).",
-  date: Date.new(2024, 10, 05),
-  charity: charity
-)
-
-# Create tickets for the event (both presentiel and distanciel)
-ticket1 = Ticket.create!(
-  name: "Marche 5km (Présentiel)",
-  description: "Une marche de 5 km en présentiel",
-  unit_price: 12.0,
-  event: event
-)
 
 event_3 = Event.create!(
   name: "La MAMA 2026",
@@ -65,7 +51,15 @@ event_3 = Event.create!(
   charity: charity
 )
 
-events = [event_1, event_2, event_3]
+
+# Create tickets for the event (both presentiel and distanciel)
+ticket1 = Ticket.create!(
+  name: "Marche 5km (Présentiel)",
+  description: "Une marche de 5 km en présentiel",
+  unit_price: 12.0,
+  event: event_1
+)
+
 
 # Tickets
 tickets = [
