@@ -51,13 +51,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_28_135436) do
     t.index ["charity_id"], name: "index_events_on_charity_id"
   end
 
-  create_table "names", force: :cascade do |t|
-    t.string "description"
-    t.decimal "price"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "options", force: :cascade do |t|
     t.string "name"
     t.string "description"
