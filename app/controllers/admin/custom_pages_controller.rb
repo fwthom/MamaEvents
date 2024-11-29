@@ -7,5 +7,8 @@ module Admin
     def events
       @events = Event.all
     end
+
+    def events_index
+    end
   end
 end

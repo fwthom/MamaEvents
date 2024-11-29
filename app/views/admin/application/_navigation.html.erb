@@ -10,7 +10,7 @@ as defined by the routes in the `admin/` namespace
 <nav class="navigation">
   <%= link_to(
     t("administrate.navigation.home", default: "Home"),
-    admin_home_path,
+    admin_root_path,
     class: "navigation__link navigation__link--#{nav_link_state('resource')}"
   ) %>
   <%= link_to(

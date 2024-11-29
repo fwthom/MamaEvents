@@ -42,5 +42,9 @@ module Admin
 
     # See https://administrate-demo.herokuapp.com/customizing_controller_actions
     # for more information
+    # 
+    def index
+      
+    end
   end
 end
