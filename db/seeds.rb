@@ -27,7 +27,7 @@ charity = Charity.create!(
 event = Event.create!(
   name: "YUL 2024",
   description: "Passer un moment convivial de sport avec la marche ou la course, mais également de fête (musique, tombola et barbecue pour clôturer la journée).",
-  date: Date.new(2024, 10, 05),
+  date: Date.new(2025, 10, 05),
   charity: charity
 )
 
