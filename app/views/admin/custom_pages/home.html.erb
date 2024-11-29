@@ -3,10 +3,32 @@
       <h1>prochain evenement dans </h1>
       <p id="next-event"></p>
 
-      <h2><%= @nextevent.name %></h2>
+    <div class="card index-event-card p-2">
+      <h3 class=" event-card-title"><%= @nextevent.name %></h3>
 
-      <p>card de l'event from Vincent</p>
-</div>
+        <div class="row">
+
+      <div class="col-sm-12 col-md-12 col-lg-5">
+        <%= cl_image_tag("runner-PTLUTZL-e1641394048474-600x400_hxswmh", class:"index-event-card-image")%>
+      </div>
+      <div class="col-sm-12 col-md-12 col-lg-7">
+        <p class="card-backstory"><%= truncate(@nextevent.description, length: 100, separator: ' ', omission: '...') %></p>
+      </div>
+
+    </div>
+
+      <div class="row">
+        <div class="col-sm-12 col-md-8 col-lg-7">
+
+          <%= link_to "Voir l'évènement", event_path(@nextevent) %>
+
+        </div>
+        <div class="col-sm-12 col-md-8 col-lg-5">
+          <p><%= @nextevent.date %></p>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
 
