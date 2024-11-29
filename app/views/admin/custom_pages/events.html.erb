@@ -1,5 +1,14 @@
 <div class="container mt-5">
-  <h1>Manage Events</h1>
-  <p>This is your custom events management page.</p>
-  <p>Add tools or information related to event management here.</p>
+  <p>SUEPROENSFOJSEN</p>
+<<% @events.each do |event|%>
+<p>___________________________</p>
+<%= event.name  %>
+<%= event.description %>
+<%= event.date %>
+<%= link_to "ouvrir", event_path(event) %>
+<% end %>
+<p>___________________________</p>
+<h2>actions</h2>
+<%= link_to "créer un évènement", new_event_path %>
+
 </div>
