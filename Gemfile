@@ -52,6 +52,7 @@ gem "sassc-rails"
 gem "devise"
 gem "stripe"
 gem 'administrate'
+gem 'faker'
 
 
 group :development, :test do
