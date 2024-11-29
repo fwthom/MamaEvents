@@ -6,8 +6,8 @@
 <%= event.name  %>
 <%= event.description %>
 <%= event.date %>
-<%= link_to "ouvrir", event_path(event) %>
+<%= link_to "ouvrir", admin_event_path(event) %>
 <% end %>
 <p>___________________________</p>
 <h2>actions</h2>
-<%= link_to "créer un évènement", new_event_path %>
+<%= link_to "créer un évènement", new_admin_event_path %>

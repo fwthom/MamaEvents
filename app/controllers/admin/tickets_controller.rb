@@ -43,8 +43,58 @@ module Admin
     # See https://administrate-demo.herokuapp.com/customizing_controller_actions
     # for more information
     # 
+    before_action :set_event, only: [:new, :create, :index, :edit, :update, :destroy]
+    before_action :set_ticket, only:[:edit, :update, :destroy]
+    before_action :set_tickets, only:[:index]
     def index
-      
+      @ticket = Ticket.new
+    end
+
+    def new
+      @ticket = Ticket.new
+    end
+  
+    def create
+      @ticket = Ticket.create(participant_params)
+      @ticket.event = @event
+      if @ticket.save
+        redirect_to admin_event_tickets_path(@event)
+      else
+        render "/admin/tickets/new"
+      end
+    end
+
+    def edit 
+    end
+
+    def update
+      if @ticket.update(option_params)
+        redirect_to admin_event_tickets_path(@event)
+      else
+        render :edit, status: :unprocessable_entity
+      end
+    end
+
+    def destroy
+      @ticket.destroy
+    end
+  
+    private
+
+    def participant_params
+      params.require(:ticket).permit(:name, :unit_price, :description, :present)
+    end
+
+    def set_event
+      @event = Event.find(params[:event_id])
+    end
+
+    def set_tickets
+      @tickets = @event.tickets
+    end
+
+    def set_ticket
+      @ticket = Ticket.find(params[:id])
     end
   end
 end

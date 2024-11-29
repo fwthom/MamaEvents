@@ -12,8 +12,9 @@ Rails.application.routes.draw do
       resources :tickets
     end    
     root to: "custom_pages#home"
+    get "/events/:event_id/details", to: "events#details", as: :event_details
   end
-
+  
   root to: "pages#home"
 
   devise_for :users
@@ -39,7 +40,6 @@ Rails.application.routes.draw do
     resources :tickets, only: [ :index]
   end
 
-  get "/events/:event_id/details", to: "events#details", as: :event_details
 
 
 
