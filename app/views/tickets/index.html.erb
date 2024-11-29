@@ -1,19 +1,18 @@
-<%# INDEX.html DES EVENTS  %>
-
-
-<h1 style="text-align:center">Courses de <%= @tickets.first.event.name %></h1>
-<div class="container">
-
-  <div class="row">
-
-
-      <% @tickets.each do |ticket|  %>
-        <span class="col-sm-12 col-xl-4 my-2">
-          <%= render'cardTicket', ticket: ticket %>
-        </span>
-      <% end %>
-
-  </div>
-                    <%# AFFICHAGE DU BOUTON ET FORMULAIRE D'AJOUT DE TICKET/COURSE %>
+<%= render 'events/top-navbar' %>
+<div class="event-content-container">
+  <% if @event.tickets.any?%>
+    <div class="container">
+      <div class="row">
+        <% @tickets.each do |ticket|  %>
+          <span class="col-sm-12 col-xl-4 my-2">
+            <%= render'cardTicket', ticket: ticket %>
+          </span>
+        <% end %>
+        </div>
         <%= render'newTicket' %>
+      <% else %>
+        <h2>Vous n'avez pas encore de tickets ici.</h2>
+        <%= render'newTicket' %>
+      <% end %>
+      </div>
 </div>

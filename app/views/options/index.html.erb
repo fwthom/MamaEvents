@@ -1,0 +1,17 @@
+<div class="event-content-container">
+<%= render 'events/top-navbar' %>
+  <% if @event.options.any?%>
+    <div class="container">
+      <div class="row">
+        <% @options.each do |option|  %>
+          <span class="col-sm-12 col-xl-4 my-2">
+            <%= render'option_card', option: option %>
+          </span>
+        <% end %>
+      </div>
+    <% else %>
+          <h2>Vous n'avez pas encore créé d'options.</h2>
+        <% end %>
+      </div>
+      <%= render 'new_option', option: @option %>
+</div>

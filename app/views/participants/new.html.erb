@@ -1,2 +1,24 @@
 <h1>Participants#new</h1>
-<p>Find me in app/views/participants/new.html.erb</p>
+
+
+
+
+
+<div class="container border border-3">
+  <%= simple_form_for([@charity, @event, @participant], local: true) do |f| %>
+
+  <%= f.input :first_name, label: 'prénom' %>
+  <%= f.input :last_name, label: 'nom' %>
+  <%= f.input :email %>
+  <%= f.input :tickets, label: "Course", as: :select, collection: @event.tickets, label_method: :name, value_method: :id, input_html: { name: "ticket_id" } %>
+
+
+
+  <%= f.submit "M'inscrire", class:"btn btn-primary" %>
+<% end %>
+
+
+<%= console %>
+
+
+</div>

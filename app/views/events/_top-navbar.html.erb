@@ -1,0 +1,6 @@
+<div class="top-navbar-container">
+   <%= link_to "détails", event_details_path(@event), id:"navbar-link" %>
+    <%= link_to 'Tickets', event_tickets_path(@event), id:"navbar-link" %>
+     <%= link_to 'Options', event_options_path(@event), id:"navbar-link" %>
+     <%= link_to 'Publication', @event, id:"navbar-link" %>
+</div>

@@ -1,118 +1,31 @@
-<h1>SHOW.html de <%= @event.name %></h1>
 
-
+<h1><%= @charity.name %></h1>
+<h2>Evènement <%= @event.name %></h2>
 <div class="container">
-  <div class="row">
-    <div class="col-xl-2 col-lg-0  m-3"></div>
-    <div class=" event-dashboard-card col-xl-3 col-lg-3 m-3 border border-2">
-    <%= render'dashboard-participants' %>
 
-    <%# AMENE AUX PARTICIPANTS DE L'EVENT %>
-
-    </div>
-
-    <div class="col-xl-1 col-lg-0  m-3"></div>
+<div class="row justify-content-center">
+<% @tickets.each do |ticket| %>
+<div class="col-sm-4 col-xl-2 card me-3 my-3" >
 
 
-      <div class="col-xl-3 col-lg-3  m-3">
-       <%= render'dashboard-benevoles' %>
+<%= ticket.name %>
+<p><%= ticket.description %></p>
+<p><%= ticket.unit_price %> euros </p>
 
-      <%# AMENE AUX BENEVOLES DE L'EVENT %>
+<%= render 'top-navbar' %>
 
-      </div>
-    <div class="col-xl-2 col-lg-0  m-3"></div>
-  </div>
-
-
-
- <div class="row">
-<div class="col-xl-2 col-lg-0  m-3"></div>
-        <div class="col-xl-3 col-lg-3 m-3">
-
-        <%= render'dashboard-benevoles' %>
-
-        <%# AMENE AUX OPTIONS DE L'EVENT %>
-
-
-<div class="container ">
-    <div class="row">
-        <div class="col-xl-2"></div>
-        <div class="col-xl-3 border border-4 m-3">
-        <%= @event.name  %>
-        <%= @event.description %>
-        <%= @event.date %>
-        <ul>
-        <% @tickets.each do |ticket|  %>
-          <li><%= ticket.name %>
-          <%= ticket.description %>
-          <%= ticket.unit_price %>
-          </li>
-        <% end %>
-        </ul>
-        <%# AMENE AUX COURSES DE L'EVENT %>
-          <%= link_to 'courses', event_tickets_path(@event.id) %>
-      </div>
-
-<div class="col-xl-1 col-lg-0 m-3"></div>
-
-
-      <div class="col-xl-3 col-lg-3 m-3">
-        <%= @event.name%>
-        <%= @event.description %>
-        <%= @event.date %>
-        <ul>
-        <% @tickets.each do |ticket|  %>
-          <li><%= ticket.name %>
-          <%= ticket.description %>
-          <%= ticket.unit_price %>
-            <h2>options sur cet event</h2>
-<% @options.each do |option| %>
-  <h4><%= option.name %></h4>
-  <p><%= option.description %></p>
-  <p><%= option.unit_price %></p>
-  <ul>
-    <% option.tickets.each do |ticket|%>
-    <li><%=  ticket.name%></li>
-    <% end %>
-  </ul>
-  <%= link_to "modifier cette option", edit_option_path(option), class:"btn btn-primary" %>
-  <%= link_to "supprimer", option_path(option), data: { turbo_method: :delete}, class:"btn btn-alert" %>
-  <p>___________________________</p>
-<% end %>
-          </li>
-        <% end %>
-        </ul>
-        <%# AMENE AUX ACTIONS DE L'EVENT %>
-          <%= link_to 'courses', event_tickets_path(@event.id) %>
-      </div>
-<div class="col-xl-1 col-lg-0 m-3"></div>
-    </div>
-
-
-<<<<<<< HEAD
-
-
-  </div>
-=======
-      <div class="col-xl-3 border border-4 m-3">
-        <%= @event.name%>
-        <%= @event.description %>
-        <%= @event.date %>
-        <ul>
-        <% @tickets.each do |ticket|  %>
-          <li><%= ticket.name %>
-          <%= ticket.description %>
-          <%= ticket.unit_price %>
-          </li>
-        <% end %>
-        </ul>
-        <%# AMENE AUX COURSES DE L'EVENT %>
-          <%= link_to 'courses', event_tickets_path(@event.id) %>
-      </div>
-      <%# <div class="col-xl-2 border border-4"></div> %>
-    </div>
 </div>
 
-<%= render 'option_form' %>
+<% end %>
+<h1>
+</div>
+</h1>
 
->>>>>>> ee4a589cc09ac4f7fc09721f20982118647f3087
+<div class="row text-center">
+<h1>
+<%= link_to "Je veux participer", new_charity_event_participant_path(@charity, @event) %>
+</h1>
+</div>
+</div>
+</div>
+

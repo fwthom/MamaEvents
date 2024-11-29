@@ -8,27 +8,20 @@ Ajouter une course
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">nouveau ticket</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
 
 
-
-        <h1>Crée une course </h1>
-
-
-<%= simple_form_for [@event, @ticket] do |f| %>
-  <%= f.input :name %>
-  <%= f.input :description %>
-  <%= f.input :unit_price %>
-  <%= f.input :present, as: :boolean %>
-  <%= f.submit "Crée une", class: "btn btn-primary" %>
-<% end %>
-
-
-
-
+        <h1>Créer une course </h1>
+        <%= simple_form_for [@event, @ticket] do |f| %>
+          <%= f.input :name %>
+          <%= f.input :description %>
+          <%= f.input :unit_price %>
+          <%= f.input :present, as: :boolean %>
+          <%= f.submit "Créer le ticket", class: "btn btn-primary" %>
+        <% end %>
 
       </div>
       <div class="modal-footer">

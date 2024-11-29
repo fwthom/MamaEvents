@@ -83,9 +83,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_28_135436) do
     t.string "first_name"
     t.string "last_name"
     t.string "email"
-    t.bigint "team_id", null: false
+    t.bigint "team_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "event_id"
     t.index ["team_id"], name: "index_participants_on_team_id"
   end
 

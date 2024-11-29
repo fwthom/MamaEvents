@@ -1,6 +1,9 @@
 class ParticipantsController < ApplicationController
+  skip_before_action :authenticate_user!
+
+
   def index
-    @particpants = Participant.all
+    @participants = Participant.all
   end
 
   def show
@@ -9,15 +12,29 @@ class ParticipantsController < ApplicationController
 
   def new
     @participant = Participant.new
+    @event = Event.find(params[:event_id])
+    @charity = Charity.find(params[:charity_id])
   end
 
   def create
-    @participant = Participant.new(participant_params)
-    @participant.user = current_user
-    if @participant.save!
-      redirect_to @participant, notice: 'participant was successfully created.'
+    @charity = Charity.find(params[:charity_id])
+    @event = Event.find(params[:event_id])
+
+    @participant = Participant.create(participant_params)
+
+    @participant.event = @event
+    if @participant.save
+      @ticket = Ticket.find(params[:ticket_id])
+      Participation.create(ticket: @ticket, participant: @participant, payment_id: 2)
+      raise
+      if Participation.save
+        redirect_to @event, notice: 'Votre participation a été enregistrée'
+        # redirect_to @event, notice: 'Votre participation a été enregistrée'
+      else
+        render :new, alert: "Votre participation n'a pas abouti"
+      end
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -45,7 +62,9 @@ class ParticipantsController < ApplicationController
       end
   end
 
+  private
+
   def participant_params
-    params.require(:stone).permit(:first_name, :last_name, :email)
+    params.require(:participant).permit(:first_name, :last_name, :email)
   end
 end
