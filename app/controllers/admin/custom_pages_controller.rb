@@ -7,5 +7,14 @@ module Admin
     def events
       @events = Event.all
     end
+
+    def option_index
+    end
+
+    def option_edit
+    end
+
+    def option_new
+    end
   end
 end
