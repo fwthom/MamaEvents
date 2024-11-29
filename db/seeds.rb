@@ -17,13 +17,13 @@ User.create!(
 # Create a charity
 charity = Charity.create!(
   name: "Mes Amis Mes Amours",
-  description: "An organization dedicated to providing aid to those in need.",
+  description: "Association de lutte contre le cancer du sein",
   contact_email: "contact@helpinghands.org",
   phone_number: "+1234567890"
   )
 
 
-# Create the single event YUL 2024
+# Create the 3 event YUL 2024
 event = Event.create!(
   name: "YUL 2024",
   description: "Passer un moment convivial de sport avec la marche ou la course, mais également de fête (musique, tombola et barbecue pour clôturer la journée).",
@@ -33,7 +33,7 @@ event = Event.create!(
 
 event = Event.create!(
   name: "YUL 2025",
-  description: "Passer un moment convivial de sport avec la marche ou la course, mais également de fête (musique, tombola et barbecue pour clôturer la journée).",
+  description: "Passer un moment convivial de sport avec la marche ou la course, mais également de fête (musique, tombola et barbecue pour clôturer la journée).Passer un moment convivial de sport avec la marche ou la course, mais également de fête (musique, tombola et barbecue pour clôturer la journée).Passer un moment convivial de sport avec la marche ou la course, mais également de fête (musique, tombola et barbecue pour clôturer la journée).",
   date: Date.new(2024, 10, 05),
   charity: charity
 )
