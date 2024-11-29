@@ -6,10 +6,15 @@ Rails.application.routes.draw do
     resources :users
     resources :donations
     resources :payments
-    root to: "custom_pages#home"  
-    get "events", to: "custom_pages#events", as: :events
+    resources :tickets
+    resources :events, only: [:new, :create, :index, :edit, :update, :show] do
+      resources :options, only: [:new, :create, :index, :edit, :update, :destroy]
+      resources :tickets
+    end    
+    root to: "custom_pages#home"
+    get "/events/:event_id/details", to: "events#details", as: :event_details
   end
-
+  
   root to: "pages#home"
 
   devise_for :users
@@ -30,11 +35,11 @@ Rails.application.routes.draw do
 
   resources :participations
 
-  resources :events, only: [:new, :create, :index, :edit, :update, :show] do
-    resources :options, only: [:new, :create, :index, :edit, :update, :destroy]
-    resources :tickets
+  resources :events, only: [:index, :show] do
+    resources :options, only: [ :index]
+    resources :tickets, only: [ :index]
   end
-  get "/events/:event_id/details", to: "events#details", as: :event_details
+
 
 
 

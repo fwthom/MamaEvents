@@ -42,5 +42,53 @@ module Admin
 
     # See https://administrate-demo.herokuapp.com/customizing_controller_actions
     # for more information
+    # 
+
+    before_action :set_events, only: [:index]
+    before_action :set_event, only: [:show]
+    before_action :set_charity, only: [:show]
+    before_action :set_tickets, only: [:show]
+
+
+    def create
+      @event = Event.new(event_params)
+      @event.date = Date.parse(params[:event][:date])
+      @event.charity = Charity.first
+      if @event.save!
+        # redirect_to charity_event_path
+        redirect_to admin_events_path
+      else
+        render "events/new", status: :unprocessable_entity
+      end
+    end
+  
+    def index
+    end
+  
+    def show
+      @option = Option.new
+    end
+
+    private
+  
+    def event_params
+      params.require(:event).permit(:name, :description, :date)
+    end
+
+    def set_events
+      @events = Event.all
+    end
+
+    def set_event
+      @event = Event.find(params[:id])
+    end
+  
+    def set_tickets
+      @tickets = @event.tickets
+    end
+
+    def set_charity 
+      @charity = @event.charity
+    end
   end
 end

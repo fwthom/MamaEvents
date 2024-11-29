@@ -1,6 +1,6 @@
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-modifier
+Ajouter une option
 </button>
 
 <!-- Modal -->
@@ -8,15 +8,15 @@ modifier
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">nouvelle option</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
 
 
         <h1>Que souhaitez-vous proposer ? </h1>
-        <%= simple_form_for [@event, option], 
-          url: event_option_path(@event, option),
+        <%= simple_form_for [@event, @option], 
+          url: @option.new_record? ? admin_event_options_path(@event) : admin_event_option_path(@event, @option),
           method: @option.new_record? ? :post : :patch do |f| %>  
           <%= f.input :name %>
           <%= f.input :description %>
@@ -28,8 +28,8 @@ modifier
                       label_method: :name, 
                       value_method: :id, 
                       label: "Sélectionner des tickets" %>  
-          <%= f.submit "Enregistrer", class:"rounded-button primary"%>
-        <% end %>
+    <%= f.submit "Enregistrer", class:"rounded-button primary"%>
+<% end %>
 
       </div>
       <div class="modal-footer">
