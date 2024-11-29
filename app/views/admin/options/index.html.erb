@@ -1,5 +1,5 @@
-<div class="event-content-container">
-<%= render 'events/top-navbar' %>
+<%= render 'admin/events/top_navbar' %>
+<h2>Options de l'évènement</h2>
   <% if @event.options.any?%>
     <div class="container">
       <div class="row">
@@ -13,5 +13,6 @@
           <h2>Vous n'avez pas encore créé d'options.</h2>
         <% end %>
       </div>
-      <%= render 'new_option', option: @option %>
+  <h2>Ajouter</h2>
+  <%= link_to 'créer nouvelle option', new_admin_event_option_path(@event), class: 'btn btn-primary' %>
 </div>

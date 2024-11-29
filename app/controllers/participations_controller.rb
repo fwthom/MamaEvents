@@ -1,5 +1,5 @@
 class ParticipationsController < ApplicationController
-
+  skip_before_action :authenticate_user!
   def new
     @participation = Participation.new
 
