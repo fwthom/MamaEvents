@@ -3,6 +3,7 @@ class DonationsController < ApplicationController
 
   def new
     @donation = Donation.new
+    @charity = Charity.first
   end
 
   def create

@@ -3,6 +3,7 @@ module Admin
     def home
       @events = Event.all
       @nextevent = Event.where('date > ?', Time.current).order(date: :asc).first
+      @charity = Charity.first
     end
 
     def events
