@@ -1,5 +1,4 @@
 class EventsController < ApplicationController
-# before_action :set_event, only: [:show]
 skip_before_action :authenticate_user!
   def new
     @event = Event.new
@@ -22,6 +21,7 @@ skip_before_action :authenticate_user!
   end
 
   def show
+    set_event
     @charity = @event.charity
     set_tickets
     @option = Option.new
