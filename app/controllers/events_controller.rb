@@ -18,6 +18,7 @@ skip_before_action :authenticate_user!
 
   def index
     @events = Event.all
+    # @events = Event.where(charity_id: params[:charity_id])
   end
 
   def show

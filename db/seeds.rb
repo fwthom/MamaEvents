@@ -31,6 +31,19 @@ event = Event.create!(
   charity: charity
 )
 
+event = Event.create!(
+  name: "YUL 2025",
+  description: "Passer un moment convivial de sport avec la marche ou la course, mais également de fête (musique, tombola et barbecue pour clôturer la journée).",
+  date: Date.new(2024, 10, 05),
+  charity: charity
+)
+
+event = Event.create!(
+  name: "MAMA 2025",
+  description: "Passer un moment convivial de sport avec la marche ou la course, mais également de fête (musique, tombola et barbecue pour clôturer la journée).",
+  date: Date.new(2024, 10, 05),
+  charity: charity
+)
 
 # Create tickets for the event (both presentiel and distanciel)
 ticket1 = Ticket.create!(
