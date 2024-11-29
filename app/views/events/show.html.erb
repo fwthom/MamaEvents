@@ -1,15 +1,27 @@
-<h1>SHOW.html de charity/event</h1>
-<h1>Association <%= @charity.name %></h1>
+
+<h1><%= @charity.name %></h1>
 <h2>Evènement <%= @event.name %></h2>
+<div class="container">
 
+<div class="row justify-content-center">
 <% @tickets.each do |ticket| %>
+<div class="col-sm-4 col-xl-2 card me-3 my-3" >
+
+
 <%= ticket.name %>
+<p><%= ticket.description %></p>
+<p><%= ticket.unit_price %> euros </p>
+
+</div>
+
 <% end %>
-
-
 <h1>
-<%= link_to "S'inscrire", new_charity_event_participant_path(@charity, @event) %>
-
-
+</div>
 </h1>
-
+<div class="row text-center">
+<h1>
+<%= link_to "Je veux participer", new_charity_event_participant_path(@charity, @event) %>
+</h1>
+</div>
+</div>
+</div>

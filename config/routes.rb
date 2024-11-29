@@ -41,7 +41,9 @@ Rails.application.routes.draw do
 
   resources :charities do
     resources :events do
-      resources :participants
+      resources :participants do
+        resources :participations
+      end
     end
   end
 
