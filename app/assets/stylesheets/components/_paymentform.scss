@@ -1,0 +1,56 @@
+/* General Styling for Stripe Elements */
+#card-number-element,
+#card-expiry-element,
+#card-cvc-element {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+#card-number-element,
+.d-flex > div {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.d-flex > div {
+  flex: 1; /* Equal widths for Expiry and CVC */
+}
+
+.d-flex > div:not(:last-child) {
+  margin-right: 10px; /* Space between Expiry and CVC */
+}
+
+.form-label {
+  font-size: 14px;
+  color: #6c757d;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.text-danger {
+  color: #d9534f;
+  font-size: 14px;
+}
+
+.paymentpageinfo {
+  padding: 8px;
+  line-height: 80%;
+  border: 1px solid #ccc;
+}
+
+.cropped-image-container {
+  position: relative;
+  overflow: hidden;
+  height: 50%; /* Adjust height based on the cropped content */
+}
+
+.cropped-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  object-position: center 50%; /* Center horizontally and vertically */
+  position: relative;
+  top: -25%; /* Adjust the top and bottom cropping */
+}

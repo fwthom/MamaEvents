@@ -1,7 +1,6 @@
-<div class="event-content-container ">
-
-<h1>Créer un évènement</h1>
-<%= simple_form_for @event, url: admin_events_path, method: :post do |f| %>
+<div class="event-content-container">
+<h1>modifier l'évènement</h1>
+<%= simple_form_for @event, url: admin_event_path(@event), method: :patch do |f| %>
   <div class="mb-3">
     <%= f.input :name, label: "Nom de l'évènement", input_html: { class: 'form-control' } %>
   </div>
