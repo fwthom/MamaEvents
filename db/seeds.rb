@@ -1,12 +1,12 @@
 require 'faker'
 
+Participation.destroy_all
 Option.destroy_all
 Ticket.destroy_all
 Event.destroy_all
 Charity.destroy_all
 User.destroy_all
 Participant.destroy_all
-Participation.destroy_all
 
 # Users
 User.create!(
