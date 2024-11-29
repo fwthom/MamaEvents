@@ -1,9 +1,8 @@
 <div class="event-content-container ">
-<%= render '/events/top-navbar' %>
-
+<%= render 'top_navbar' %>
   <h1><%= @event.name%></h1>
   <p><%= @event.description %></p>
-    <%= link_to edit_event_path(@event) do %>
+  <%= link_to edit_admin_event_path(@event) do %>
     <span class="visually-hidden">Edit</span>
     <i class="fas fa-edit"></i>
   <% end %>

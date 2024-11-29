@@ -1,0 +1,17 @@
+<div class="event-content-container">
+<%= render 'admin/events/top_navbar' %>
+  <% if @event.tickets.any?%>
+    <div class="container">
+        <% @tickets.each do |ticket|  %>
+          <div class="row">
+            <span class="col-sm-12 col-xl-4 my-2">
+              <%= render'admin/tickets/cardTicket', ticket: ticket %>
+            </span>
+          </div>
+        <% end %>
+      <% else %>
+        <h2>Vous n'avez pas encore de tickets ici.</h2>
+      <% end %>
+        <%= render'admin/tickets/newTicket' %>
+      </div>
+</div>

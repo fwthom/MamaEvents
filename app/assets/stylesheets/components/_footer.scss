@@ -1,0 +1,20 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: $very-rose;
+}
+.text-center {
+  margin-top: 8px;
+}
+
+.reseaux {
+  padding: 8px;
+}
+
+.footer-logo {
+  text-decoration: none;
+  color: $very-rose;
+  padding: 8px;
+
+}

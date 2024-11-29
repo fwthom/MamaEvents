@@ -1,15 +1,10 @@
-<h1>Events#index</h1>
-<p>Find me in app/views/events/index.html.erb</p>
+<div class="text-center"><h1><%= @charity.name %></h1>
 <h2>Tous les évènements</h2>
-<% @events.each do |event|%>
-<p>___________________________</p>
-<%= event.name  %>
-<%= event.description %>
-<%= event.date %>
-<%= link_to "ouvrir", event_path(event) %>
-<% end %>
-<p>___________________________</p>
-<h2>actions</h2>
-<%= link_to "créer un évènement", new_event_path %>
+</div>
+<div class="row">
+  <% @events.each do |event| %>
 
+        <%= render 'event-index-card', event: event, name: event.name, description: event.description, date: event.date %>
 
+  <% end %>
+</div>
