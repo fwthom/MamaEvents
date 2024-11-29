@@ -17,14 +17,24 @@ class ParticipantsController < ApplicationController
   end
 
   def create
-    @participant = Participant.new(participant_params)
+    @charity = Charity.find(params[:charity_id])
     @event = Event.find(params[:event_id])
+
+    @participant = Participant.create(participant_params)
+
     @participant.event = @event
-    if @participant.save!
-      redirect_to @event, notice: 'participant was successfully created.'
-    else
+    if @participant.save
+      @ticket = Ticket.find(params[:ticket_id])
+      Participation.create(ticket: @ticket, participant: @participant, payment_id: 2)
       raise
-      render :new
+      if Participation.save
+        redirect_to @event, notice: 'Votre participation a été enregistrée'
+        # redirect_to @event, notice: 'Votre participation a été enregistrée'
+      else
+        render :new, alert: "Votre participation n'a pas abouti"
+      end
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -51,6 +61,8 @@ class ParticipantsController < ApplicationController
         redirect_to dashboard_path, alert: 'Suppression impossible.'
       end
   end
+
+  private
 
   def participant_params
     params.require(:participant).permit(:first_name, :last_name, :email)
