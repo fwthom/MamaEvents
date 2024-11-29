@@ -2,7 +2,7 @@ class OptionsController < ApplicationController
   before_action :set_event, only: [:new, :create, :edit, :index, :update, :destroy]
   before_action :set_option, only: [:edit, :update, :destroy]
   before_action :set_tickets, only: [:new, :edit, :index]
-  
+  skip_before_action :authenticate_user!, only: [:show, :index]
   def new
     @option = Option.new
   end
@@ -20,7 +20,7 @@ class OptionsController < ApplicationController
     @option = Option.new
   end
 
-  def edit 
+  def edit
   end
 
   def update

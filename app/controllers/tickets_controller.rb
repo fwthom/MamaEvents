@@ -1,5 +1,5 @@
 class TicketsController < ApplicationController
-
+  skip_before_action :authenticate_user!, only: [:show, :index]
   def index
     @tickets = Ticket.where(event_id: params["event_id"])
     @event = Event.find(params[:event_id])
