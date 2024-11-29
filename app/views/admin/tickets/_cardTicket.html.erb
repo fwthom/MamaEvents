@@ -1,4 +1,5 @@
 <div class="card">
   <h4><%= ticket.name %></h4>
   <p><%= ticket.unit_price %> euros</p>
+  <%= link_to 'modifier', edit_admin_event_ticket_path(event_id: @event.id, id: ticket.id), class: 'btn btn-primary' %>
 </div>

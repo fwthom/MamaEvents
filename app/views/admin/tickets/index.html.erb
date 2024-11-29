@@ -10,8 +10,10 @@
           </div>
         <% end %>
       <% else %>
-        <h2>Vous n'avez pas encore de tickets ici.</h2>
+        <h2>Vous n'avez pas encore créé de tickets.</h2>
       <% end %>
-        <%= render'admin/tickets/newTicket' %>
+<h2>Ajouter</h2>
+  <%= link_to 'créer nouveau ticket', new_admin_event_ticket_path(@event), class: 'btn btn-primary' %>      
       </div>
 </div>
+

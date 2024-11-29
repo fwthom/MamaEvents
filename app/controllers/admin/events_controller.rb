@@ -45,20 +45,22 @@ module Admin
     # 
 
     before_action :set_events, only: [:index]
-    before_action :set_event, only: [:show]
+    before_action :set_event, only: [:edit, :update, :show]
     before_action :set_charity, only: [:show]
     before_action :set_tickets, only: [:show]
 
+    def new
+      @event = Event.new
+    end
 
     def create
       @event = Event.new(event_params)
       @event.date = Date.parse(params[:event][:date])
       @event.charity = Charity.first
       if @event.save!
-        # redirect_to charity_event_path
         redirect_to admin_events_path
       else
-        render "events/new", status: :unprocessable_entity
+        render :new, status: :unprocessable_entity
       end
     end
   
@@ -66,13 +68,22 @@ module Admin
     end
   
     def show
-      @option = Option.new
+    end
+    def edit 
+    end
+
+    def update
+      if @event.update(event_params)
+        redirect_to admin_event_path(@event)
+      else
+        render :edit, status: :unprocessable_entity
+      end
     end
 
     private
   
     def event_params
-      params.require(:event).permit(:name, :description, :date)
+      params.require(:event).permit(:name, :description, :date, :status)
     end
 
     def set_events
