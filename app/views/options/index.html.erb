@@ -1,18 +1,17 @@
+<div class="event-content-container">
 <%= render 'events/top-navbar' %>
-<% @options.each do |option| %>
-<p>------------------</p>
-<%= option.id %>
-<%= option.name %>
-<%= option.description %>
-<%= option.unit_price %>
-<ul>
-  <% option.tickets.each do |ticket| %>
-  <li><%= ticket.name %></li>
-<% end %>
-</ul>
-<%= link_to "Editer", edit_event_option_path(@event, option) %>
-<% end %>
-<p>------------------</p>
-<%= link_to "Nouvelle option", new_event_option_path(@event, @option) %>
-
-
+  <% if @event.options.any?%>
+    <div class="container">
+      <div class="row">
+        <% @options.each do |option|  %>
+          <span class="col-sm-12 col-xl-4 my-2">
+            <%= render'option_card', option: option %>
+          </span>
+        <% end %>
+      </div>
+    <% else %>
+          <h2>Vous n'avez pas encore créé d'options.</h2>
+        <% end %>
+      </div>
+      <%= render 'new_option', option: @option %>
+</div>

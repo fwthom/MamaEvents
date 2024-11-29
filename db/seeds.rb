@@ -6,7 +6,13 @@ User.destroy_all
 
 User.create!(
   email: "calpin@lewagon.org",
-  password: "password"
+  password: "password",
+  role: "admin"
+)
+User.create!(
+  email: "volunteer@lewagon.org",
+  password: "password",
+  role: "volunteer"
 )
 # Create a charity
 charity = Charity.create!(

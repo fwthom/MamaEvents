@@ -1,8 +1,6 @@
 <div class="top-navbar-container">
-  <ul class="top-navbar-item">
-    <li> <%= link_to "détails", event_details_path(@event) %></li>
-    <li> <%= link_to 'Tickets', event_tickets_path(@event) %></li>
-    <li> <%= link_to 'Options', event_options_path(@event) %></li>
-    <li> <%= link_to 'Publication', @event %></li>
-  </ul>
+   <%= link_to "détails", event_details_path(@event), id:"navbar-link" %>
+    <%= link_to 'Tickets', event_tickets_path(@event), id:"navbar-link" %>
+     <%= link_to 'Options', event_options_path(@event), id:"navbar-link" %>
+     <%= link_to 'Publication', @event, id:"navbar-link" %>
 </div>

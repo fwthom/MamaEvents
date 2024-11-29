@@ -1,6 +1,4 @@
-<h1>Crée une course </h1>
-
-
+<div class="event-content-container">
 <%= simple_form_for [@event, @ticket] do |f| %>
   <%= f.input :name %>
   <%= f.input :description %>
@@ -8,3 +6,4 @@
   <%= f.input :present, as: :boolean %>
   <%= f.submit "Crée une", class: "btn btn-primary" %>
 <% end %>
+</div>
