@@ -1,11 +1,10 @@
-<h1>PUBLIC </h1>
-<p>Find me in app/views/events/index.html.erb</p>
+<div class="text-center"><h1><%= @charity.name %></h1>
 <h2>Tous les évènements</h2>
-<% @events.each do |event|%>
-<p>___________________________</p>
-<%= event.name  %>
-<%= event.description %>
-<%= event.date %>
-<% end %>
+</div>
+<div class="row">
+  <% @events.each do |event| %>
 
+        <%= render 'event-index-card', event: event, name: event.name, description: event.description, date: event.date %>
 
+  <% end %>
+</div>
