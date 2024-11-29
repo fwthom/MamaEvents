@@ -1,8 +1,26 @@
 <div data-controller="stripe">
   <form data-stripe-target="form" data-action="stripe#submit">
     <input type="hidden" name="amount" id="amount" value="<%= @payable.amount %>" data-stripe-target="amount">
-    <div id="payment-element" data-stripe-target="paymentElement"></div>
+
+    <!-- Card Number Field -->
+    <div class="mb-3">
+      <label for="card-number-element" class="form-label">Numéro de carte</label>
+      <div id="card-number-element" class="form-control" data-stripe-target="cardNumber"></div>
+    </div>
+
+    <!-- Expiry Date and CVC Fields -->
+    <div class="mb-3">
+      <label for="card-expiry-element" class="form-label">Date d'expiration et CVC</label>
+      <div class="d-flex gap-2">
+        <div id="card-expiry-element" class="form-control" data-stripe-target="cardExpiry"></div>
+        <div id="card-cvc-element" class="form-control" data-stripe-target="cardCvc"></div>
+      </div>
+    </div>
+
+    <!-- Error Message -->
     <div class="text-danger mt-3" data-stripe-target="error"></div>
-    <button type="submit" class="btn btn-primary mt-3">Payer maintenant</button>
+
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-primary mt-3 w-100">Payer maintenant</button>
   </form>
 </div>

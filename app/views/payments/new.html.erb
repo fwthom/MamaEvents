@@ -1,9 +1,17 @@
-<div class="container mt-5">
-  <% if @payable.is_a?(Donation) %>
-    <h1>Faire un don</h1>
-    <p>Merci pour votre don de <%= number_to_currency(@payable.amount, unit: "€") %>.</p>
-    <p><strong>Donateur:</strong> <%= @payable.first_name %> <%= @payable.last_name %></p>
-    <p><strong>Adresse:</strong> <%= @payable.address %>, <%= @payable.postal_code %></p>
+<div class="container mt-5" style="width: 550px">
+  <div style="line-height: 80%">
+    <% if @payable.is_a?(Donation) %>
+    <h1 style="margin-bottom: 16px"><strong>Paiment de votre don de <%= number_to_currency(@payable.amount, unit: "€") %></strong></h1>
+      <div class="cropped-image-container">
+    <img class="cropped-image" src="https://img.freepik.com/vecteurs-premium/mot-merci-sourire-langue-francaise-merci-creation-vectorielle-fond-blanc_644677-1320.jpg" alt="">
+      </div>
+      <p><strong>Vérifiez les détails fournis avant de procéder au paiement</strong></p>
+      <p><em>Ceux-ci seront utilisés pour établir votre reçu fiscal</em></p>
+    </div>
+    <div class=paymentpageinfo>
+      <p><strong>Donateur:</strong> <%= @payable.first_name %> <%= @payable.last_name %></p>
+      <p><strong>Adresse:</strong> <%= @payable.address %>, <%= @payable.postal_code %>, <%= @payable.city %></p>
+    </div>
   <% end %>
 
   <%= render "payments/stripe_form", payment: @payment %>
