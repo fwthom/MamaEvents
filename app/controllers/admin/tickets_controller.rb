@@ -55,7 +55,7 @@ module Admin
     end
   
     def create
-      @ticket = Ticket.create(participant_params)
+      @ticket = Ticket.create(ticket_params)
       @ticket.event = @event
       if @ticket.save
         redirect_to admin_event_tickets_path(@event)
@@ -68,7 +68,7 @@ module Admin
     end
 
     def update
-      if @ticket.update(option_params)
+      if @ticket.update(ticket_params)
         redirect_to admin_event_tickets_path(@event)
       else
         render :edit, status: :unprocessable_entity
@@ -81,7 +81,7 @@ module Admin
   
     private
 
-    def participant_params
+    def ticket_params
       params.require(:ticket).permit(:name, :unit_price, :description, :present)
     end
 

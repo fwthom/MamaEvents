@@ -1,3 +1,4 @@
+<div class="event-content-container">
 <%= render 'admin/events/top_navbar' %>
 <h2>Options de l'évènement</h2>
   <% if @event.options.any?%>
@@ -10,7 +11,11 @@
         <% end %>
       </div>
     <% else %>
+      <% if @event.tickets.any? %>
           <h2>Vous n'avez pas encore créé d'options.</h2>
+          <% else %>
+           <h2>Vous devez créer un ticket afin de créer une option</h2>
+        <% end %>
         <% end %>
       </div>
   <h2>Ajouter</h2>
