@@ -1,34 +1,50 @@
-<div class="container mt-5">
+<div class="container mt-5" style="width: 500px">
   <h1 class="mb-4">Faire un don</h1>
-
+  <p>Mes Amis Mes Amours fonctionne exclusivement a l'aide des dons et des revenus de la YUL. Si vous pouvez vous le permettre, utilisez le formulaire ci-dessous pour faire un don ponctuel a l'association.</p>
+  <p><em>Les dons ponctuels sont sujets à une déduction d'impôts selon <a href="https://www.economie.gouv.fr/particuliers/prelevement-a-la-source-reductions-fiscales-dons-associations#:~:text=Les%20dons%20ouvrent%20droit%20à,réduction%20de%2066%20euros%2C%20etc.">la législation en vigueur</a>. Un reçu fiscal vous sera transmis a votre email sous 7 jours.</em></p>
   <%= simple_form_for @donation, url: donations_path, method: :post, html: { class: 'form-horizontal' } do |f| %>
-  <div class="mb-3">
-    <%= f.input :first_name, label: "Prénom", input_html: { class: 'form-control' }, wrapper: false %>
-  </div>
+    <div class="mb-3">
+      <%= f.input :first_name, label: "Prénom", input_html: { class: 'form-control' }, wrapper: false %>
+    </div>
 
-  <div class="mb-3">
-    <%= f.input :last_name, label: "Nom", input_html: { class: 'form-control' }, wrapper: false %>
-  </div>
+    <div class="mb-3">
+      <%= f.input :last_name, label: "Nom", input_html: { class: 'form-control' }, wrapper: false %>
+    </div>
 
-  <div class="mb-3">
-    <%= f.input :address, label: "Adresse", input_html: { class: 'form-control' }, wrapper: false %>
-  </div>
+    <div class="mb-3">
+      <%= f.input :address, label: "Adresse", input_html: { class: 'form-control' }, wrapper: false %>
+    </div>
 
-  <div class="mb-3">
-    <%= f.input :postal_code, label: "Code Postal", input_html: { class: 'form-control' }, wrapper: false %>
-  </div>
+    <div class="row">
+      <div class="col">
+        <%= f.input :postal_code, label: "Code Postal", input_html: { class: 'form-control' }, wrapper: false %>
+      </div>
+      <div class="col">
+        <%= f.input :city, label: "Ville", input_html: { class: 'form-control', required: true }, wrapper: false %>
+      </div>
+    </div>
 
-  <div class="mb-3">
-    <%= f.input :city, label: "Ville", input_html: { class: 'form-control' }, wrapper: false %>
-  </div>
+    <div class="my-3">
+      <label class="mb-2">Montant du don (€)</label>
+      <div class="btn-group d-flex mb-2" role="group">
+        <% [10, 20, 50].each do |amount| %>
+          <button
+            type="button"
+            class="btn donation__amount-button"
+            onclick="setDonationAmount(<%= amount %>)"><%= amount %> €</button>
+        <% end %>
+      </div>
+      <%= f.input :amount, label: false, input_html: { class: 'form-control', step: '0.01', placeholder: 'Montant personnalisé' }, wrapper: false %>
+    </div>
 
-  <div class="mb-3">
-    <%= f.input :amount, label: "Montant du don (€)", input_html: { class: 'form-control', step: '0.01' }, wrapper: false %>
-  </div>
-
-  <div class="mb-3">
-    <%= f.button :submit, "Faire un don", class: "btn btn-primary" %>
-  </div>
+    <div class="mb-3">
+      <%= f.button :submit, "Faire un don", class: "btn donation__submit-button" %>
+    </div>
   <% end %>
-
 </div>
+
+<script>
+  function setDonationAmount(amount) {
+    document.querySelector('input[name="donation[amount]"]').value = amount;
+  }
+</script>
