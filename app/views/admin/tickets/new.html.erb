@@ -1,9 +1,10 @@
 <div class="event-content-container">
-<%= simple_form_for [@event, @ticket] do |f| %>
+<h1>Ajouter une course </h1>
+<%= simple_form_for [@event, @ticket], url: admin_event_tickets_path(@event), method: :post do |f| %>
   <%= f.input :name %>
   <%= f.input :description %>
   <%= f.input :unit_price %>
   <%= f.input :present, as: :boolean %>
-  <%= f.submit "Crée une", class: "btn btn-primary" %>
+  <%= f.submit "Créer le ticket", class: "btn btn-primary" %>
 <% end %>
 </div>
