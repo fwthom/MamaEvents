@@ -1,11 +1,17 @@
 <div class="event-content-container">
-<h1>Modifier une course </h1>
-<%= simple_form_for [@event, @ticket], url: admin_event_ticket_path(@event, @ticket), method: :patch do |f| %>
-<%= f.input :name %>
-<%= f.input :description %>
-<%= f.input :unit_price %>
-<%= f.input :present, as: :boolean %>
-<%= f.submit "Modifier le ticket", class: "btn btn-primary" %>
+  <h1>Modifier une course </h1>
+  <%= simple_form_for [@event, @ticket], url: admin_event_ticket_path(@event, @ticket), method: :patch do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.input :unit_price %>
+  <%= f.input :present, as: :boolean %>
+  <%= f.submit "Modifier le ticket", class: "btn btn-primary" %>
+  <% end %>
+  <%= link_to admin_event_ticket_path(@event, @ticket), 
+    data: { turbo_method: :delete, turbo_confirm: 'Vous voulez vraiment supprimer ce ticket ?' }, 
+    class: 'btn btn-danger' do %> Supprimer
+  <% end %>
+  <%= form_with url: admin_event_ticket_path(event_id: @event.id, id: @ticket.id), method: :delete, data: { confirm: 'Êtes-vous sûr de vouloir supprimer ce ticket ?' } do %>
+  <%= submit_tag 'Supprimer', class: 'btn btn-danger' %>
 <% end %>
-
 </div>
