@@ -1,0 +1,9 @@
+<div class="container">
+      <div class="row">
+        <% @options.each do |option|  %>
+          <span class="col-sm-12 col-xl-4 my-2">
+            <%= render'option_card', option: option %>
+          </span>
+        <% end %>
+      </div>
+    </div>
