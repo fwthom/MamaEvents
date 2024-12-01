@@ -1,0 +1,17 @@
+<div class="event-content-container ">
+
+<h1>Publier l'événement</h1>
+
+<p><strong>Nom de l'événement :</strong> <%= @event.name %></p>
+<p><strong>Statut actuel :</strong> <%= @event.status.capitalize %></p>
+
+<% if @event.status == "brouillon" && @can_publish %>
+  <%= button_to 'Publier cet événement', publish_event_path(@event), method: :patch, class: 'btn btn-primary' %>
+<% elsif @event.status == "terminé" %>
+  <p>Cet événement est déjà terminé.</p>
+<% else %>
+  <p>Ce statut ne peut pas être modifié ici.</p>
+<% end %>
+
+<%= link_to 'Annuler', event_path(@event), class: 'btn btn-secondary' %>
+</div>

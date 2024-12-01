@@ -30,14 +30,17 @@ event_1 = Event.create!(
   name: "YUL 2024",
   description: "Passer un moment convivial de sport avec la marche ou la course, mais également de fête (musique, tombola et barbecue pour clôturer la journée).",
   date: Date.new(2025, 10, 05),
-  charity: charity
+  charity: charity,
+  status: "brouillon"
 )
 
 event_2 = Event.create!(
   name: "YUL 2025",
   description: "Passer un moment convivial de sport avec la marche ou la course, mais également de fête (musique, tombola et barbecue pour clôturer la journée).Passer un moment convivial de sport avec la marche ou la course, mais également de fête (musique, tombola et barbecue pour clôturer la journée).Passer un moment convivial de sport avec la marche ou la course, mais également de fête (musique, tombola et barbecue pour clôturer la journée).",
   date: Date.new(2024, 10, 05),
-  charity: charity
+  charity: charity,
+  status: "brouillon"
+
 )
 
 
@@ -45,7 +48,9 @@ event_3 = Event.create!(
   name: "La MAMA 2026",
   description: "Passer un moment convivial de sport avec la marche ou la course, mais également de fête (musique, tombola et barbecue pour clôturer la journée).",
   date: Date.new(2026, 5, 5),
-  charity: charity
+  charity: charity,
+  status: "brouillon"
+
 )
 
 
