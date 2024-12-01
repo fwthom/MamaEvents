@@ -2,7 +2,6 @@ require 'faker'
 
 Participation.destroy_all
 Event.destroy_all
-Option.destroy_all
 Charity.destroy_all
 User.destroy_all
 
@@ -69,11 +68,11 @@ tickets = [
 
 # Options
 options = [
-  Option.create!(name: "Frites", description: "Délicieuses et croustillantes", unit_price: 4.0, category: "Alimentaire"),
-  Option.create!(name: "Hot Dog", description: "Un délicieux hot dog", unit_price: 5.0, category: "Alimentaire"),
-  Option.create!(name: "T-shirt S", description: "T-shirt taille S", unit_price: 10.0, category: "Vestimentaire"),
-  Option.create!(name: "T-shirt M", description: "T-shirt taille M", unit_price: 10.0, category: "Vestimentaire"),
-  Option.create!(name: "T-shirt L", description: "T-shirt taille L", unit_price: 10.0, category: "Vestimentaire")
+  Option.create!(name: "Frites", description: "Délicieuses et croustillantes", unit_price: 4.0, category: "Alimentaire", event: event_1),
+  Option.create!(name: "Hot Dog", description: "Un délicieux hot dog", unit_price: 5.0, category: "Alimentaire", event: event_1),
+  Option.create!(name: "T-shirt S", description: "T-shirt taille S", unit_price: 10.0, category: "Vestimentaire", event: event_1),
+  Option.create!(name: "T-shirt M", description: "T-shirt taille M", unit_price: 10.0, category: "Vestimentaire", event: event_1),
+  Option.create!(name: "T-shirt L", description: "T-shirt taille L", unit_price: 10.0, category: "Vestimentaire", event: event_1)
 ]
 
 # Assign options to tickets

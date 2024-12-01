@@ -68,6 +68,8 @@ module Admin
     end
   
     def show
+      @event = Event.find(params[:id])
+
     end
     def edit 
     end

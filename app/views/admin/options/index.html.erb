@@ -2,7 +2,6 @@
   <%= render 'admin/events/top_navbar' %>
   <h2>Options de l'évènement</h2>
   <p>Attention, n'oubliez pas de lier chaque option aux tickets avec lesquels elles seront proposées.</p>
-  <%= raise %>
   <% if @event.options.any?%>
     <% if @event.tickets.any? %>
       <h2>Les options pour vos tickets</h2>
@@ -16,3 +15,4 @@
   <% end %>
   <%= link_to 'créer nouvelle option', new_admin_event_option_path(@event), class: 'btn btn-primary' %>
 </div>
+   <%= link_to 'evt', admin_events_path, id: "navbar-link" %>

@@ -9,6 +9,7 @@ module Admin
     end
     def create
       @option = Option.new(option_params)
+      @option.event = @event
       if @option.save!
         redirect_to admin_event_options_path(@event)
       else
@@ -17,7 +18,7 @@ module Admin
     end
 
     def index
-      @options = @event.options.distinct
+      @options = @event.options
       @option = Option.new
     end
 
