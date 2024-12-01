@@ -1,9 +1,9 @@
 <div class="container">
-      <div class="row">
-        <% @options.each do |option|  %>
-          <span class="col-sm-12 col-xl-4 my-2">
-            <%= render'option_card', option: option %>
-          </span>
-        <% end %>
+  <div class="row">
+    <% @options.each do |option| %>
+      <div class="col-12 col-xl-4 mb-3">
+        <%= render 'option_card', option: option %>
       </div>
-    </div>
+    <% end %>
+  </div>
+</div>
