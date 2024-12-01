@@ -8,6 +8,10 @@ module Admin
     end
 
     def new
+      if @event.status == "terminé"
+        redirect_to admin_event_tickets_path(@event), alert: "Impossible de créer un ticket car l'événement est terminé."
+        return
+      end
       @ticket = Ticket.new
     end
   
@@ -22,6 +26,10 @@ module Admin
     end
 
     def edit
+      if @event.status == "terminé"
+        redirect_to admin_event_tickets_path(@event), alert: "Impossible de modifier un ticket car l'événement est terminé."
+        return
+      end
     end
 
     def update

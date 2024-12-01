@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :tickets
     resources :events, only: [:new, :create, :index, :edit, :update, :show] do
       member do
+        get 'discarded'
         get 'publication' # Affiche le formulaire ou la page de confirmation
         patch 'publish'   # Met à jour le statut de l'événement
       end
