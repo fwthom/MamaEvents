@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :users
     resources :donations
     resources :payments
+    resources :tickets
     resources :events, only: [:new, :create, :index, :edit, :update, :show] do
       resources :options, only: [:new, :create, :index, :edit, :update, :destroy]
       resources :tickets, only: [:new, :create, :index, :edit, :update, :destroy]
