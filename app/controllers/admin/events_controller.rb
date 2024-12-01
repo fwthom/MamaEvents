@@ -4,6 +4,7 @@ module Admin
     before_action :set_event, only: [:edit, :update, :show, :publication, :publish]
     before_action :set_charity, only: [:show]
     before_action :set_tickets, only: [:show]
+    before_action :publication, only: [:index, :show]
 
     def new
       @event = Event.new
@@ -40,22 +41,16 @@ module Admin
     end
 
     def publication  
-      if @event.status == "brouillon"
-        @can_publish = true
-      else
-        @can_publish = false
-      end
       if @event.date < Time.current
         @event.update(status: "terminé") unless @event.status == "terminé"
       end
     end
-    def publish
-      @event = Event.find(params[:id])
-  
-      if @event.update(status: "publié")
-        redirect_to publication_admin_event_path(@event), notice: "L'événement a été publié avec succès."
+
+    def publish  
+      if @event.update(event_params)
+        redirect_to publication_admin_event_path(@event), notice: "Statut modifié avec succès."
       else
-        render :publication, alert: "Erreur lors de la publication de l'événement."
+        render :publication, alert: "Erreur lors du changement de statut de l'événement."
       end
 
     end
