@@ -7,7 +7,11 @@
     <div class="row">
 
       <div class="col-sm-12 col-md-12 col-lg-5">
-        <%= cl_image_tag("runner-PTLUTZL-e1641394048474-600x400_hxswmh", class:"index-event-card-image")%>
+               <%if event.image.attached?%>
+  <%= cl_image_tag event.image.key, class:"index-event-card-image"%>
+<% else %>
+ <%= image_tag "logo.png", class:"index-event-card-image"%>
+<%end%>
       </div>
       <div class="col-sm-12 col-md-12 col-lg-7">
         <p class="card-backstory"><%= truncate(description, length: 100, separator: ' ', omission: '...') %></p>

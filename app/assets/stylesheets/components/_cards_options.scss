@@ -1,0 +1,72 @@
+/* Styles de la carte-option */
+.card-option {
+  border: 1px solid #ddd; /* Bordure fine */
+  border-radius: 5px; /* Coins arrondis */
+  padding: 16px; /* Espacement interne */
+  margin: 10px 0; /* Espacement externe */
+  display: flex; /* Pour aligner le contenu horizontalement */
+  justify-content: space-between; /* Espace entre contenu et bouton */
+  align-items: center; /* Alignement vertical centré */
+  background-color: #fff; /* Fond blanc */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombre légère */
+}
+
+/* Contenu principal de la carte-option */
+.card-option-content {
+  display: flex;
+  flex-direction: row; /* Aligne le texte et le bouton sur une ligne */
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+/* Détails de la carte-option */
+.card-option-details {
+  display: flex;
+  flex-direction: column; /* Aligne les éléments verticalement */
+  gap: 8px; /* Espacement entre les éléments */
+}
+
+/* Titre de l'option */
+.card-option-title {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* Prix */
+.card-option-price {
+  margin: 0;
+  color: #555;
+}
+
+/* Tickets sous forme de badges */
+.card-option-tickets {
+  margin: 0;
+}
+
+.ticket-badge {
+  display: inline-block;
+  background-color: #f0f0f0;
+  color: #333;
+  padding: 4px 8px;
+  margin-right: 5px;
+  border-radius: 3px;
+  font-size: 0.85rem;
+}
+
+/* Bouton d'action */
+.card-option-actions .btn {
+  display: inline-block;
+  padding: 8px 12px;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.9rem;
+  border-radius: 3px;
+  transition: background-color 0.3s;
+}
+
+.card-option-actions .btn:hover {
+  background-color: #0056b3;
+}
