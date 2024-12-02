@@ -11,6 +11,23 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombre légère */
 }
 
+/* Section pour l'emoji (si présent) */
+.card-option-emoji {
+  margin-right: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px; /* Taille du conteneur pour l'emoji */
+  height: 80px; /* Hauteur identique à la largeur */
+  background-color: #f9f9f9; /* Fond gris clair */
+  border-radius: 50%; /* Forme circulaire */
+  flex-shrink: 0; /* Empêche de réduire la taille */
+}
+
+.emoji-display {
+  font-size: 3rem; /* Taille de l'emoji */
+}
+
 /* Contenu principal de la carte-option */
 .card-option-content {
   display: flex;

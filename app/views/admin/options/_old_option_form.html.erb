@@ -3,6 +3,7 @@
   method: @option.new_record? ? :post : :patch do |f| %>  
   <%= f.input :name %>
   <%= f.input :description %>
+  <%= f.input :emoji %>
   <%= f.input :category, as: :select, collection: ["Alimentaire", "Vestimentaire", "Autre"] %>
   <%= f.input :unit_price %>
   <%= f.input :ticket_ids, 

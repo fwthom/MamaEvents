@@ -43,7 +43,7 @@ module Admin
 
     private
     def option_params
-      params.require(:option).permit(:name, :description, :category, :unit_price, ticket_ids: [])
+      params.require(:option).permit(:name, :description, :category, :unit_price, :emoji, ticket_ids: [])
     end
 
     def set_event
