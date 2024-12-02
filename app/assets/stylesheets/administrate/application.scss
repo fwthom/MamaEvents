@@ -3,6 +3,7 @@
 @import "config/bootstrap_variables";
 
 @import "components/_index.scss";
+@import "components/_next_event.scss";
 
 .navigation__link {
   color: $gray;
@@ -41,4 +42,3 @@
 .navigation {
   padding-top: 0;
 }
-

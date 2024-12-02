@@ -1,30 +1,20 @@
 
 
-<div class="container" data-controller="countdown" data-countdown-event-date-value="<%= @nextevent.date %>">
+<div class="container" data-controller="countdown" data-countdown-event-date-value="<%= @nextevent.date %> 10:00:00">
   <div style="text-align:center; padding:16px">
     <h1>Prochain événement dans</h1>
     <p id="next-event" data-countdown-target="timer"></p>
 
-    <div class="card index-event-card p-2">
-      <h1><%= @nextevent.name %></h1>
-      <div class="row">
-        <div class="col-sm-12 col-md-12 col-lg-5">
-          <%= cl_image_tag("runner-PTLUTZL-e1641394048474-600x400_hxswmh", class:"index-event-card-image")%>
-        </div>
-        <div class="col-sm-12 col-md-12 col-lg-7">
-          <p class="card-backstory">
-            <%= truncate(@nextevent.description, length: 100, separator: ' ', omission: '...') %>
-          </p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-12 col-md-8 col-lg-7">
-          <%= link_to "Voir l'évènement", event_path(@nextevent) %>
-        </div>
-        <div class="col-sm-12 col-md-8 col-lg-5">
+
+
+      <div class="card-product">
+        <%= cl_image_tag("runner-PTLUTZL-e1641394048474-600x400_hxswmh", class:"index-event-card-image")%>
+        <div class="card-product-infos">
+          <h2><%= @nextevent.name %></h2>
+          <p><%= truncate(@nextevent.description, length: 100, separator: ' ', omission: '...') %></p>
+          <p><%=link_to "Voir l'évènement", event_path(@nextevent) %></p>
           <p><%= @nextevent.date %></p>
         </div>
       </div>
     </div>
-  </div>
 </div>
