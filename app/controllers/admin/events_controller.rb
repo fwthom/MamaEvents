@@ -40,10 +40,8 @@ module Admin
       end
     end
 
-    def publication  
-      if @event.date < Time.current
-        @event.update(status: "terminé") unless @event.status == "terminé"
-      end
+    def publication
+
     end
 
     def publish  
