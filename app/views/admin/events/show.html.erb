@@ -29,4 +29,7 @@
     <%= f.input :status, collection: Event::STATUS_OPTIONS, as: :select, prompt: "Choisir un statut", input_html: { class: 'form-select' } %>
     <%= f.submit "Enregistrer", class: "event-action-button" %>
   <% end %>
+
+  <%= link_to "Télécharger un rapport", download_xlsx_admin_event_path, class: "btn btn-primary", data: { turbo: false } %>
+
 </div>
