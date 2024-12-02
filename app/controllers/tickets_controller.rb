@@ -1,4 +1,5 @@
 class TicketsController < ApplicationController
   def index
-  end  
+    @tickets = Ticket.all
+  end
 end
