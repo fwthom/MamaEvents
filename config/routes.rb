@@ -8,6 +8,10 @@ Rails.application.routes.draw do
     resources :payments
     resources :tickets
     resources :events, only: [:new, :create, :index, :edit, :update, :show] do
+      member do
+        get 'publication' # Affiche le formulaire ou la page de confirmation
+        patch 'publish'   # Met à jour le statut de l'événement
+      end
       resources :options, only: [:new, :create, :index, :edit, :update, :destroy]
       resources :tickets, only: [:new, :create, :index, :edit, :update, :destroy]
     end
@@ -48,6 +52,5 @@ Rails.application.routes.draw do
       resources :participations
     end
   end
-
 
 end

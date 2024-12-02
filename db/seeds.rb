@@ -1,12 +1,9 @@
 require 'faker'
 
 Participation.destroy_all
-Option.destroy_all
-Ticket.destroy_all
 Event.destroy_all
 Charity.destroy_all
 User.destroy_all
-Participant.destroy_all
 
 # Users
 User.create!(
@@ -33,14 +30,17 @@ event_1 = Event.create!(
   name: "YUL 2024",
   description: "Passer un moment convivial de sport avec la marche ou la course, mais également de fête (musique, tombola et barbecue pour clôturer la journée).",
   date: Date.new(2025, 10, 05),
-  charity: charity
+  charity: charity,
+  status: "brouillon"
 )
 
 event_2 = Event.create!(
   name: "YUL 2025",
   description: "Passer un moment convivial de sport avec la marche ou la course, mais également de fête (musique, tombola et barbecue pour clôturer la journée).Passer un moment convivial de sport avec la marche ou la course, mais également de fête (musique, tombola et barbecue pour clôturer la journée).Passer un moment convivial de sport avec la marche ou la course, mais également de fête (musique, tombola et barbecue pour clôturer la journée).",
   date: Date.new(2024, 10, 05),
-  charity: charity
+  charity: charity,
+  status: "brouillon"
+
 )
 
 
@@ -48,7 +48,9 @@ event_3 = Event.create!(
   name: "La MAMA 2026",
   description: "Passer un moment convivial de sport avec la marche ou la course, mais également de fête (musique, tombola et barbecue pour clôturer la journée).",
   date: Date.new(2026, 5, 5),
-  charity: charity
+  charity: charity,
+  status: "brouillon"
+
 )
 
 
@@ -71,11 +73,11 @@ tickets = [
 
 # Options
 options = [
-  Option.create!(name: "Frites", description: "Délicieuses et croustillantes", unit_price: 4.0, category: "Alimentaire"),
-  Option.create!(name: "Hot Dog", description: "Un délicieux hot dog", unit_price: 5.0, category: "Alimentaire"),
-  Option.create!(name: "T-shirt S", description: "T-shirt taille S", unit_price: 10.0, category: "Vestimentaire"),
-  Option.create!(name: "T-shirt M", description: "T-shirt taille M", unit_price: 10.0, category: "Vestimentaire"),
-  Option.create!(name: "T-shirt L", description: "T-shirt taille L", unit_price: 10.0, category: "Vestimentaire")
+  Option.create!(name: "Frites", description: "Délicieuses et croustillantes", unit_price: 4.0, category: "Alimentaire", event: event_1),
+  Option.create!(name: "Hot Dog", description: "Un délicieux hot dog", unit_price: 5.0, category: "Alimentaire", event: event_1),
+  Option.create!(name: "T-shirt S", description: "T-shirt taille S", unit_price: 10.0, category: "Vestimentaire", event: event_1),
+  Option.create!(name: "T-shirt M", description: "T-shirt taille M", unit_price: 10.0, category: "Vestimentaire", event: event_1),
+  Option.create!(name: "T-shirt L", description: "T-shirt taille L", unit_price: 10.0, category: "Vestimentaire", event: event_1)
 ]
 
 # Assign options to tickets
