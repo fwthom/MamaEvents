@@ -12,8 +12,12 @@
       <% end %>
       <p class="card-option-price"><strong><%= option.unit_price %> euros</strong></p>
       <p class="card-option-tickets">
-        <% option.tickets.each do |ticket| %>
-          <span class="ticket-badge"><%= ticket.name %></span>
+        <% if option.tickets.present? %>
+          <% option.tickets.each do |ticket| %>
+            <span class="ticket-badge"><%= ticket.name %></span>
+          <% end %>
+        <% else %>
+          <span class="ticket-badge">Aucun ticket lié</span>
         <% end %>
       </p>
     </div>

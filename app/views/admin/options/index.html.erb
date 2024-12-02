@@ -7,27 +7,27 @@
     <% if @event.tickets.any? %>
       <% if @event.options.alimentaire.any? %>  
         <h2>Les options alimentaires</h2>
-        <% @event.options.alimentaire.each do |option| %>
+        <% @event.options.alimentaire.order(:name).each do |option| %>
           <%= render 'admin/options/cardOption', option: option %>
         <% end %>
       <% end %>
 
       <% if @event.options.vestimentaire.any? %>
         <h2>Les options vestimentaires</h2>
-        <% @event.options.vestimentaire.each do |option| %>
+        <% @event.options.vestimentaire.order(:name).each  do |option| %>
           <%= render 'admin/options/cardOption', option: option %>
         <% end %>
       <% end %>
 
       <% if @event.options.goodies.any? %>
         <h2>Les goodies</h2>
-        <% @event.options.goodies.each do |option| %>
+        <% @event.options.goodies.order(:name).each  do |option| %>
           <%= render 'admin/options/cardOption', option: option %>
         <% end %>
       <% end %>
 
       <h2>Autres</h2>
-      <% @event.options.autre.each do |option| %>
+      <% @event.options.autre.order(:name).each  do |option| %>
         <%= render 'admin/options/cardOption', option: option %>
       <% end %>
       

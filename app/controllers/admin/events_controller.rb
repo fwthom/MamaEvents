@@ -46,7 +46,7 @@ module Admin
 
     def publish  
       if @event.update(event_params)
-        redirect_to publication_admin_event_path(@event), notice: "Statut modifié avec succès."
+        redirect_to admin_event_path(@event), notice: "Statut modifié avec succès."
       else
         render :publication, alert: "Erreur lors du changement de statut de l'événement."
       end
