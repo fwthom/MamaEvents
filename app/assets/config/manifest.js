@@ -4,5 +4,5 @@
 //= link_tree ../../../vendor/javascript .js
 //= link popper.js
 //= link bootstrap.min.js
-//= link administrate/application.scss
+//= link administrate/application.css
 //= link administrate/application.js

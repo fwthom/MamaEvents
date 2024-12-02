@@ -2,8 +2,10 @@
 @import "config/colors";
 @import "config/bootstrap_variables";
 
-@import "components/_index.scss";
-@import "components/_next_event.scss";
+@import "components/index";
+
+
+@import "administrate/index";
 
 .navigation__link {
   color: $gray;
