@@ -5,4 +5,15 @@ class Participant < ApplicationRecord
   has_many :tickets, through: :participations
 
   validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :email, presence: true,
+
+  before_validation :generate_token, on: :create
+
+  private
+
+  def generate_token
+    self.token = SecureRandom.urlsafe_base64
+  end
+
 end

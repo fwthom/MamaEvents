@@ -7,6 +7,7 @@ skip_before_action :authenticate_user!
   end
 
   def show
+    # @token = Participant.token
     @event = Event.find(params[:id])
 
     @tickets = Ticket.where(event_id: @event.id)

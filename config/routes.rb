@@ -46,11 +46,17 @@ Rails.application.routes.draw do
 
 
 
-
   resources :events do
     resources :participants do
       resources :participations
     end
   end
+
+  resources :participants do
+    get "token"
+  end
+
+
+
 
 end

@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_12_01_203410) do
-
+ActiveRecord::Schema[7.1].define(version: 2024_12_02_095037) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -53,13 +52,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_01_203410) do
     t.index ["charity_id"], name: "index_events_on_charity_id"
   end
 
-  create_table "names", force: :cascade do |t|
-    t.string "description"
-    t.decimal "price"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "options", force: :cascade do |t|
     t.string "name"
     t.string "description"
@@ -99,6 +91,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_01_203410) do
     t.datetime "updated_at", null: false
     t.integer "event_id"
     t.string "team"
+    t.string "token"
     t.index ["team_id"], name: "index_participants_on_team_id"
   end
 
@@ -110,6 +103,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_01_203410) do
     t.decimal "total_amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "token"
     t.index ["participant_id"], name: "index_participations_on_participant_id"
     t.index ["payment_id"], name: "index_participations_on_payment_id"
     t.index ["ticket_id"], name: "index_participations_on_ticket_id"
