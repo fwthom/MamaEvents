@@ -1,25 +1,47 @@
-<%#
-# Navigation
-
-This partial is used to display the navigation in Administrate.
-By default, the navigation contains navigation links
-for all resources in the admin dashboard,
-as defined by the routes in the `admin/` namespace
-%>
-
 <nav class="navigation">
-  <%= link_to(
-    t("administrate.navigation.home", default: "Home"),
-    admin_root_path,
-    class: "navigation__link navigation__link--#{nav_link_state('resource')}"
-  ) %>
+  <div class="transparent-header">
+    <div class="header-content">Admin</div>
+  </div>
 
-  <% Administrate::Namespace.new(namespace).resources_with_index_route.each do |resource| %>
-    <% next if resource.to_s == "users" %>
-    <%= link_to(
-      display_resource_name(resource),
-      resource_index_route(resource),
-      class: "navigation__link navigation__link--#{nav_link_state(resource)}"
-    ) if accessible_action?(model_from_resource(resource), :index) %>
-  <% end %>
+  <!-- Asso Section -->
+  <div class="navigation__card">
+    <div class="navigation__card-title">Asso</div>
+    <ul>
+      <li><%= link_to 'Accueil', admin_root_path, class: 'navigation__link' %></li>
+      <li><%= link_to 'Dons', admin_donations_path, class: 'navigation__link' %></li>
+      <li><%= link_to 'Paiements', admin_payments_path, class: 'navigation__link' %></li>
+    </ul>
+  </div>
+
+  <!-- Événements Section -->
+  <div class="navigation__card">
+    <div class="navigation__card-title">
+      <% if @current_event.present? %>
+        <span class="navigation__event-context__title">
+          <%= @current_event.name %>
+          <%= link_to admin_clear_event_path, method: :delete, title: 'Effacer l\'événement', data: { confirm: 'Êtes-vous sûr de vouloir effacer l\'événement sélectionné ?' } do %>
+            <i class="fa fa-times navigation__event-context__icon"></i>
+          <% end %>
+        </span>
+      <% else %>
+        Événements
+      <% end %>
+    </div>
+    <% if @current_event.present? %>
+      <%= link_to 'Participations', admin_event_participations_path(@current_event), class: 'navigation__link' %>
+      <%= link_to 'Tickets', admin_event_tickets_path(@current_event), class: 'navigation__link' %>
+      <%= link_to 'Options', admin_event_options_path(@current_event), class: 'navigation__link' %>
+      <%= link_to 'Rapports', data_extract_admin_event_path(@current_event), class: 'navigation__link' %>
+    <% else %>
+      <p class="navigation__card-title">
+        Aucun événement sélectionné. Veuillez <%= link_to 'en choisir un', admin_events_path, class: 'navigation__link' %>.
+      </p>
+    <% end %>
+  </div>
+
+  <!-- User Info Section -->
+  <div class="navigation__card navigation__user-info">
+    <p class="navigation__user-info__name"><%= current_user.first_name %> <%= current_user.last_name %></p>
+    <%= link_to 'Déconnexion', destroy_user_session_path, method: :delete, class: 'navigation__user-info__logout' %>
+  </div>
 </nav>

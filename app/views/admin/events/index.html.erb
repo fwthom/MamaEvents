@@ -1,25 +1,26 @@
 <div class="event-content-container">
-<h1><%= Event.count %> évènements dans la base</h1>
-<h2>Nouvel évènement</h2>
-<%= link_to "créer un évènement", new_admin_event_path %>
-<p>___________________________</p>
-<h2>En cours de rédaction</h2>
-<% @events.brouillon.each do |event|%>
-<p>___________________________</p>
-<%= event.name  %>
-<%= event.description %>
-<%= event.date %>
-<%= link_to "ouvrir", admin_event_path(event) %>
-<% end %>
-<p>___________________________</p>
-<h2>Publiés</h2>
-<% @events.publies.each do |event|%>
-<p>___________________________</p>
-<%= event.name  %>
-<%= event.description %>
-<%= event.date %>
-<%= link_to "ouvrir", admin_event_path(event) %>
-<% end %>
+  <h1><%= Event.count %> évènements dans la base</h1>
 
+  <h2>Nouvel évènement</h2>
+  <%= link_to "créer un évènement", new_admin_event_path %>
 
+  <p>___________________________</p>
+  <h2>En cours de rédaction</h2>
+  <% @events.brouillon.each do |event| %>
+    <p>___________________________</p>
+    <p><strong>Nom:</strong> <%= event.name %></p>
+    <p><strong>Description:</strong> <%= event.description %></p>
+    <p><strong>Date:</strong> <%= event.date %></p>
+    <%= link_to "ouvrir", admin_event_path(event, event_id: event.id) %>
+  <% end %>
+
+  <p>___________________________</p>
+  <h2>Publiés</h2>
+  <% @events.publies.each do |event| %>
+    <p>___________________________</p>
+    <p><strong>Nom:</strong> <%= event.name %></p>
+    <p><strong>Description:</strong> <%= event.description %></p>
+    <p><strong>Date:</strong> <%= event.date %></p>
+    <%= link_to "ouvrir", admin_event_path(event, event_id: event.id) %>
+  <% end %>
 </div>
