@@ -3,10 +3,10 @@
 
 <h1>Ajouter une course </h1>
 <%= simple_form_for [@event, @ticket], url: admin_event_tickets_path(@event), method: :post do |f| %>
-  <%= f.input :name %>
-  <%= f.input :description, as: :text %>
-  <%= f.input :unit_price %>
-  <%= f.input :present, as: :boolean %>
+  <%= f.input :name, label: "Intitulé du ticket" %>
+  <%= f.input :description, as: :text, label: "Description" %>
+  <%= f.input :unit_price, label: "Prix unitaire"%>
+  <%= f.input :remote, as: :boolean, label: "Distanciel ?" %>
   <%= f.submit "Créer le ticket", class: "btn btn-primary" %>
 <% end %>
 </div>
