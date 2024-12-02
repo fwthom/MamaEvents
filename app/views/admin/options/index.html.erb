@@ -1,18 +1,42 @@
 <div class="event-content-container">
-    <%= render 'admin/events/top_navbar' %>
+  <%= render 'admin/events/top_navbar' %>
   <h2>Options de l'évènement</h2>
   <p>Attention, n'oubliez pas de lier chaque option aux tickets avec lesquels elles seront proposées.</p>
-  <% if @event.options.any?%>
+  
+  <% if @event.options.any? %>
     <% if @event.tickets.any? %>
-      <h2>Les options pour vos tickets</h2>
-        <% @options.each do |option| %>
+      <% if @event.options.alimentaire.any? %>  
+        <h2>Les options alimentaires</h2>
+        <% @event.options.alimentaire.each do |option| %>
           <%= render 'admin/options/cardOption', option: option %>
         <% end %>
+      <% end %>
+
+      <% if @event.options.vestimentaire.any? %>
+        <h2>Les options vestimentaires</h2>
+        <% @event.options.vestimentaire.each do |option| %>
+          <%= render 'admin/options/cardOption', option: option %>
+        <% end %>
+      <% end %>
+
+      <% if @event.options.goodies.any? %>
+        <h2>Les goodies</h2>
+        <% @event.options.goodies.each do |option| %>
+          <%= render 'admin/options/cardOption', option: option %>
+        <% end %>
+      <% end %>
+
+      <h2>Autres</h2>
+      <% @event.options.autre.each do |option| %>
+        <%= render 'admin/options/cardOption', option: option %>
+      <% end %>
+      
     <% else %>
       <h2>Voici vos options. Vous n'avez pas de tickets liés.</h2>
     <% end %>
   <% elsif @event.tickets.any? %>
     <h2>Vous n'avez pas encore créé d'options.</h2>
   <% end %>
-  <%= link_to 'créer nouvelle option', new_admin_event_option_path(@event), class: 'btn btn-primary' %>
+
+  <%= link_to 'Créer nouvelle option', new_admin_event_option_path(@event), class: 'btn btn-primary' %>
 </div>
