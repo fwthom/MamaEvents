@@ -1,0 +1,14 @@
+<div class="event-content-container ">
+<%= render 'top_navbar' %>
+<h1>Modifier le statut de l'évènement</h1>
+<ul>
+  <li>brouillon : l'évènement n'apparaît que pour vous</li>
+  <li>publié : l'évènement est visible, et les participants peuvent s'inscrire</li>
+</ul>
+
+<%= simple_form_for @event, url: publish_admin_event_path(@event) do |f| %>
+  <%= f.input :status, collection: Event::STATUS_OPTIONS, as: :select, prompt: "Choisir un statut" %>
+  <%= f.submit "Enregistrer" %>
+<% end %>
+
+</div>
