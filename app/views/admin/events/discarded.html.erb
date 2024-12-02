@@ -1,0 +1,15 @@
+<div class="event-content-container">
+<%= link_to "revenir à la liste", admin_event_path %>
+
+<h1><%= Event.count %> Anciens évènements</h1>
+<h2>Évènements terminés</h2>
+<% @events.terminés.each do |event|%>
+<p>___________________________</p>
+<%= event.name  %>
+<%= event.description %>
+<%= event.date %>
+<%= link_to "ouvrir", admin_event_path(event) %>
+<% end %>
+<p>___________________________</p>
+
+</div>

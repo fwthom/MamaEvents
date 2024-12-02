@@ -13,30 +13,33 @@ class ParticipantsController < ApplicationController
   def new
     @participant = Participant.new
     @event = Event.find(params[:event_id])
-    @charity = Charity.find(params[:charity_id])
   end
 
   def create
-    @charity = Charity.find(params[:charity_id])
     @event = Event.find(params[:event_id])
 
-    @participant = Participant.create(participant_params)
+
+      @participant = Participant.create(participant_params)
+
 
     @participant.event = @event
     if @participant.save
+
       @ticket = Ticket.find(params[:ticket_id])
-      Participation.create(ticket: @ticket, participant: @participant, payment_id: 2)
-      raise
-      if Participation.save
-        redirect_to @event, notice: 'Votre participation a été enregistrée'
-        # redirect_to @event, notice: 'Votre participation a été enregistrée'
-      else
-        render :new, alert: "Votre participation n'a pas abouti"
-      end
+      Participation.create(ticket: @ticket, participant: @participant)
+      redirect_to @event
+      # if Participation.save
+      #   redirect_to @event, notice: 'Votre participation a été enregistrée'
+      #   # redirect_to @event, notice: 'Votre participation a été enregistrée'
+      # else
+      #   render :new, alert: "Votre participation n'a pas abouti"
+      # end
     else
       render :new, status: :unprocessable_entity
     end
   end
+
+
 
   def edit
     @participant = Participant.find(params[:id])
@@ -65,6 +68,6 @@ class ParticipantsController < ApplicationController
   private
 
   def participant_params
-    params.require(:participant).permit(:first_name, :last_name, :email)
+    params.require(:participant).permit(:first_name, :last_name, :email, :team)
   end
 end

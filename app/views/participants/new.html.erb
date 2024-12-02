@@ -1,15 +1,16 @@
-<h1>Participants#new</h1>
+<h1>M'inscrire</h1>
 
 
 
 
 
-<div class="container border border-3">
+<div class="container" style="max-width: 600px;">
   <%= simple_form_for([@charity, @event, @participant], local: true) do |f| %>
 
   <%= f.input :first_name, label: 'prénom' %>
   <%= f.input :last_name, label: 'nom' %>
   <%= f.input :email %>
+  <%= f.input :team, label: 'équipe' %>
   <%= f.input :tickets, label: "Course", as: :select, collection: @event.tickets, label_method: :name, value_method: :id, input_html: { name: "ticket_id" } %>
 
 

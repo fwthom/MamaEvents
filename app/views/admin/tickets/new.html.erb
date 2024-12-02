@@ -1,8 +1,10 @@
 <div class="event-content-container">
+  <%= render 'admin/events/top_navbar' %>
+
 <h1>Ajouter une course </h1>
 <%= simple_form_for [@event, @ticket], url: admin_event_tickets_path(@event), method: :post do |f| %>
   <%= f.input :name %>
-  <%= f.input :description %>
+  <%= f.input :description, as: :text %>
   <%= f.input :unit_price %>
   <%= f.input :present, as: :boolean %>
   <%= f.submit "Créer le ticket", class: "btn btn-primary" %>

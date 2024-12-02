@@ -1,9 +1,3 @@
-import { Application } from "@hotwired/stimulus";
-
-const application = Application.start();
-
-import StripeController from "./stripe_controller";
-
-application.register("stripe", StripeController);
-
-console.log("Stimulus controllers are being registered");
+import { application } from "controllers/application"
+import { eagerLoadControllersFrom } from "@hotwired/stimulus-loading"
+eagerLoadControllersFrom("controllers", application)
