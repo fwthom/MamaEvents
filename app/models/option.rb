@@ -1,6 +1,7 @@
 class Option < ApplicationRecord
   CATEGORIES = ["Alimentaire", "Vestimentaire", "Goodies", "Autre"]
   has_and_belongs_to_many :tickets, optional: true
+  has_many :orders, dependent: :destroy
   belongs_to :event
 
   validates :category, inclusion: { in: CATEGORIES }
