@@ -10,6 +10,7 @@ class ParticipationsController < ApplicationController
     @participation.ticket_id = id
     @participation.participant = @participant
     @participation.payment_id = "payment_id"
+    @participation.status = "wait"
     if @participation.save
       redirect_to @event, notice: 'Participation enregistrée attente paiment'
     else
