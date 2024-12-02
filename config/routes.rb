@@ -9,13 +9,13 @@ Rails.application.routes.draw do
     resources :tickets
     resources :events, only: [:new, :create, :index, :edit, :update, :show] do
       member do
-        get 'publication' # Affiche le formulaire ou la page de confirmation
         patch 'publish'   # Met à jour le statut de l'événement
       end
       resources :options, only: [:new, :create, :index, :edit, :update, :destroy]
       resources :tickets, only: [:new, :create, :index, :edit, :update, :destroy]
     end
     root to: "custom_pages#home"
+    get "data_extract", to: "custom_pages#data_extract", as: :data_extract
   end
 
   root to: "pages#home"

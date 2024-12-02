@@ -8,6 +8,7 @@ as defined by the routes in the `admin/` namespace
 %>
 
 <nav class="navigation">
+  <%= link_to "Data Extract", admin_data_extract_path, class: "navigation__link navigation__link--#{params[:action] == 'data_extract' ? 'active' : ''}" %>
   <%= link_to(
     t("administrate.navigation.home", default: "Home"),
     admin_root_path,
