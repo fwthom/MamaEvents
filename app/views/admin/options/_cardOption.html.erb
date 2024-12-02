@@ -1,6 +1,4 @@
-<div class="container">
-  <% @options.each do |option| %>
-    <div class="card-option">
+<div class="card-option">
       <div class="card-option-content">
         <div class="card-option-details">
           <h4 class="card-option-title"><%= option.name %></h4>
@@ -12,9 +10,7 @@
           </p>
         </div>
         <div class="card-option-actions">
-          <%= link_to 'Modifier', edit_admin_event_option_path(event_id: @event.id, id: option.id), class: 'btn' %>
+          <%= link_to 'Modifier', edit_admin_event_option_path(@event, option), class: 'btn' %>
         </div>
       </div>
     </div>
-  <% end %>
-</div>

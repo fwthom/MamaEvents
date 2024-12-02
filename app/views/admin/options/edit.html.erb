@@ -1,7 +1,5 @@
 <div class="event-content-container">
-
-  <%= render 'admin/events/top_navbar' %>
-  <%= render 'no_used_option_form' %>
+  <%= render 'admin/options/old_option_form', option: @option %>
   <%= form_with url: admin_event_option_path(@event, @option), method: :delete, data: { confirm: 'Êtes-vous sûr de vouloir supprimer cette option ?' } do %>
   <%= submit_tag 'Supprimer l\'option', class: 'btn btn-danger' %>
 <% end %>
