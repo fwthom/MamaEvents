@@ -3,11 +3,12 @@ Rails.application.routes.draw do
     resources :users
     resources :donations
     resources :payments
+    
 
     resources :events, only: [:new, :create, :index, :edit, :update, :show] do
       member do
         patch 'publish'   # Met à jour le statut de l'événement
-        get "data_extract", to: "custom_pages#data_extract", as: :data_extract
+        get 'extract', to: 'documents#download_xlsx', as: 'download_xlsx'
       end
 
       resources :participants, only: [:index, :show, :edit, :update, :destroy]

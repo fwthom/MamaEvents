@@ -31,7 +31,7 @@
       <%= link_to 'Participations', admin_event_participations_path(@current_event), class: 'navigation__link' %>
       <%= link_to 'Tickets', admin_event_tickets_path(@current_event), class: 'navigation__link' %>
       <%= link_to 'Options', admin_event_options_path(@current_event), class: 'navigation__link' %>
-      <%= link_to 'Rapports', data_extract_admin_event_path(@current_event), class: 'navigation__link' %>
+      <%# <%= link_to 'Rapports', data_extract_admin_event_path(@current_event), class: 'navigation__link' %> 
     <% else %>
       <p class="navigation__card-title">
         Aucun événement sélectionné. Veuillez <%= link_to 'en choisir un', admin_events_path, class: 'navigation__link' %>.
