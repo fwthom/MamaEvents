@@ -52,10 +52,11 @@ module Admin
       end
 
     end
+    
     private
   
     def event_params
-      params.require(:event).permit(:name, :description, :date, :status, :location)
+      params.require(:event).permit(:name, :description, :date, :status, :location, :image)
     end
 
     def set_events
