@@ -1,0 +1,24 @@
+<div class="card-option">
+  <% if option.emoji.present? %>
+    <div class="card-option-emoji">
+      <span class="emoji-display"><%= option.emoji %></span>
+    </div>
+  <% end %>
+  <div class="card-option-content">
+    <div class="card-option-details">
+      <h4 class="card-option-title"><%= option.name %></h4>
+      <% if option.description.present? %>
+        <p class="card-option-description"><%= option.description %></p>
+      <% end %>
+      <p class="card-option-price"><strong><%= option.unit_price %> euros</strong></p>
+      <p class="card-option-tickets">
+        <% option.tickets.each do |ticket| %>
+          <span class="ticket-badge"><%= ticket.name %></span>
+        <% end %>
+      </p>
+    </div>
+    <div class="card-option-actions">
+      <%= link_to 'Modifier', edit_admin_event_option_path(@event, option), class: 'btn' %>
+    </div>
+  </div>
+</div>

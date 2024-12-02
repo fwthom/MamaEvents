@@ -1,19 +1,20 @@
 <div class="event-content-container">
-<%= render 'admin/events/top_navbar' %>
-  <% if @event.tickets.any?%>
+  <%= render 'admin/events/top_navbar' %>
+  
+  <% if @event.tickets.any? %>
     <div class="container">
-        <% @tickets.each do |ticket|  %>
-          <div class="row">
-            <span class="col-sm-12 col-xl-4 my-2">
-              <%= render'admin/tickets/cardTicket', ticket: ticket %>
-            </span>
-          </div>
-        <% end %>
-      <% else %>
-        <h2>Vous n'avez pas encore créé de tickets.</h2>
+      <% @tickets.each do |ticket| %>
+        <div class="row">
+          <span class="col-sm-12 col-xl-4 my-2">
+            <%= render 'admin/tickets/cardTicket', ticket: ticket %>
+          </span>
+        </div>
       <% end %>
-<h2>Ajouter</h2>
-  <%= link_to 'créer nouveau ticket', new_admin_event_ticket_path(@event), class: 'btn btn-primary' %>      
-      </div>
-</div>
+    </div>
+  <% else %>
+    <h2>Vous n'avez pas encore créé de tickets.</h2>
+  <% end %>
 
+  <h2>Ajouter un ticket</h2>
+  <%= link_to 'Créer un nouveau ticket', new_admin_event_ticket_path(@event), class: 'btn btn-primary event-action-button' %>
+</div>

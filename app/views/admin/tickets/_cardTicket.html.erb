@@ -1,5 +1,6 @@
-<div class="card">
-  <h4><%= ticket.name %></h4>
-  <p><%= ticket.unit_price %> euros</p>
-  <%= link_to 'modifier', edit_admin_event_ticket_path(event_id: @event.id, id: ticket.id), class: 'btn btn-primary' %>
+<div class="card-ticket">
+  <h3><%= ticket.name %></h3>
+  <p><%= truncate(ticket.description, length: 100) %></p>
+  <p><strong>Prix :</strong> <%= ticket.unit_price %> €</p>
+  <%= link_to "Modifier", edit_admin_event_ticket_path(@event, ticket), class: "btn btn-secondary event-action-button" %>
 </div>

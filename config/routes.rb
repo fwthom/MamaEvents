@@ -6,7 +6,6 @@ Rails.application.routes.draw do
 
     resources :events, only: [:new, :create, :index, :edit, :update, :show] do
       member do
-        get 'publication' # Affiche le formulaire ou la page de confirmation
         patch 'publish'   # Met à jour le statut de l'événement
         get "data_extract", to: "custom_pages#data_extract", as: :data_extract
       end

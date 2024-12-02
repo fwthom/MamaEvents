@@ -1,6 +1,4 @@
 <div class="event-content-container">
-  <%= render 'admin/events/top_navbar' %>
-
   <h1>Modifier une course </h1>
   <%= simple_form_for [@event, @ticket], url: admin_event_ticket_path(@event, @ticket), method: :patch do |f| %>
   <%= f.input :name %>
