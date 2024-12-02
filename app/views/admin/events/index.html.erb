@@ -1,25 +1,44 @@
 <div class="event-content-container">
-<h1><%= Event.count %> évènements dans la base</h1>
-<h2>Nouvel évènement</h2>
-<%= link_to "créer un évènement", new_admin_event_path %>
-<p>___________________________</p>
-<h2>En cours de rédaction</h2>
-<% @events.brouillon.each do |event|%>
-<p>___________________________</p>
-<%= event.name  %>
-<%= event.description %>
-<%= event.date %>
-<%= link_to "ouvrir", admin_event_path(event) %>
-<% end %>
-<p>___________________________</p>
-<h2>Publiés</h2>
-<% @events.publies.each do |event|%>
-<p>___________________________</p>
-<%= event.name  %>
-<%= event.description %>
-<%= event.date %>
-<%= link_to "ouvrir", admin_event_path(event) %>
-<% end %>
+  <h1><%= Event.publies.count + Event.brouillon.count %> évènements dans la base</h1>
 
+  <h2>Nouvel évènement</h2>
+  <%= link_to "Créer un évènement", new_admin_event_path, class: "btn btn-primary event-action-button" %>
 
+  <hr>
+
+  <h2>En cours de rédaction</h2>
+  <div class="card-container">
+    <% @events.brouillon.each do |event| %>
+      <div class="card-event">
+        <% if event.image.attached? %>
+          <%= cl_image_tag event.image.key, class: "event-image" %>
+        <% else %>
+          <%= image_tag "logo.png", class: "event-image" %>
+        <% end %>
+        <h3><%= event.name %></h3>
+        <p><%= truncate(event.description, length: 100) %></p>
+        <p><strong>Date :</strong> <%= event.date %></p>
+        <%= link_to "Ouvrir", admin_event_path(event), class: "btn btn-secondary event-action-button" %>
+      </div>
+    <% end %>
+  </div>
+
+  <hr>
+
+  <h2>Publiés</h2>
+  <div class="card-container">
+    <% @events.publies.each do |event| %>
+      <div class="card-event">
+        <% if event.image.attached? %>
+          <%= cl_image_tag event.image.key, class: "event-image" %>
+        <% else %>
+          <%= image_tag "logo.png", class: "event-image" %>
+        <% end %>
+        <h3><%= event.name %></h3>
+        <p><%= truncate(event.description, length: 100) %></p>
+        <p><strong>Date :</strong> <%= event.date %></p>
+        <%= link_to "Ouvrir", admin_event_path(event), class: "btn btn-secondary event-action-button" %>
+      </div>
+    <% end %>
+  </div>
 </div>

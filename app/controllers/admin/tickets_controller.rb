@@ -14,7 +14,7 @@ module Admin
       end
       @ticket = Ticket.new
     end
-  
+
     def create
       @ticket = Ticket.create(ticket_params)
       @ticket.event = @event
@@ -47,7 +47,7 @@ module Admin
         redirect_to admin_event_tickets_path(@event), alert: 'Suppression impossible'
       end
     end
-  
+
     private
 
     def ticket_params
@@ -59,7 +59,7 @@ module Admin
     end
 
     def set_tickets
-      @tickets = @event.tickets
+      @tickets = @event.tickets 
     end
 
     def set_ticket
