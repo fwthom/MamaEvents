@@ -1,9 +1,9 @@
 
 
 <div class="container" data-controller="countdown" data-countdown-event-date-value="<%= @nextevent.date %> 10:00:00">
-  <div style="text-align:center; padding:16px">
+  <div class="header" >
     <h1>Prochain événement dans</h1>
-    <p id="next-event" data-countdown-target="timer"></p>
+    <p id="next-event" class="countdown-timer" data-countdown-target="timer"></p>
 
 
 
@@ -20,20 +20,25 @@
 
     <div class="affichage-des-chiffres">
       <div class="inscriptions">
-        <h2>Les inscriptions </h2>
-        <h3>à <%= @nextevent.name %></h3>
-        <p><%= @participations.count %> inscrits</p>
+        <h2> INSCRIPTIONS </h2>
+        <h3>à la <%= @nextevent.name %></h3>
+        <p class="bandeau"><strong><%= @participations.count %> inscrits</strong></p>
 
-        <% @tickets.each do |ticket| %>
-           <%= puts ticket.count %>
-        <% end %>
-
-        <p><%= @participations.count %> inscrits</p>
+        <ul>
+          <% @tickets.each do |ticket| %>
+          <li>
+            <p><strong><%=ticket.name %> :</strong> <%=ticket.participations.count %> inscrits</p>
+          </li>
+          <% end %>
+        </ul>
 
       </div>
       <div class="money">
-        <h2>Fonds récoltés</h2>
-        <p>blababa</p>
+        <h2>RECETTES</h2>
+        <h3>grace à la <%= @nextevent.name %></h3>
+        <% @participations.each do |participation| %>
+        <p><%= participation.participant.first_name %></p>
+        <% end %>
       </div>
     </div>
 </div>

@@ -39,9 +39,9 @@ event_1 = Event.create!(
 
 
 event_2 = Event.create!(
-  name: "La MAMA 2025",
+  name: "La MAMA 2026",
   description: "Passer un moment convivial de sport entre mère et fille avec la mama 2025.",
-  date: Date.new(2025, 5, 5),
+  date: Date.new(2026, 5, 5),
   charity: charity,
   status: "brouillon"
 
@@ -110,10 +110,10 @@ tickets[2].options << options[0..5]
     payment_id: nil # Replace this with a valid payment_id if necessary
   )
 
-  random_number.times do 
+  random_number.times do
     Order.create!(
       participation: participation,
-      quantity:  ([1, 1, 1, 2].sample), 
+      quantity:  ([1, 1, 1, 2].sample),
       option: options.sample
       )
   end
