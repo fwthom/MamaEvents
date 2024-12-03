@@ -1,10 +1,15 @@
 module Admin
   class CustomPagesController < Admin::ApplicationController
+
     def home
       @events = Event.all
       @nextevent = Event.publies.where('date > ?', Time.current).order(date: :asc).first
       @charity = Charity.first
-      @tickets = @nextevent.tickets
+      if @nextevent === nil
+        @tickets = nil
+      else
+        @tickets = @nextevent.tickets
+      end
     end
 
     def events
