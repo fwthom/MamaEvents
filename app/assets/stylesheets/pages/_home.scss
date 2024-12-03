@@ -24,13 +24,21 @@
   background-color: $background-rose;
 }
 
-.div-rose {
+
+
+.cards-home {
   background-color: $background-rose;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  justify-content: space-around;
+  align-items: center;
+  margin: -16px -24px;
   padding: 16px;
 }
 
 .card-home {
   background-color: white;
   padding: 16px;
+  margin: 16px;
   border-radius: 16px;
 }
