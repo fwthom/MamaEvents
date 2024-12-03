@@ -49,10 +49,11 @@ Rails.application.routes.draw do
   end
 
 
-
+  get "participants/:token", to: "participants#edit", as: "edit_participant"
 
   resources :events do
     resources :participants do
+
       resources :participations
     end
   end
