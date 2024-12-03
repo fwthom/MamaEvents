@@ -1,2 +1,27 @@
-<h1>Participants#show</h1>
-<p>Find me in app/views/participants/show.html.erb</p>
+<div class="text-center">
+<h1><p><%= @event.name %></p></h1>
+<p> <%= @participant.first_name %></p>
+<p> <%= @participant.last_name %></p>
+<p> <%= @participant.email %></p>
+<p>participation <%= @participation.id %></p>
+<p>participation <%= @participation.status %></p>
+<%= @ticket.name %>
+<p><%= @ticket.description %></p>
+
+
+
+<div id="goodies">
+
+  <div class="row">
+    <% @goodies.each do |good| %>
+      <div class="card col-3">
+        <%= good %>
+      </div>
+      <% end %>
+  </div>
+
+</div>
+
+</div>
+
+<%= console %>

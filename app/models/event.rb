@@ -4,6 +4,8 @@ class Event < ApplicationRecord
   has_many :tickets, dependent: :destroy
   has_many :options, dependent: :destroy
   has_many :participants, dependent: :destroy
+  has_many :participations, through: :tickets
+  has_many :orders, through: :participations
   has_one_attached :image
   validates :status, inclusion: { in: STATUS_OPTIONS }
 

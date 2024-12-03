@@ -2,15 +2,13 @@ class ParticipationsController < ApplicationController
   skip_before_action :authenticate_user!
   def new
     @participation = Participation.new
-
   end
 
   def create
+    raise
     @participation = Participation.create(participation_params)
-    @participation.ticket_id = id
-    @participation.participant = @participant
-    @participation.payment_id = "payment_id"
     @participation.status = "wait"
+    # @participation.token = SecureRandom.urlsafe_base64(16, true)
     if @participation.save
       redirect_to @event, notice: 'Participation enregistrée attente paiment'
     else
@@ -29,7 +27,7 @@ class ParticipationsController < ApplicationController
   end
 
   def participant_params
-    params.require(:participant).permit(:first_name, :last_name, :email)
+    params.require(:participant).permit(:first_name, :last_name, :email, :token)
   end
 
 end
