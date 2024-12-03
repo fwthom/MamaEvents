@@ -1,47 +1,49 @@
 <nav class="navigation">
+  <!-- Header -->
   <div class="transparent-header">
     <div class="header-content">Admin</div>
   </div>
 
   <!-- Asso Section -->
-  <div class="navigation__card">
-    <div class="navigation__card-title">Asso</div>
-    <ul>
-      <li><%= link_to 'Accueil', admin_root_path, class: 'navigation__link' %></li>
-      <li><%= link_to 'Dons', admin_donations_path, class: 'navigation__link' %></li>
-      <li><%= link_to 'Paiements', admin_payments_path, class: 'navigation__link' %></li>
+  <div class="navigation__section">
+    <p class="navigation__section-title">
+      <i class="fa fa-building"></i> Asso
+    </p>
+    <ul class="navigation__list">
+      <li><%= link_to raw('<i class="fa fa-home"></i> Accueil'), admin_root_path, class: 'navigation__link' %></li>
+      <li><%= link_to raw('<i class="fa fa-donate"></i> Dons'), admin_donations_path, class: 'navigation__link' %></li>
+      <li><%= link_to raw('<i class="fa fa-credit-card"></i> Paiements'), admin_payments_path, class: 'navigation__link' %></li>
     </ul>
   </div>
+  <div class="navigation__separator"></div>
 
   <!-- Événements Section -->
-  <div class="navigation__card">
-    <div class="navigation__card-title">
-      <% if @current_event.present? %>
-        <span class="navigation__event-context__title">
-          <%= @current_event.name %>
-          <%= link_to admin_clear_event_path, method: :delete, title: 'Effacer l\'événement', data: { confirm: 'Êtes-vous sûr de vouloir effacer l\'événement sélectionné ?' } do %>
-            <i class="fa fa-times navigation__event-context__icon"></i>
-          <% end %>
-        </span>
-      <% else %>
-        Événements
-      <% end %>
-    </div>
+  <div class="navigation__section">
+    <p class="navigation__section-title">
+      <%= link_to raw('<i class="fa fa-calendar"></i> Événements'), admin_events_path, class: 'navigation__section-title-link' %>
+    </p>
+    <p class="navigation__helper">Choisissez un évènement ci-dessous</p>
     <% if @current_event.present? %>
-      <%= link_to 'Participations', admin_event_participations_path(@current_event), class: 'navigation__link' %>
-      <%= link_to 'Tickets', admin_event_tickets_path(@current_event), class: 'navigation__link' %>
-      <%= link_to 'Options', admin_event_options_path(@current_event), class: 'navigation__link' %>
-      <%# <%= link_to 'Rapports', data_extract_admin_event_path(@current_event), class: 'navigation__link' %> 
+      <ul class="navigation__list">
+        <li><%= link_to raw('<i class="fa fa-users"></i> Participations'), admin_event_participations_path(@current_event), class: 'navigation__link' %></li>
+        <li><%= link_to raw('<i class="fa fa-ticket-alt"></i> Tickets'), admin_event_tickets_path(@current_event), class: 'navigation__link' %></li>
+        <li><%= link_to raw('<i class="fa fa-sliders-h"></i> Options'), admin_event_options_path(@current_event), class: 'navigation__link' %></li>
+      </ul>
     <% else %>
-      <p class="navigation__card-title">
-        Aucun événement sélectionné. Veuillez <%= link_to 'en choisir un', admin_events_path, class: 'navigation__link' %>.
-      </p>
+      <ul class="navigation__list">
+        <% Event.order(created_at: :desc).limit(3).each do |event| %>
+          <li><%= link_to raw("<i class='fa fa-calendar-check'></i> #{event.name}"), admin_event_participations_path(event_id: event.id), class: 'navigation__link' %></li>
+        <% end %>
+      </ul>
     <% end %>
   </div>
+  <div class="navigation__separator"></div>
 
   <!-- User Info Section -->
-  <div class="navigation__card navigation__user-info">
-    <p class="navigation__user-info__name"><%= current_user.first_name %> <%= current_user.last_name %></p>
-    <%= link_to 'Déconnexion', destroy_user_session_path, method: :delete, class: 'navigation__user-info__logout' %>
+  <div class="navigation__section navigation__user-info">
+    <p class="navigation__user-info__name">
+      <%= current_user.first_name %> <%= current_user.last_name %>
+    </p>
+    <%= link_to raw('<i class="fa fa-sign-out-alt"></i> Déconnexion'), destroy_user_session_path, method: :delete, class: 'navigation__user-info__logout' %>
   </div>
 </nav>

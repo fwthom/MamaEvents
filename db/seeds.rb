@@ -10,12 +10,14 @@ User.destroy_all
 User.create!(
   email: "calpin@lewagon.org",
   password: "password",
-  role: "admin"
+  role: "admin",
+  first_name: "Jo"
 )
 User.create!(
   email: "volunteer@lewagon.org",
   password: "password",
-  role: "volunteer"
+  role: "volunteer",
+  first_name: "Camille"
 )
 
 # Charity
