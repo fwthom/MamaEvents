@@ -40,21 +40,11 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-
-  resources :participations
+  resources :participations, only: [:edit, :update, :show]
 
   resources :events, only: [:index, :show] do
-    resources :options, only: [ :index]
-    resources :tickets, only: [ :index]
-  end
-
-
-  get "participants/:token", to: "participants#edit", as: "edit_participant"
-
-  resources :events do
-    resources :participants do
-
-      resources :participations
+    resources :participants, only: [:new, :create] do
+      resources :participations, only: [:new, :create]
     end
   end
 
