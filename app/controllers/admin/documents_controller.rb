@@ -11,10 +11,30 @@ module Admin
       end
     end
     # Send the file as a response
+    formatted_date = Date.today.strftime('%Y_%m_%d')
+    # Send the file as a response
     send_data p.to_stream.read,
-              filename: "generated_document.xlsx",
+              filename: "options_#{formatted_date}.xlsx",
               type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
               disposition: 'attachment'
+    end
+
+    def download_bib_numbers_xlsx
+      p = Axlsx::Package.new
+      event = Event.find(params[:id])
+      participations = event.participations
+      p.workbook.add_worksheet(name: "Sample") do |sheet|
+        sheet.add_row ["Évènement", "Nom", "Prénom", "Ticket", "Numéro de dossard"]
+        participations.each do |participation|
+          sheet.add_row [event.name, participation.participant.last_name, participation.participant.first_name, participation.ticket.name,participation.bib_number]
+        end
+      end
+      formatted_date = Date.today.strftime('%Y_%m_%d')
+      # Send the file as a response
+      send_data p.to_stream.read,
+                filename: "dossards_#{formatted_date}.xlsx",
+                type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                disposition: 'attachment'
     end
   end
 end
