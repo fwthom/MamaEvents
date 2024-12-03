@@ -10,12 +10,14 @@ User.destroy_all
 User.create!(
   email: "calpin@lewagon.org",
   password: "password",
-  role: "admin"
+  role: "admin",
+  first_name: "Jo"
 )
 User.create!(
   email: "volunteer@lewagon.org",
   password: "password",
-  role: "volunteer"
+  role: "volunteer",
+  first_name: "Camille"
 )
 
 # Charity
@@ -110,10 +112,10 @@ tickets[2].options << options[0..5]
     payment_id: nil # Replace this with a valid payment_id if necessary
   )
 
-  random_number.times do 
+  random_number.times do
     Order.create!(
       participation: participation,
-      quantity:  ([1, 1, 1, 2].sample), 
+      quantity:  ([1, 1, 1, 2].sample),
       option: options.sample
       )
   end
