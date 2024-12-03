@@ -1,7 +1,6 @@
 // Specific CSS for your home-page
 .titre-home {
   align-items: center;
-  border-bottom: 1px solid $very-rose;
   margin: 16px;
   text-align: right;
   color: $very-rose-hover;
@@ -16,4 +15,22 @@
   text-align: justify;
   margin: 16px;
   color: $lichen;
+}
+
+.carousel-home {
+  margin-left : -32px;
+  margin-right: -32px;
+  margin-top: -16px;
+  background-color: $background-rose;
+}
+
+.div-rose {
+  background-color: $background-rose;
+  padding: 16px;
+}
+
+.card-home {
+  background-color: white;
+  padding: 16px;
+  border-radius: 16px;
 }
