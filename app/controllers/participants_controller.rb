@@ -22,6 +22,8 @@ class ParticipantsController < ApplicationController
   def new
     @participant = Participant.new
     @event = Event.find(params[:event_id])
+    @ticket_id = params[:ticket_id] 
+
   end
 
   def create

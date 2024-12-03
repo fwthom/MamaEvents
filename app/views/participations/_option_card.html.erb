@@ -1,0 +1,27 @@
+<div class="card-option mb-4 shadow-sm">
+  <% if option.emoji.present? %>
+    <div class="card-option-emoji text-center">
+      <span class="emoji-display"><%= option.emoji %></span>
+    </div>
+  <% end %>
+
+  <div class="card-option-content p-3">
+    <div class="card-option-details">
+      <h4 class="card-option-title"><%= option.name %></h4>
+      <% if option.description.present? %>
+        <p class="card-option-description"><%= option.description %></p>
+      <% end %>
+      <p class="card-option-price"><strong>Prix unitaire : <%= option.unit_price %> €</strong></p>
+    </div>
+
+    <% order = orders.find { |o| o.option_id == option.id } %>
+    <div class="card-option-quantity mt-3">
+      <div class="form-group">
+        <%= label_tag "orders[#{option.id}][quantity]", "Quantité", class: "form-label" %>
+        <div class="input-group">
+          <%= number_field_tag "orders[#{option.id}][quantity]", order&.quantity || 0, min: 0, class: "form-control quantity-input", data: { unit_price: option.unit_price, target: "price-calculator.quantity" }, id: "quantity_#{option.id}", step: 1 %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

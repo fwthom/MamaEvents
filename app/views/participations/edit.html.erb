@@ -1,31 +1,52 @@
 <%= simple_form_for @participation do |f| %>
-  <h3>Participant : <%= @participant.first_name %></h3>
-  <h4>Ticket : <%= @ticket.name %></h4>
+  <h2 class="text-center">Détails de la participation</h2>
 
-  <h4>Options disponibles</h4>
-  <div class="row" data-controller="price-calculator">
-    <% @options.each do |option| %>
-      <% order = @orders.find { |o| o.option_id == option.id } %>
-      <div class="col-md-4 mb-3">
-        <div class="form-group">
-          <%= label_tag "orders[#{option.id}][quantity]", option.name, class: "form-label" %>
-          <div class="input-group">
-            <%= number_field_tag "orders[#{option.id}][quantity]", order&.quantity || 0, min: 0, class: "form-control quantity-input", data: { unit_price: option.unit_price, target: "price-calculator.quantity" }, id: "quantity_#{option.id}", placeholder: "Quantité", step: 1 %>
-            <div class="input-group-append">
-              <span class="input-group-text">x</span>
-            </div>
-          </div>
-          <small class="text-muted">Prix unitaire : <%= option.unit_price %> €</small>
-        </div>
-      </div>
+  <div class="participant-info my-4">
+    <h3 class="text-primary">Participant : <%= @participant.first_name %></h3>
+    <h4 class="text-secondary">Ticket choisi : <%= @ticket.name %></h4>
+  </div>
+
+  <h4 class="text-center mt-5">Options disponibles</h4>
+
+  <div class="options-container">
+    <% if @options.any? %>
+      <% if @options.alimentaire.any? %>
+        <h5 class="option-category-title">Options alimentaires</h5>
+        <% @options.alimentaire.each do |option| %>
+          <%= render 'option_card', option: option, orders: @orders %>
+        <% end %>
+      <% end %>
+
+      <% if @options.vestimentaire.any? %>
+        <h5 class="option-category-title">Options vestimentaires</h5>
+        <% @options.vestimentaire.each do |option| %>
+          <%= render 'option_card', option: option, orders: @orders %>
+        <% end %>
+      <% end %>
+
+      <% if @options.goodies.any? %>
+        <h5 class="option-category-title">Goodies</h5>
+        <% @options.goodies.each do |option| %>
+          <%= render 'option_card', option: option, orders: @orders %>
+        <% end %>
+      <% end %>
+
+      <% if @options.autre.any? %>
+        <h5 class="option-category-title">Autres options</h5>
+        <% @options.autre.each do |option| %>
+          <%= render 'option_card', option: option, orders: @orders %>
+        <% end %>
+      <% end %>
+    <% else %>
+      <p class="text-muted">Aucune option disponible pour cet événement.</p>
     <% end %>
   </div>
 
-  <div class="mt-3">
-    <%= f.submit "Enregistrer", class: "btn btn-primary btn-block" %>
+  <div class="mt-4 text-center">
+    <%= f.submit "Enregistrer", class: "btn btn-primary btn-lg" %>
   </div>
-  
-  <div>
+
+  <div class="total-summary text-center mt-3">
     <h4>Total général : <span id="total-general" data-target="price-calculator.generalTotal">0</span> €</h4>
   </div>
 <% end %>

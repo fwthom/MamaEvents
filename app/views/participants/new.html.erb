@@ -1,15 +1,29 @@
-<div class="text-center"><h1>M'inscrire</h1></p>
-<div class="container" style="max-width: 600px;">
-  <%= simple_form_for([@event, @participant], local: true) do |f| %>
-  <%= f.input :first_name, label: 'Prénom' %>
-  <%= f.input :last_name, label: 'Nom' %>
-  <%= f.input :email, label: 'Adresse e-mail' %>
-  <%= f.input :tickets, label: "Ticket choisi", as: :select, collection: @event.tickets, label_method: :name, value_method: :id, input_html: { name: "ticket_id" } %>
-  <%= f.submit "M'inscrire", class:"btn btn-primary" %>
-<% end %>
-
-
-<%= console %>
-
-
+<div class="registration-container">
+  <h1 class="registration-title text-center">M'inscrire</h1>
+  <div class="form-container p-4 shadow-sm rounded">
+    <%= simple_form_for([@event, @participant], local: true) do |f| %>
+      <div class="form-group mb-3">
+        <%= f.input :first_name, label: 'Prénom', input_html: { class: 'form-control' } %>
+      </div>
+      <div class="form-group mb-3">
+        <%= f.input :last_name, label: 'Nom', input_html: { class: 'form-control' } %>
+      </div>
+      <div class="form-group mb-3">
+        <%= f.input :email, label: 'Adresse e-mail', input_html: { class: 'form-control' } %>
+      </div>
+      <div class="form-group mb-3">
+         <%= f.input :tickets, 
+              label: "Ticket choisi", 
+              as: :select, 
+              collection: @event.tickets, 
+              label_method: :name, 
+              value_method: :id, 
+              input_html: { class: 'form-select', name: "ticket_id" },
+              selected: @ticket_id %>
+              </div>
+      <div class="text-center">
+        <%= f.submit "M'inscrire", class: "btn btn-primary btn-submit w-100" %>
+      </div>
+    <% end %>
+  </div>
 </div>
