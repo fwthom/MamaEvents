@@ -11,34 +11,37 @@
   margin-left: 16px;
 }
 
-.text-home {
-  text-align: justify;
-  margin: 16px;
-  color: $lichen;
-}
-
-.carousel-home {
-  margin-left : -32px;
-  margin-right: -32px;
-  margin-top: -16px;
-  background-color: $background-rose;
-}
-
-
-
 .cards-home {
-  background-color: $background-rose;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  justify-content: space-around;
-  align-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  background-color: $background-rose; /* Rose clair */
   margin: -16px -24px;
-  padding: 16px;
 }
 
 .card-home {
-  background-color: white;
-  padding: 16px;
-  margin: 16px;
-  border-radius: 16px;
+  background: linear-gradient(135deg, $very-rose, #fff);
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card-home:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.card-home h1 {
+  color: $background-rose;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.card-home p {
+  color: #fff;
+  line-height: 1.6;
+  text-align: center;
 }
