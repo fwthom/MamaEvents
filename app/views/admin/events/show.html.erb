@@ -30,6 +30,9 @@
     <%= f.submit "Enregistrer", class: "event-action-button" %>
   <% end %>
 
-  <%= link_to "Télécharger un rapport", download_options_xlsx_admin_event_path, class: "btn btn-primary", data: { turbo: false } %>
+  <%= link_to "Télécharger les options", download_options_xlsx_admin_event_path, class: "btn btn-primary", data: { turbo: false } %>
+
+
+  <%= link_to "Télécharger les n° de dossard", download_bib_numbers_xlsx_admin_event_path, class: "btn btn-primary", data: { turbo: false } %>
 
 </div>
