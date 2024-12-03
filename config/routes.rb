@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resources :events, only: [:new, :create, :index, :edit, :update, :show] do
       member do
         patch 'publish'   # Met à jour le statut de l'événement
-        get 'extract', to: 'documents#download_xlsx', as: 'download_xlsx'
+        get 'extract', to: 'documents#download_options_xlsx', as: 'download_options_xlsx'
       end
 
       resources :participants, only: [:index, :show, :edit, :update, :destroy]
