@@ -36,9 +36,15 @@
       <div class="money">
         <h2>RECETTES</h2>
         <h3>grace à la <%= @nextevent.name %></h3>
-        <% @participations.each do |participation| %>
-        <p><%= participation.participant.first_name %></p>
-        <% end %>
+         <p class="bandeau"><strong><%= @participations.count %> inscrits</strong></p>
+
+        <ul>
+          <% @tickets.each do |ticket| %>
+          <li>
+            <p><strong><%=ticket.name %> :</strong> <%=ticket.participations.count %> inscrits</p>
+          </li>
+          <% end %>
+        </ul>
       </div>
     </div>
 </div>

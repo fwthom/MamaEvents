@@ -93,7 +93,6 @@
   border-radius: 8px;
   overflow: hidden;
   margin: 20px auto;
-  max-width: 600px;
 }
 
 .card-product img {
@@ -156,15 +155,15 @@
 }
 
 
-.inscriptions ul {
+.inscriptions ul, .money ul{
   list-style: disc; /* Bullet points classiques */
   padding-left: 20px; /* Indentation pour aligner les points */
   margin: 10px 0;
 }
 
-.inscriptions ul li {
+.inscriptions ul li, .money ul li {
   font-size: 0.9rem;
-  color: #666;
+  color: $lichen;
   text-align: left; /* Aligne tout à gauche */
 }
 
