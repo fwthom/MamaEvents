@@ -1,4 +1,9 @@
-<h1>M'inscrire</h1>
+<div class="text-center"><h1>M'inscrire</h1></p>
+
+
+
+
+
 <div class="container" style="max-width: 600px;">
   <%= simple_form_for([@event, @participant], local: true) do |f| %>
 
@@ -6,7 +11,7 @@
   <%= f.input :last_name, label: 'nom' %>
   <%= f.input :email %>
   <%= f.input :team, label: 'équipe' %>
-  <%= f.input :tickets, label: "Course", as: :select, collection: @event.tickets, label_method: :name, value_method: :id, input_html: { name: "ticket_id" } %>
+  <%= f.input :tickets, label: "Course (obligatoire)", as: :select, collection: @event.tickets, label_method: :name, value_method: :id, input_html: { name: "ticket_id" } %>
 
 
 

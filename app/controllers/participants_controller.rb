@@ -4,10 +4,19 @@ class ParticipantsController < ApplicationController
 
   def index
     @participants = Participant.all
+
   end
 
   def show
-    @participant = Participant.find(params[:id])
+    participant = Participant.where(token: params[:id])
+    @participant = participant.first
+    participation = Participation.where(participant_id: @participant.id)
+    @participation = participation.first
+    ticket = Ticket.where(id: @participation.ticket_id)
+    @ticket = ticket.first
+    event = Event.where(id: @ticket.event_id)
+    @event = event.first
+    @goodies = ['frites', 'boisson']
   end
 
   def new
@@ -20,9 +29,10 @@ class ParticipantsController < ApplicationController
     @participant = Participant.create(participant_params)
     @participant.event = @event
     if @participant.save
-
-      @ticket = Ticket.find(params[:ticket_id])
-      Participation.create(ticket: @ticket, participant: @participant)
+      ticket = Ticket.find(params[:ticket_id])
+      @participation = Participation.create(participant: @participant, ticket: ticket, status: "en attente de paiement" )
+      url = "/participants/#{@participant.token}"
+      flash[:notice] = url
       redirect_to @event
       # if Participation.save
       #   redirect_to @event, notice: 'Votre participation a été enregistrée'
