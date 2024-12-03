@@ -1,21 +1,22 @@
-<div class="event-content-container ">
+<div class="event-content-container">
+  <h1 class="event-title">Créer un évènement</h1>
 
-<h1>Créer un évènement</h1>
-<%= simple_form_for @event, url: admin_events_path, method: :post do |f| %>
-  <div class="mb-3">
-    <%= f.input :name, label: "Nom de l'évènement", input_html: { class: 'form-control' } %>
-  </div>
-  <div class="mb-3">
-    <%= f.input :description, as: :text, label: "Description", input_html: { class: 'form-control' } %>
-  </div>
+  <%= simple_form_for @event, url: admin_events_path, method: :post, html: { class: 'event-form-container' } do |f| %>
+    <div class="mb-3">
+      <%= f.input :name, label: "Nom de l'évènement", input_html: { class: 'form-control' } %>
+    </div>
+    <div class="mb-3">
+      <%= f.input :description, as: :text, label: "Description", input_html: { class: 'form-control' } %>
+    </div>
     <div class="mb-3">
       <%= f.input :location, label: "Lieu", input_html: { class: 'form-control' } %>
-  </div>
-  <div class="mb-3">
-  <%= f.input :date, as: :date, html5: true %> 
-  </div>
-  <div class="mb-3">
-    <%= f.button :submit, "Enregistrer", class: "rounded-button primary" %>
-  </div>
-<% end %>
+    </div>
+    <div class="mb-3">
+      <%= f.input :date, as: :date, html5: true, input_html: { class: 'form-control' } %>
+    </div>
+    <%= f.input :image, as: :file, label: "Photo", input_html: { class: 'form-control' } %>
+    <div class="mb-3">
+      <%= f.button :submit, "Enregistrer", class: "rounded-button primary event-action-button" %>
+    </div>
+  <% end %>
 </div>

@@ -1,22 +1,26 @@
 Rails.application.routes.draw do
   namespace :admin do
-    resources :options
-    resources :participants
-    resources :participations
     resources :users
     resources :donations
     resources :payments
-    resources :tickets
+    
+
     resources :events, only: [:new, :create, :index, :edit, :update, :show] do
       member do
-        get 'publication' # Affiche le formulaire ou la page de confirmation
         patch 'publish'   # Met à jour le statut de l'événement
+        get 'extract', to: 'documents#download_xlsx', as: 'download_xlsx'
       end
+
+      resources :participants, only: [:index, :show, :edit, :update, :destroy]
+      resources :participations, only: [:index, :show, :edit, :update, :destroy]
       resources :options, only: [:new, :create, :index, :edit, :update, :destroy]
       resources :tickets, only: [:new, :create, :index, :edit, :update, :destroy]
     end
+
     root to: "custom_pages#home"
+    delete '/clear_event', to: 'custom_pages#clear_event', as: 'clear_event'
   end
+
 
   root to: "pages#home"
 
