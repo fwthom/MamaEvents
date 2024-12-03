@@ -28,18 +28,13 @@ class ParticipantsController < ApplicationController
     @event = Event.find(params[:event_id])
     @participant = Participant.create(participant_params)
     @participant.event = @event
-    if @participant.save
+    if @participant.save!
+      @participant.status = "created"
       ticket = Ticket.find(params[:ticket_id])
-      @participation = Participation.create(participant: @participant, ticket: ticket, status: "en attente de paiement" )
+      @participation = Participation.create(participant: @participant, ticket: ticket, status: "created")
       url = "/participants/#{@participant.token}"
       flash[:notice] = url
-      redirect_to @event
-      # if Participation.save
-      #   redirect_to @event, notice: 'Votre participation a été enregistrée'
-      #   # redirect_to @event, notice: 'Votre participation a été enregistrée'
-      # else
-      #   render :new, alert: "Votre participation n'a pas abouti"
-      # end
+      redirect_to edit_event_participant_participation_path(@event, @participant, @participation)
     else
       render :new, status: :unprocessable_entity
     end
@@ -48,7 +43,9 @@ class ParticipantsController < ApplicationController
 
 
   def edit
-    @participant = Participant.find(params[:id])
+    @participant = Participant.find_by(token: params[:token])
+    @participations = Participation.where(participant: @participant)
+    @ticket = Ticket.where(participation_id: @participation_ids)
   end
 
   def update
