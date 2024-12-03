@@ -17,4 +17,23 @@
         </div>
       </div>
     </div>
+
+    <div class="affichage-des-chiffres">
+      <div class="inscriptions">
+        <h2>Les inscriptions </h2>
+        <h3>à <%= @nextevent.name %></h3>
+        <p><%= @participations.count %> inscrits</p>
+
+        <% @tickets.each do |ticket| %>
+           <%= puts ticket.count %>
+        <% end %>
+
+        <p><%= @participations.count %> inscrits</p>
+
+      </div>
+      <div class="money">
+        <h2>Fonds récoltés</h2>
+        <p>blababa</p>
+      </div>
+    </div>
 </div>

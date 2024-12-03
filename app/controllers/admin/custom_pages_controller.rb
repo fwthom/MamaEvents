@@ -4,6 +4,8 @@ module Admin
       @events = Event.all
       @nextevent = Event.where('date > ?', Time.current).order(date: :asc).first
       @charity = Charity.first
+      @participations = Participation.all
+      @tickets = @nextevent.tickets
     end
 
     def events
@@ -21,7 +23,7 @@ module Admin
       redirect_to admin_root_path
     end
 
-    private 
+    private
 
     def generate_csv(participants)
       CSV.generate(headers: true) do |csv|
