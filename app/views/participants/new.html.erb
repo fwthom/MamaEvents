@@ -1,11 +1,6 @@
 <h1>M'inscrire</h1>
-
-
-
-
-
 <div class="container" style="max-width: 600px;">
-  <%= simple_form_for([@charity, @event, @participant], local: true) do |f| %>
+  <%= simple_form_for([@event, @participant], local: true) do |f| %>
 
   <%= f.input :first_name, label: 'prénom' %>
   <%= f.input :last_name, label: 'nom' %>

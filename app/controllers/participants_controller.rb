@@ -17,11 +17,7 @@ class ParticipantsController < ApplicationController
 
   def create
     @event = Event.find(params[:event_id])
-
-
-      @participant = Participant.create(participant_params)
-
-
+    @participant = Participant.create(participant_params)
     @participant.event = @event
     if @participant.save
 
