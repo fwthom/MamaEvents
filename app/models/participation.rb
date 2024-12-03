@@ -3,6 +3,8 @@ class Participation < ApplicationRecord
   belongs_to :ticket
   belongs_to :payment, optional: true
   has_many :orders, dependent: :destroy
+  has_many :options, through: :orders
+
 
   validates :token, presence: true
   validates :status, presence: true

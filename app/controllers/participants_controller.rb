@@ -34,8 +34,9 @@ class ParticipantsController < ApplicationController
       @participation = Participation.create(participant: @participant, ticket: ticket, status: "created")
       url = "/participants/#{@participant.token}"
       flash[:notice] = url
-      redirect_to edit_event_participant_participation_path(@event, @participant, @participation)
+      redirect_to edit_participation_path(@participation)
     else
+      raise
       render :new, status: :unprocessable_entity
     end
   end
