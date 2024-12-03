@@ -1,12 +1,17 @@
 
+<% if @nextevent === nil  %>
+  <div class="flash flash-danger alert-dismissible fade show" role="alert">
+    <span><strong>Oups!</strong> 😱 Pas d'évènement planifié pour le moment.</span>
+    <a data-bs-dismiss="alert" aria-label="Close">
+      <i class="fas fa-times"></i>
+    </a>
+  </div>
 
+<% else %>
 <div class="container-home-dashboard" data-controller="countdown" data-countdown-event-date-value="<%= @nextevent.date %> 10:00:00">
   <div class="header" >
     <h1>Prochain événement dans</h1>
     <p id="next-event" class="countdown-timer" data-countdown-target="timer"></p>
-
-
-
       <div class="card-product">
         <% if @nextevent.image.attached? %>
           <%= cl_image_tag @nextevent.image.key %>
@@ -51,3 +56,4 @@
       </div>
     </div>
 </div>
+<% end %>
