@@ -8,7 +8,11 @@
 
 
       <div class="card-product">
-        <%= cl_image_tag("runner-PTLUTZL-e1641394048474-600x400_hxswmh", class:"index-event-card-image")%>
+        <% if @nextevent.image.attached? %>
+          <%= cl_image_tag @nextevent.image.key %>
+        <% else %>
+          <%= image_tag "logo.png", class: "event-image" %>
+        <% end %>
         <div class="card-product-infos">
           <h2><%= @nextevent.name %></h2>
           <p><%= truncate(@nextevent.description, length: 100, separator: ' ', omission: '...') %></p>
@@ -22,8 +26,7 @@
       <div class="inscriptions">
         <h2> INSCRIPTIONS </h2>
         <h3>à la <%= @nextevent.name %></h3>
-        <p class="bandeau"><strong><%= @participations.count %> inscrits</strong></p>
-
+        <p class="bandeau"><strong><%= @nextevent.participations.count %> inscrits</strong></p>
         <ul>
           <% @tickets.each do |ticket| %>
           <li>
@@ -31,19 +34,19 @@
           </li>
           <% end %>
         </ul>
-
       </div>
       <div class="money">
         <h2>RECETTES</h2>
         <h3>grace à la <%= @nextevent.name %></h3>
-         <p class="bandeau"><strong><%= @participations.count %> inscrits</strong></p>
+
+
+        <p class="bandeau"><strong>xxxxx €</strong></p>
 
         <ul>
-          <% @tickets.each do |ticket| %>
-          <li>
-            <p><strong><%=ticket.name %> :</strong> <%=ticket.participations.count %> inscrits</p>
-          </li>
-          <% end %>
+          <li><p><strong>inscriptions :</strong> xxxxxx €</p></li>
+          <li><p><strong>alimentaire :</strong> xxxxxx €</p></li>
+          <li><p><strong>vestimentaire :</strong> xxxxxx €</p></li>
+          <li><p><strong>goodies :</strong> xxxxxx €</p></li>
         </ul>
       </div>
     </div>
