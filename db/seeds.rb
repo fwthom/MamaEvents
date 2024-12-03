@@ -91,35 +91,48 @@ tickets[2].options << options[0..5]
 
 # Participants and Participations
 50.times do
-  event = event_1 # Randomly assign an event
-  ticket = event.tickets[0..1].sample # Randomly assign a ticket from the event
+  event = event_1 # Assurez-vous que `event_1` est défini et est un objet valide.
+  ticket = event.tickets[0..1].sample # Assurez-vous qu'il y a bien des tickets dans l'événement.
 
   array = [0, 1, 1, 2, 2, 2]
-  random_number = array.sample.to_i
+  random_number = array.sample.to_i # Nombre aléatoire de commandes à créer
 
   participant = Participant.create!(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     email: Faker::Internet.email,
-    event_id: event.id # Ensure participant is linked to the event
+    event_id: event.id # Lier le participant à l'événement
   )
 
   participation = Participation.create!(
     participant: participant,
     ticket: ticket,
     status: "confirmed",
-    total_amount: ticket.unit_price,
-    payment_id: nil # Replace this with a valid payment_id if necessary
+    total_amount: ticket.unit_price, # Le montant initial est le prix du ticket
+    payment_id: nil # Remplacer par un `payment_id` valide si nécessaire
   )
 
+  # Création des commandes associées à la participation
   random_number.times do
+    # Assurez-vous que `options` est un tableau contenant des options valides
+    option = options.sample # Option aléatoire
+    quantity = [1, 1, 1, 2].sample # Quantité aléatoire pour chaque option
+
     Order.create!(
       participation: participation,
-      quantity:  ([1, 1, 1, 2].sample),
-      option: options.sample
-      )
+      quantity: quantity,
+      option: option
+    )
   end
 
+  # Calcul du montant total en fonction des options sélectionnées
+  options_amount = participation.orders.sum { |order| order.quantity * order.option.unit_price }
+
+  # Mise à jour du montant total de la participation
+  participation.total_amount = ticket.unit_price + options_amount
+
+  # Sauvegarde de la participation avec le montant total mis à jour
+  participation.save!
 end
 
 puts "Created #{Event.count} events, #{Ticket.count} tickets, #{Option.count} options, #{Participant.count} participants, #{Participation.count} participations and #{Order.count} orders."

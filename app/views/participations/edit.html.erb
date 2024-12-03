@@ -1,12 +1,9 @@
+<div class="registration-container">
 <%= simple_form_for @participation do |f| %>
-  <h2 class="text-center">Détails de la participation</h2>
-
   <div class="participant-info my-4">
-    <h3 class="text-primary">Participant : <%= @participant.first_name %></h3>
-    <h4 class="text-secondary">Ticket choisi : <%= @ticket.name %></h4>
+    <h2>Participant : <%= @participant.first_name %> <%= @participant.last_name %></h2>
+    <h4><%= @ticket.name %></h4>
   </div>
-
-  <h4 class="text-center mt-5">Options disponibles</h4>
 
   <div class="options-container">
     <% if @options.any? %>
@@ -50,3 +47,4 @@
     <h4>Total général : <span id="total-general" data-target="price-calculator.generalTotal">0</span> €</h4>
   </div>
 <% end %>
+</div>
