@@ -56,7 +56,7 @@ module Admin
     end
 
     def ticket_params
-      params.require(:ticket).permit(:name, :unit_price, :description, :present)
+      params.require(:ticket).permit(:name, :unit_price, :description, :remote)
     end
 
     def set_event
