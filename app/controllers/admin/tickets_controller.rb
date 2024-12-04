@@ -1,5 +1,6 @@
 module Admin
   class TicketsController < Admin::ApplicationController
+    before_action :set_current_event, only: [:index, :show, :new, :edit]
     before_action :set_event, only: [:new, :create, :index, :edit, :update, :destroy]
     before_action :set_ticket, only:[:edit, :update, :destroy]
     before_action :set_tickets, only:[:index]
@@ -50,6 +51,10 @@ module Admin
 
     private
 
+    def set_current_event
+      @current_event = Event.find_by(id: session[:current_event])
+    end
+
     def ticket_params
       params.require(:ticket).permit(:name, :unit_price, :description, :present)
     end
@@ -59,7 +64,7 @@ module Admin
     end
 
     def set_tickets
-      @tickets = @event.tickets 
+      @tickets = @event.tickets
     end
 
     def set_ticket
