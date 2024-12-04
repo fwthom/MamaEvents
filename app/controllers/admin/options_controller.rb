@@ -1,9 +1,10 @@
 module Admin
   class OptionsController < Admin::ApplicationController
+    before_action :set_current_event, only: [:show, :new, :edit]
     before_action :set_event, only: [:new, :create, :index, :edit, :update, :destroy]
     before_action :set_option, only: [:edit, :update, :destroy]
     before_action :set_tickets, only: [:new, :edit, :index]
-    
+
     def new
       @option = Option.new
     end
@@ -22,7 +23,7 @@ module Admin
       @option = Option.new
     end
 
-    def edit 
+    def edit
     end
 
     def update
@@ -42,6 +43,11 @@ module Admin
     end
 
     private
+
+    def set_current_event
+      @current_event = Event.find_by(id: session[:current_event])
+    end
+
     def option_params
       params.require(:option).permit(:name, :description, :category, :unit_price, :emoji, ticket_ids: [])
     end

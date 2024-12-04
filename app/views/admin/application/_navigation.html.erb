@@ -22,8 +22,10 @@
     <p class="navigation__section-title">
       <%= link_to raw('<i class="fa fa-calendar"></i> Événements'), admin_events_path, class: 'navigation__section-title-link' %>
     </p>
-    <p class="navigation__helper">Choisissez un évènement ci-dessous</p>
-    <% if @current_event.present? %>
+    <% if @current_event %>
+      <p class="navigation__helper"> Actuel : <%= @current_event.name %></p>
+      <p class="navigation__helper"><%= link_to raw('<i class="fa fa-times-circle text-danger"></i> Effacer la sélection'), admin_clear_event_path, method: :delete, class: 'navigation__clear-link' %></p>
+    <ul class="navigation__list">
       <ul class="navigation__list">
         <li><%= link_to raw('<i class="fa fa-users"></i> Participations'), admin_event_participations_path(@current_event), class: 'navigation__link' %></li>
         <li><%= link_to raw('<i class="fa fa-ticket-alt"></i> Tickets'), admin_event_tickets_path(@current_event), class: 'navigation__link' %></li>
@@ -31,8 +33,9 @@
       </ul>
     <% else %>
       <ul class="navigation__list">
+        <p class="navigation__helper">Choisissez un évènement ci-dessous</p>
         <% Event.order(created_at: :desc).limit(3).each do |event| %>
-          <li><%= link_to raw("<i class='fa fa-calendar-check'></i> #{event.name}"), admin_event_participations_path(event_id: event.id), class: 'navigation__link' %></li>
+          <li><%= link_to raw("<i class='fa fa-calendar-check'></i> #{event.name}"), admin_event_path(event), class: 'navigation__link' %></li>
         <% end %>
       </ul>
     <% end %>
