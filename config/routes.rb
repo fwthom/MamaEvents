@@ -6,20 +6,19 @@ Rails.application.routes.draw do
 
 
     resources :events, only: [:new, :create, :index, :edit, :update, :show] do
+      resources :participants, only: [:index, :show, :edit, :update, :destroy]
+      resources :participations, only: [:index, :show, :edit, :update, :destroy]
+      resources :options, only: [:new, :create, :index, :edit, :update, :destroy]
+      resources :tickets, only: [:new, :create, :index, :edit, :update, :destroy]
       member do
         patch 'publish'   # Met à jour le statut de l'événement
         get 'extract_optn', to: 'documents#download_options_xlsx', as: 'download_options_xlsx'
         get 'extract_bib', to: 'documents#download_bib_numbers_xlsx', as: 'download_bib_numbers_xlsx'
       end
-
-      resources :participants, only: [:index, :show, :edit, :update, :destroy]
-      resources :participations, only: [:index, :show, :edit, :update, :destroy]
-      resources :options, only: [:new, :create, :index, :edit, :update, :destroy]
-      resources :tickets, only: [:new, :create, :index, :edit, :update, :destroy]
     end
 
     root to: "custom_pages#home"
-    delete '/clear_event', to: 'custom_pages#clear_event', as: 'clear_event'
+    delete '/clear_event', to: 'events#clear_event', as: 'clear_event'
   end
 
 

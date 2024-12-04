@@ -1,12 +1,20 @@
 module Admin
   class OptionsController < Admin::ApplicationController
+    before_action :set_current_event, only: [:index, :show, :new, :edit]
     before_action :set_event, only: [:new, :create, :index, :edit, :update, :destroy]
     before_action :set_option, only: [:edit, :update, :destroy]
     before_action :set_tickets, only: [:new, :edit, :index]
-    
+
     def new
-      @option = Option.new
+      if params[:source_id]
+        source_option = Option.find(params[:source_id])
+        @option = source_option.dup
+        @option.ticket_ids = source_option.ticket_ids # Si vous voulez également dupliquer les tickets associés.
+      else
+        @option = Option.new
+      end    
     end
+    
     def create
       @option = Option.new(option_params)
       @option.event = @event
@@ -22,7 +30,7 @@ module Admin
       @option = Option.new
     end
 
-    def edit 
+    def edit
     end
 
     def update
@@ -42,6 +50,11 @@ module Admin
     end
 
     private
+
+    def set_current_event
+      @current_event = Event.find_by(id: session[:current_event])
+    end
+
     def option_params
       params.require(:option).permit(:name, :description, :category, :unit_price, :emoji, ticket_ids: [])
     end

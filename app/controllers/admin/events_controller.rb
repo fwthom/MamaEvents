@@ -16,20 +16,22 @@ module Admin
       @event.charity = Charity.first
       @event.status = "brouillon"
       if @event.save!
-        redirect_to admin_events_path
+        redirect_to admin_event_path(@event)
       else
         render :new, status: :unprocessable_entity
       end
     end
-  
+
     def index
     end
-  
+
     def show
       @event = Event.find(params[:id])
-
+      session[:current_event] = @event.id
+      @current_event = Event.find_by(id: session[:current_event])
     end
-    def edit 
+
+    def edit
     end
 
     def update
@@ -44,17 +46,22 @@ module Admin
 
     end
 
-    def publish  
+    def publish
       if @event.update(event_params)
         redirect_to admin_event_path(@event), notice: "Statut modifié avec succès."
       else
         render :publication, alert: "Erreur lors du changement de statut de l'événement."
       end
-
     end
-    
+
+    def clear_event
+      @current_event = nil
+      redirect_to admin_events_path
+    end
+
     private
-  
+
+
     def event_params
       params.require(:event).permit(:name, :description, :date, :status, :location, :image)
     end
@@ -66,12 +73,12 @@ module Admin
     def set_event
       @event = Event.find(params[:id])
     end
-  
+
     def set_tickets
       @tickets = @event.tickets
     end
 
-    def set_charity 
+    def set_charity
       @charity = @event.charity
     end
   end

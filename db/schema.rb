@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_12_03_100402) do
+ActiveRecord::Schema[7.1].define(version: 2024_12_04_144521) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -133,8 +133,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_03_100402) do
     t.decimal "total_amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "token"
     t.integer "bib_number"
+    t.string "token"
     t.index ["participant_id"], name: "index_participations_on_participant_id"
     t.index ["payment_id"], name: "index_participations_on_payment_id"
     t.index ["ticket_id"], name: "index_participations_on_ticket_id"
@@ -161,7 +161,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_03_100402) do
     t.string "name"
     t.string "description"
     t.decimal "unit_price"
-    t.boolean "remote"
+    t.boolean "remote", default: false
     t.bigint "event_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

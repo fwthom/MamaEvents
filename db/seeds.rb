@@ -35,7 +35,7 @@ event_1 = Event.create!(
   description: "Passer un moment convivial de sport avec la marche ou la course, mais également de fête (musique, tombola et barbecue pour clôturer la journée).",
   date: Date.new(2025, 10, 05),
   charity: charity,
-  status: "brouillon"
+  status: "publié"
 
 )
 
@@ -90,7 +90,11 @@ tickets[1].options << options[0..5]
 tickets[2].options << options[0..5]
 
 # Participants and Participations
+
+i = 0
+
 50.times do
+  i += 1
   event = event_1 # Assurez-vous que `event_1` est défini et est un objet valide.
   ticket = event.tickets[0..1].sample # Assurez-vous qu'il y a bien des tickets dans l'événement.
 
@@ -108,9 +112,10 @@ tickets[2].options << options[0..5]
     participant: participant,
     ticket: ticket,
     status: "confirmed",
-    total_amount: ticket.unit_price, # Le montant initial est le prix du ticket
-    payment_id: nil # Remplacer par un `payment_id` valide si nécessaire
-  )
+    total_amount: 0,
+    payment_id: nil, 
+    bib_number: i,
+    )
 
   # Création des commandes associées à la participation
   random_number.times do

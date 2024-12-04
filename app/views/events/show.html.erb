@@ -7,20 +7,16 @@
     <% @tickets.each do |ticket| %>
       <div class="col-12 mb-4">
         <div class="ticket-card d-flex shadow-sm">
-          <div class="ticket-card-image-container">
-            <% if @event.image.attached? %>
-              <%= cl_image_tag @event.image.key, class: "ticket-card-image img-fluid rounded-start" %>
-            <% else %>
-              <%= image_tag "logo.png", class: "ticket-card-image img-fluid rounded-start" %>
-            <% end %>
-          </div>
           <div class="ticket-card-details p-3">
             <h5 class="ticket-card-title mb-2"><%= ticket.name %></h5>
             <p class="ticket-card-description mb-2"><%= truncate(ticket.description, length: 100, separator: ' ', omission: '...') %></p>
             <p class="ticket-card-price mb-1"><strong>Prix:</strong> <%= ticket.unit_price %> €</p>
+            
             <% if ticket.remote? %>
-              <p class="ticket-card-remote text-muted mb-0">Événement distanciel</p>
+              <!-- Badge remote si le ticket est distanciel -->
+              <span class="badge bg-info text-dark mb-0">Distanciel</span>
             <% end %>
+
             <!-- Bouton "Choisir" -->
             <div class="text-center">
               <%= link_to "Choisir", new_event_participant_path(@event, ticket_id: ticket.id), class: "btn btn-primary mt-3" %>

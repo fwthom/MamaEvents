@@ -6,7 +6,8 @@ class ParticipationsController < ApplicationController
   end
 
   def create
-    @participation = Participation.create(participation_params)
+    @participation = Participation.new(participation_params)
+    @participation.status = "created"
     # @participation.token = SecureRandom.urlsafe_base64(16, true)
     if @participation.save
       # redirect_to @event, notice: 'Participation enregistrée attente paiment'
@@ -34,32 +35,30 @@ class ParticipationsController < ApplicationController
     def update
       @participation = Participation.find(params[:id])
       orders_params = params[:orders] || {}
-      # Gérer les options et quantités
       orders_params.each do |option_id, details|
         quantity = details[:quantity].to_i
         next if quantity <= 0
         order = @participation.orders.find_or_initialize_by(option_id: option_id)
         order.update(quantity: quantity)
       end
-
-      # Supprimer les orders avec une quantité nulle ou non incluses dans les paramètres
       @participation.orders.where.not(option_id: orders_params.keys).destroy_all
-
-      #Calcul du montant total
       compute_total_amount
-      send_participation_message(@participation)
-      redirect_to participation_path(@participation), notice: 'Participation enregistrée attente paiment'
-      # Ligne à modifier pour arriver au paiement
+      
+      if @participation.save
+        redirect_to participation_path(@participation), notice: 'Participation enregistrée attente paiment'
+        send_participation_message(@participation)
+        @participation.bib_number ||= set_bib_number
 
-
+      else
+        render :edit, alert: "Erreur lors de la mise à jour de la participation."
+      end      
     end
+  
+
 
     def send_participation_message(participation)
-
       participant = participation.participant
-
       mailgun_client = Mailgun::Client.new ENV['MAILGUN_API_KEY']
-
       message_params = {
         from: "vincent@#{ENV['MAILGUN_DOMAIN_NAME']}",
         to: participant.email,
@@ -73,15 +72,10 @@ class ParticipationsController < ApplicationController
       mailgun_client.send_message ENV['MAILGUN_DOMAIN_NAME'], message_params
     end
 
-    private
-
+private
 
   def participation_params
     params.require(:participation).permit(:ticket_id, :status, :participant_id, :payment_id)
-  end
-
-  def participant_params
-    params.require(:participant).permit(:first_name, :last_name, :email, :token)
   end
 
   def compute_total_amount
@@ -90,5 +84,14 @@ class ParticipationsController < ApplicationController
       options_amount += order.quantity * order.option.unit_price
     end
     @participation.total_amount = @participation.ticket.unit_price + options_amount
+  end
+
+  def set_bib_number
+    # Récupérer les participations associées au même ticket (et donc au même événement)
+    max_bib = Participation.where(ticket: @participation.ticket)
+    .maximum(:bib_number) || 0
+
+    # Assigner le numéro de dossard
+    @participation.bib_number = max_bib + 1
   end
 end
