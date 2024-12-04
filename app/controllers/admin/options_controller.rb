@@ -1,6 +1,6 @@
 module Admin
   class OptionsController < Admin::ApplicationController
-    before_action :set_current_event, only: [:show, :new, :edit]
+    before_action :set_current_event, only: [:index, :show, :new, :edit]
     before_action :set_event, only: [:new, :create, :index, :edit, :update, :destroy]
     before_action :set_option, only: [:edit, :update, :destroy]
     before_action :set_tickets, only: [:new, :edit, :index]
