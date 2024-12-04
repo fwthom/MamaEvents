@@ -1,27 +1,16 @@
 <div class="container-pages-publiques">
 
 
-  <div>
-    <p>Nos objectifs :</p>
-    <ul>
-      <li>Passer un moment convivial de sport avec la marche ou la course, mais également de fête (musique, tombola et barbecue pour clôturer la journée).</li>
-      <li>Récolter des dons afin de pouvoir financer des prothèses capillaires aux femmes en ayant besoin.</li>
-      <li>Rappeler que le sport est bon pour la santé avant et après la maladie</li>
-      <li>Se sentir bien dans sa tête et dans son corps, c’est ce que nous souhaitons à toutes</li>
-    </ul>
-  </div>
-
   <div class="row events-container">
-    <h1>Nos évènements</h1>
 
     <% @events.each do |event| %>
       <div class="col-12 col-md-6 col-lg-4">
         <div class="index-event-card">
-          <% if event.image.attached? %>
-                <%= cl_image_tag event.image.key, class: "index-event-card-image" %>
-              <% else %>
-                <%= image_tag "logo.png", class: "index-event-card-image" %>
-              <% end %>
+            <% if event.image.attached? %>
+              <%= cl_image_tag event.image.key, class: "index-event-card-image" %>
+            <% else %>
+              <%= image_tag "logo.png", class: "index-event-card-image" %>
+            <% end %>
           <h3 class="event-card-title"><%= event.name %></h3>
           <p class="event-card-description"><%= event.description %></p>
           <p class="event-card-date"><%= event.date.strftime('%B %d, %Y') %></p>
