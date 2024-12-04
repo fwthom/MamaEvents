@@ -1,8 +1,8 @@
 <% if @nextevent != nil %>
-  <%= link_to new_event_participant_path(@nextevent) do %>
-    <div class="flash alert-dismissible fade show" role="alert">
+  <%= link_to new_event_participant_path(@nextevent), class:"text-decoration-none" do %>
+    <div class="flash alert-dismissible fade show">
       <span><strong>Yay!</strong> 🎉 Les inscriptions à la <%= @nextevent.name %> sont ouvertes </span>
-      <a><i class="fa-solid fa-arrow-right"></i></a>
+      <i class="fa-solid fa-arrow-right"></i>
     </div>
   <% end %>
 <% end %>
