@@ -6,7 +6,13 @@ module Admin
     before_action :set_tickets, only: [:new, :edit, :index]
 
     def new
-      @option = Option.new
+      if params[:source_id]
+        source_option = Option.find(params[:source_id])
+        @option = source_option.dup
+        @option.ticket_ids = source_option.ticket_ids # Si vous voulez également dupliquer les tickets associés.
+      else
+        @option = Option.new
+      end    
     end
     
     def create

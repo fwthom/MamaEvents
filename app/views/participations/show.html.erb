@@ -1,0 +1,46 @@
+
+
+<div class="text-center">
+  <h2><%= @participation.ticket.event.name %></h2>
+  <h3>Bienvenue
+    <%= @participant.first_name %>
+    <%= @participant.last_name %>
+  </h3>
+
+<h5>Vous pratiquez: <%= @participation.ticket.name %></h5>
+
+<p>Mon adresse : <%= @participant.email %></p>
+<div class="btn btn-primary">Valider mon panier <%= @total %> euros</div>
+<% @total = @participation.ticket.unit_price %>
+      <div class="row">
+        <% @orders.each do |order| %>
+            <% if order.option.category == 'Alimentaire' %>
+              <%= render 'show_option_card', option: order.option, order: order, orders: @orders %>
+              <% @total += order.option.unit_price * order.quantity %>
+            <% end %>
+        <% end %>
+        <% @orders.each do |order| %>
+            <% if order.option.category == 'Vestimentaire' %>
+              <%= render 'show_option_card', option: order.option, order: order, orders: @orders %>
+              <% @total += order.option.unit_price * order.quantity %>
+            <% end %>
+        <% end %>
+        <% @orders.each do |order| %>
+            <% if order.option.category == 'Autre' %>
+              <%= render 'show_option_card', option: order.option, order: order, orders: @orders %>
+              <% @total += order.option.unit_price * order.quantity %>
+            <% end %>
+        <% end %>
+        <% @orders.each do |order| %>
+            <% if order.option.category == 'Goodies' %>
+              <%= render 'show_option_card', option: order.option, order: order, orders: @orders %>
+              <% @total += order.option.unit_price * order.quantity %>
+            <% end %>
+        <% end %>
+      </div>
+  </div>
+
+
+
+
+<%= console %>

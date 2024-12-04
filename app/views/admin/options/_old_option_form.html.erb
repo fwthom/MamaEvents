@@ -12,5 +12,8 @@
               label_method: :name, 
               value_method: :id, 
               label: "Sélectionner les tickets à associer " %>  
-    <%= f.submit "Enregistrer", class:"rounded-button primary"%>
+  <div class="form-actions">
+    <%= f.submit "Enregistrer", class: "rounded-button primary" %>
+    <%= link_to "Annuler", admin_event_options_path(@event), class: "rounded-button secondary" %>
+  </div>
 <% end %>
