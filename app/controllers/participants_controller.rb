@@ -11,11 +11,10 @@ class ParticipantsController < ApplicationController
     @event = Event.find(params[:event_id])
     @participant = Participant.new(participant_params)
     @participant.event = @event
-    if @participant.save!
+    if @participant.save
       @participant.status = "created"
-      ticket = Ticket.find(params[:ticket_id])
+      ticket = Ticket.find(params["ticket_id"])
       @participation = Participation.create(participant: @participant, ticket: ticket, status: "created")
-      flash[:notice] = url
       redirect_to edit_participation_path(@participation)
     else
       render :new, status: :unprocessable_entity
