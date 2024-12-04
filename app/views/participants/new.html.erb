@@ -12,11 +12,11 @@
         <%= f.input :email, label: 'Adresse e-mail', input_html: { class: 'form-control' } %>
       </div>
       <div class="form-group mb-3">
-         <%= f.input :tickets, 
-              label: "Ticket choisi", 
-              as: :select, 
-              collection: @event.tickets, 
-              label_method: :name, 
+         <%= f.input :tickets,
+              label: "Ticket choisi",
+              as: :select,
+              collection: @event.tickets,
+              label_method: :name,
               value_method: :id, 
               input_html: { class: 'form-select', name: "ticket_id" },
               selected: @ticket_id %>
