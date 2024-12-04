@@ -10,7 +10,7 @@
             <%= link_to "L'association", root_path, class: (params[:controller] == "pages" && params[:action] == "home") ? "nav-link-active" : "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Nos évènements", events_path, class: (params[:controller] == "events" && params[:action] == "index") ? "nav-link-active" : "nav-link"%>
+            <%= link_to "Nos évènements", events_path, class: (params[:controller] == "events" || params[:controller] == "participants" || params[:controller] == "participations") ? "nav-link-active" : "nav-link"%>
           </li>
           <li class="nav-item">
             <%= link_to "Faire un don", new_donation_path, class: (params[:controller] == "donations" && params[:action] == "new") ? "nav-link-active" : "nav-link" %>
