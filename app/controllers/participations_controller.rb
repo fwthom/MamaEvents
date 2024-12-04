@@ -11,14 +11,17 @@ class ParticipationsController < ApplicationController
     @participation.status = "created"
     # @participation.token = SecureRandom.urlsafe_base64(16, true)
     if @participation.save
-      redirect_to @event, notice: 'Participation enregistrée attente paiment'
+      # redirect_to @event, notice: 'Participation enregistrée attente paiment'
+      redirect_to participation_path(Participation.last.token), notice: 'Participation enregistrée attente paiment'
     else
       render :new
     end
   end
 
   def show
-    @participation = Participation.all
+    # @participations = Participation.all
+    @participation = Participation.find_by(token: params[:id])
+    @participant = @participation.participant
   end
 
     def edit
@@ -46,10 +49,40 @@ class ParticipationsController < ApplicationController
       #Calcul du montant total
       compute_total_amount
 
-      # Ligne à modifier pour arriver au paiement      
+      # Ligne à modifier pour arriver au paiement
       redirect_to @participation, notice: "Participation mise à jour avec succès."
     end
-  private
+
+    def send_participation_message(participant)
+
+      mailgun_client = Mailgun::Client.new ENV['MAILGUN_API_KEY']
+
+      message_params = {
+        from: "vincent@#{ENV['MAILGUN_DOMAIN_NAME']}",
+        to: "#{participant.email}",
+        subject: "this is a test email",
+        text: "coucou this is a test email"
+      }
+
+      mailgun_client.send_message ENV['MAILGUN_DOMAIN_NAME'], message_params
+      # redirect_to participation_path, notice: "#{Participant.last.first_name}"
+      # redirect_to participation_path(token: Participant.last.token), notice: "#{Participant.last.first_name}"
+      redirect_to participation_path(token: Participant.last.token), notice: "Bienvenue #{Participant.last.first_name}"
+
+      # mailgun_client = Mailgun::Client.new ENV['MAILGUN_API_KEY']
+
+      # message_params = {
+      #   from: "vincent@#{ENV['MAILGUN_DOMAIN_NAME']}",
+      #   to: participant.email,
+      #   subject: "this is a test email",
+      #   text: "coucou this is a test email"
+      # }
+
+      # mailgun_client.send_message ENV['MAILGUN_DOMAIN_NAME'], message_params
+    end
+
+    private
+
 
   def participation_params
     params.require(:participation).permit(:ticket_id, :status, :participant_id, :payment_id)

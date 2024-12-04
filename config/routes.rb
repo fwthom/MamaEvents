@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     resources :users
     resources :donations
     resources :payments
-    
+
 
     resources :events, only: [:new, :create, :index, :edit, :update, :show] do
       member do
@@ -52,7 +52,7 @@ Rails.application.routes.draw do
     get "token"
   end
 
-
+  get 'send_email', to: 'participations#send_participation_message'
 
 
 end
