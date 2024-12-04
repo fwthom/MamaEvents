@@ -133,8 +133,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_03_100402) do
     t.decimal "total_amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "bib_number"
     t.string "token"
+    t.integer "bib_number"
     t.index ["participant_id"], name: "index_participations_on_participant_id"
     t.index ["payment_id"], name: "index_participations_on_payment_id"
     t.index ["ticket_id"], name: "index_participations_on_ticket_id"

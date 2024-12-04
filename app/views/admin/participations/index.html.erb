@@ -1,0 +1,37 @@
+<div class="card">
+  <div class="card-header">
+    <h1>Participations: <%= @event.name %></h1>
+  </div>
+  <div class="card-body">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Dossard</th>
+          <th>Participant</th>
+          <th>Ticket</th>
+          <th>Options</th>
+          <th>Montant</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @resources.each do |participation| %>
+          <tr>
+            <td><%= participation.bib_number %></td>
+            <td>
+              <%= link_to participation.participant, admin_event_participant_path(@event, participation.participant) %>
+            </td>
+            <td><%= participation.ticket.name %></td>
+            <td><%= participation.options.pluck(:name).join(", ") %></td>
+            <td><%= number_to_currency(participation.total_amount) %></td>
+            <td><%= participation.status %></td>
+            <td>
+              <%= link_to "Editer", edit_admin_event_participation_path(@event, participation), class: "btn btn-primary btn-sm" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
