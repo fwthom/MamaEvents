@@ -2,10 +2,8 @@
   <%= link_to new_event_participant_path(@nextevent) do %>
     <div class="flash alert-dismissible fade show" role="alert">
       <span><strong>Yay!</strong> 🎉 Les inscriptions à la <%= @nextevent.name %> sont ouvertes </span>
-      <a data-bs-dismiss="alert" aria-label="Close">
-        <i class="fa-solid fa-arrow-right"></i>
-      </a>
-  </div>
+      <a><i class="fa-solid fa-arrow-right"></i></a>
+    </div>
   <% end %>
 <% end %>
 <div class="titre-home d-flex">
