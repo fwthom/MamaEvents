@@ -1,6 +1,4 @@
 <div class="event-content-container">
-  <%= render 'admin/events/top_navbar' %>
-
 <h1>Ajouter une course </h1>
 <%= simple_form_for [@event, @ticket], url: admin_event_tickets_path(@event), method: :post do |f| %>
   <%= f.input :name, label: "Intitulé du ticket" %>
