@@ -4,23 +4,29 @@
     <%= simple_form_for([@event, @participant], local: true) do |f| %>
       <div class="form-group mb-3">
         <%= f.input :first_name, label: 'Prénom', input_html: { class: 'form-control' } %>
+        <%= f.error_notification %> <!-- Affiche les erreurs globales -->
       </div>
       <div class="form-group mb-3">
         <%= f.input :last_name, label: 'Nom', input_html: { class: 'form-control' } %>
       </div>
       <div class="form-group mb-3">
         <%= f.input :email, label: 'Adresse e-mail', input_html: { class: 'form-control' } %>
+        <% if @participant.errors[:email].any? %>
+          <div class="text-danger">
+            <%= @participant.errors[:email].join(", ") %>
+          </div>
+        <% end %>
       </div>
       <div class="form-group mb-3">
-         <%= f.input :tickets, 
-              label: "Ticket choisi", 
-              as: :select, 
-              collection: @event.tickets, 
-              label_method: :name, 
-              value_method: :id, 
-              input_html: { class: 'form-select', name: "ticket_id" },
-              selected: @ticket_id %>
-              </div>
+        <%= f.input :ticket_id, 
+                    label: "Ticket choisi", 
+                    as: :select, 
+                    collection: @event.tickets, 
+                    label_method: :name, 
+                    value_method: :id, 
+                    input_html: { class: 'form-select' },
+                    selected: @ticket_id || params[:ticket_id] %> <!-- Garder la sélection en cas d'erreur -->
+      </div>
       <div class="text-center">
         <%= f.submit "M'inscrire", class: "btn btn-primary btn-submit w-100" %>
       </div>
