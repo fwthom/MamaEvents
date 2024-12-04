@@ -1,5 +1,13 @@
+<% if @nextevent != nil %>
+  <%= link_to new_event_participant_path(@nextevent), class:"text-decoration-none" do %>
+    <div class="flash alert-dismissible fade show">
+      <span><strong>Yay!</strong> 🎉 Les inscriptions à la <%= @nextevent.name %> sont ouvertes </span>
+      <i class="fa-solid fa-arrow-right"></i>
+    </div>
+  <% end %>
+<% end %>
 <div class="titre-home d-flex">
-  <h1>mes amis mes amours, une association qui sensibilise et lutte contre le cancer du sein via le financement de prothèses capillaires</h1>
+  <h1>Mes Amis Mes Amours, une association qui sensibilise et lutte contre le cancer du sein via le financement de prothèses capillaires</h1>
   <%= image_tag "perruque.jpg" %>
 </div>
 
@@ -7,19 +15,24 @@
   <div class="cards-home">
     <div class="card-home">
       <h1>Notre histoire</h1>
-      <p>27 septembre 2008</p>
-      <p>Mon mari a 40 ans. C’est un amoureux de running, je décide donc de lui offrir une place au marathon de New York 2009. J’en profite pour... </p>
+      <p>Je suis prête pour une nouvelle aventure ! Alors en mars 2018, j’ai créé l’association, dans le but d’aider les femmes à traverser “au mieux” ce que j’avais vécu...</p>
+      <i class="fa-regular fa-address-card"></i>
     </div>
     <div class="card-home">
       <h1>Nos engagements</h1>
       <p>mes amis mes amours lutte contre le cancer du sein et aide directement les malades en finançant une partie de l’achat de prothèses capillaires, les accessoires...</p>
+      <i class="fa-solid fa-ribbon"></i>
+
     </div>
     <div class="card-home">
       <h1>Le ok sign</h1>
-      <p>Un nouveau signe de connivence qui ouvre le dialogue autour du cancer du sein</p>
+      <p>Un nouveau signe de connivence qui ouvre le dialogue autour du cancer du sein. Le oKsign permet aux patientes d’exprimer leur accord pour échanger sur le sujet...</p>
+      <i class="fa-solid fa-person-circle-check"></i>
+
     </div>
     <div class="card-home">
       <h1>Nos partenaires</h1>
-      <p>70 pharmacies et partenaires</p>
+      <p>Nos partenaires spécialisés dans les prothèses capillaires offrent des solutions adaptées et personnalisées vous permettant de retrouver confiance en vous...</p>
+      <i class="fa-regular fa-handshake"></i>
     </div>
   </div>
