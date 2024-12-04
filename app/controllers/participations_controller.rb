@@ -6,13 +6,11 @@ class ParticipationsController < ApplicationController
   end
 
   def create
-    raise
     @participation = Participation.create(participation_params)
-    @participation.status = "created"
     # @participation.token = SecureRandom.urlsafe_base64(16, true)
     if @participation.save
       # redirect_to @event, notice: 'Participation enregistrée attente paiment'
-      redirect_to participation_path(Participation.last.token), notice: 'Participation enregistrée attente paiment'
+      redirect_to participation_path(@participation.participant), notice: 'Participation enregistrée attente paiment'
     else
       render :new
     end
@@ -20,8 +18,9 @@ class ParticipationsController < ApplicationController
 
   def show
     # @participations = Participation.all
-    @participation = Participation.find_by(token: params[:id])
+    @participation = Participation.find(params[:id])
     @participant = @participation.participant
+    @orders = @participation.orders
   end
 
     def edit
@@ -48,37 +47,30 @@ class ParticipationsController < ApplicationController
 
       #Calcul du montant total
       compute_total_amount
-
+      send_participation_message(@participation)
+      redirect_to participation_path(@participation), notice: 'Participation enregistrée attente paiment'
       # Ligne à modifier pour arriver au paiement
-      redirect_to @participation, notice: "Participation mise à jour avec succès."
+
+
     end
 
-    def send_participation_message(participant)
+    def send_participation_message(participation)
+
+      participant = participation.participant
 
       mailgun_client = Mailgun::Client.new ENV['MAILGUN_API_KEY']
 
       message_params = {
         from: "vincent@#{ENV['MAILGUN_DOMAIN_NAME']}",
-        to: "#{participant.email}",
-        subject: "this is a test email",
-        text: "coucou this is a test email"
+        to: participant.email,
+        subject: "test email",
+        html: "<div class='text-center'> <h1>Bienvenue #{participant.first_name}</h1>
+        <h2>Ta participation a bien été enregistrée.
+        <a href='http://127.0.0.1:3000/participations/#{participant.id}'>Clique ici pour y accéder </a></h2>
+        </div>"
       }
 
       mailgun_client.send_message ENV['MAILGUN_DOMAIN_NAME'], message_params
-      # redirect_to participation_path, notice: "#{Participant.last.first_name}"
-      # redirect_to participation_path(token: Participant.last.token), notice: "#{Participant.last.first_name}"
-      redirect_to participation_path(token: Participant.last.token), notice: "Bienvenue #{Participant.last.first_name}"
-
-      # mailgun_client = Mailgun::Client.new ENV['MAILGUN_API_KEY']
-
-      # message_params = {
-      #   from: "vincent@#{ENV['MAILGUN_DOMAIN_NAME']}",
-      #   to: participant.email,
-      #   subject: "this is a test email",
-      #   text: "coucou this is a test email"
-      # }
-
-      # mailgun_client.send_message ENV['MAILGUN_DOMAIN_NAME'], message_params
     end
 
     private

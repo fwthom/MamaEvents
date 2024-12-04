@@ -52,7 +52,7 @@ Rails.application.routes.draw do
     get "token"
   end
 
-  get 'send_email', to: 'participations#send_participation_message'
+  get 'send_email/:token', to: 'participations#send_participation_message', as: :send_email
 
 
 end
