@@ -16,7 +16,7 @@ module Admin
       @event.charity = Charity.first
       @event.status = "brouillon"
       if @event.save!
-        redirect_to admin_events_path
+        redirect_to admin_event_path(@event)
       else
         render :new, status: :unprocessable_entity
       end

@@ -137,6 +137,14 @@ h1, h2, h3, h4, h5, h6 {
   color: $secondary-color;
 }
 
+.badge-remote {
+  background-color: #007bff; /* Couleur de fond */
+  color: white; /* Texte en blanc */
+  padding: 5px 10px; /* Espacement */
+  border-radius: 12px; /* Coins arrondis */
+  font-size: 12px; /* Taille du texte */
+}
+
 // --- Formulaire d'inscription ---
 .registration-container {
   margin: 30px auto;

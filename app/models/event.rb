@@ -8,6 +8,11 @@ class Event < ApplicationRecord
   has_many :orders, through: :participations
   has_one_attached :image
   validates :status, inclusion: { in: STATUS_OPTIONS }
+  validates :name, presence: true
+  validates :date, presence: true
+  validates :location, presence: true
+
+
 
   scope :brouillon, -> { where(status: "brouillon") }
   scope :publies, -> { where(status: "publié") }

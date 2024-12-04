@@ -65,15 +65,11 @@ class ParticipationsController < ApplicationController
   end
 
   def set_bib_number
-    ticket = @participation.ticket
-    return nil unless ticket
-  
-    event = ticket.event
-    return nil unless event
-  
-    max_bib = Participation.joins(:ticket)
-                           .where(tickets: { event_id: event.id })
-                           .maximum(:bib_number) || 0
-    max_bib + 1
+    # Récupérer les participations associées au même ticket (et donc au même événement)
+    max_bib = Participation.where(ticket: @participation.ticket)
+    .maximum(:bib_number) || 0
+
+    # Assigner le numéro de dossard
+    @participation.bib_number = max_bib + 1
   end
 end

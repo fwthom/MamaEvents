@@ -5,16 +5,17 @@ module Admin
     event = Event.find(params[:id])
     orders = event.orders
     p.workbook.add_worksheet(name: "Sample") do |sheet|
-      sheet.add_row ["Nom", "Prénom", "Option", "Quantité"]
+      sheet.add_row ["Nom", "Prénom", "Option", "Quantité", "Statut de la participation"]
       orders.each do |order|
-        sheet.add_row [order.participation.participant.last_name, order.participation.participant.first_name, order.option.name, order.quantity]
+        sheet.add_row [order.participation.participant.last_name, order.participation.participant.first_name, order.option.name, order.quantity, order.participation.status]
       end
     end
     # Send the file as a response
     formatted_date = Date.today.strftime('%Y_%m_%d')
+    formatted_event_name = event.name.parameterize(separator: '_')
     # Send the file as a response
     send_data p.to_stream.read,
-              filename: "options_#{formatted_date}.xlsx",
+              filename: "options_#{formatted_event_name}_#{formatted_date}.xlsx",
               type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
               disposition: 'attachment'
     end
@@ -24,15 +25,17 @@ module Admin
       event = Event.find(params[:id])
       participations = event.participations
       p.workbook.add_worksheet(name: "Sample") do |sheet|
-        sheet.add_row ["Évènement", "Nom", "Prénom", "Ticket", "Numéro de dossard"]
+        sheet.add_row ["Évènement", "Nom", "Prénom", "Ticket", "Numéro de dossard", "Statut de la participation"]
         participations.each do |participation|
-          sheet.add_row [event.name, participation.participant.last_name, participation.participant.first_name, participation.ticket.name,participation.bib_number]
+          sheet.add_row [event.name, participation.participant.last_name, participation.participant.first_name, participation.ticket.name,participation.bib_number, participation.status]
         end
       end
       formatted_date = Date.today.strftime('%Y_%m_%d')
+      formatted_event_name = event.name.parameterize(separator: '_')
+
       # Send the file as a response
       send_data p.to_stream.read,
-                filename: "dossards_#{formatted_date}.xlsx",
+                filename: "dossards_#{formatted_event_name}_#{formatted_date}.xlsx",
                 type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
                 disposition: 'attachment'
     end
