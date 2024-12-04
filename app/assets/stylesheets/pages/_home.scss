@@ -3,7 +3,15 @@
   align-items: center;
   margin: 16px;
   text-align: right;
-  color: $very-rose-hover;
+  border-bottom: 5px double $very-rose;
+}
+
+.titre-home h1 {
+  font-family: "Gloria Hallelujah", cursive;
+  font-weight: 400;
+  font-style: normal;
+  color: $color-text;
+  text-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .titre-home img {
@@ -16,16 +24,17 @@
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
   padding: 20px;
-  background-color: $background-rose; /* Rose clair */
-  margin: -16px -24px;
+  background-color: white;
 }
 
 .card-home {
-  background: linear-gradient(135deg, $very-rose, #fff);
+  background-color: rgba(255, 218, 222, .1);
   border-radius: 12px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 20px;
   transition: transform 0.3s, box-shadow 0.3s;
+  border: 3px solid $background-rose;
+  position: relative;
 }
 
 .card-home:hover {
@@ -34,14 +43,25 @@
 }
 
 .card-home h1 {
-  color: $background-rose;
-  font-size: 1.5rem;
+  color: $very-rose;
+  font-size: 1.3rem;
   margin-bottom: 10px;
   text-align: center;
+  text-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .card-home p {
-  color: #fff;
+  color: $color-text;
   line-height: 1.6;
   text-align: center;
+  font-size: 0.8rem;;
+}
+
+.card-home i {
+  color: $color-text;
+  font-size: 3rem;
+  position: absolute;
+  bottom: -20px;
+  left: 100px;
+  text-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
