@@ -1,18 +1,18 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+<div class="navbar navbar-expand-sm navbar-light navbar-calpin">
   <div class="container-fluid">
     <%= link_to root_path, class: "navbar-brand" do %>
       <%= image_tag "logo.png" %>
     <% end %>
 
-    <div class="navbar-center collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="navbar-center collapse navbar-collapse" id="navbarSupportedContent" data-controller="navbar_calpin">
       <ul class="navbar-nav mx-auto">
-          <li class="nav-item active">
+          <li class="nav-item active" data-navbar-calpin-target="link" data-action="click->navbar_calpin#setActive">
             <%= link_to "L'association", root_path, class: "nav-link" %>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" data-navbar-calpin-target="link" data-action="click->navbar_calpin#setActive">
             <%= link_to "Nos évènements", events_path, class: "nav-link" %>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" data-navbar-calpin-target="link" data-action="click->navbar_calpin#setActive">
             <%= link_to "Faire un don", new_donation_path, class: "nav-link" %>
           </li>
       </ul>

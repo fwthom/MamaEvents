@@ -126,6 +126,12 @@
   margin: 8px;
 }
 
+.flash:hover {
+  transform: translateY(-3px);
+  transform: translateX(3px);
+  box-shadow: 0 6px 12px rgba(92, 22, 68, 0.3);
+}
+
 .flash-danger {
   border: 2px solid $very-rose;
 }

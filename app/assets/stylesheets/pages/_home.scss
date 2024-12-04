@@ -11,7 +11,7 @@
   font-weight: 400;
   font-style: normal;
   color: $color-text;
-  text-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  text-shadow: 0 4px 8px rgba(92, 22, 68, 0.15);
 }
 
 .titre-home img {
@@ -30,7 +30,7 @@
 .card-home {
   background-color: rgba(255, 218, 222, .1);
   border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(92, 22, 68, 0.15);
   padding: 20px;
   transition: transform 0.3s, box-shadow 0.3s;
   border: 3px solid $background-rose;
@@ -39,7 +39,7 @@
 
 .card-home:hover {
   transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 6px 12px rgba(92, 22, 68, 0.3);
 }
 
 .card-home h1 {
@@ -47,7 +47,6 @@
   font-size: 1.3rem;
   margin-bottom: 10px;
   text-align: center;
-  text-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .card-home p {
@@ -63,5 +62,5 @@
   position: absolute;
   bottom: -20px;
   left: 100px;
-  text-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  text-shadow: 0 4px 8px rgba(92, 22, 68, 0.15);
 }
