@@ -1,9 +1,19 @@
 <div class="container-pages-publiques">
-  <div class="text-center event-index-header">
-    <h2>Tous les évènements</h2>
+
+
+  <div>
+    <p>Nos objectifs :</p>
+    <ul>
+      <li>Passer un moment convivial de sport avec la marche ou la course, mais également de fête (musique, tombola et barbecue pour clôturer la journée).</li>
+      <li>Récolter des dons afin de pouvoir financer des prothèses capillaires aux femmes en ayant besoin.</li>
+      <li>Rappeler que le sport est bon pour la santé avant et après la maladie</li>
+      <li>Se sentir bien dans sa tête et dans son corps, c’est ce que nous souhaitons à toutes</li>
+    </ul>
   </div>
 
   <div class="row events-container">
+    <h1>Nos évènements</h1>
+
     <% @events.each do |event| %>
       <div class="col-12 col-md-6 col-lg-4">
         <div class="index-event-card">
@@ -14,9 +24,11 @@
               <% end %>
           <h3 class="event-card-title"><%= event.name %></h3>
           <p class="event-card-description"><%= event.description %></p>
+          <p class="event-card-date"><%= event.date.strftime('%B %d, %Y') %></p>
           <div class="event-card-footer">
-            <p class="event-card-date"><%= event.date.strftime('%B %d, %Y') %></p>
-            <%= link_to 'Voir', event_path(event), class: "btn btn-primary" %>
+            <%= link_to event_path(event) do %>
+              <i class="fa-solid fa-magnifying-glass"></i>
+            <% end %>
           </div>
         </div>
       </div>
