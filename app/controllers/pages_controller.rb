@@ -4,6 +4,7 @@ class PagesController < ApplicationController
   def home
     @charity = Charity.first
     @nextevent = Event.publies.where('date > ?', Time.current).order(date: :asc).first
+    @events = Event.all
   end
 
 
