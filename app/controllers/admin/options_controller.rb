@@ -7,6 +7,7 @@ module Admin
     def new
       @option = Option.new
     end
+    
     def create
       @option = Option.new(option_params)
       @option.event = @event
