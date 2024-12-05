@@ -12,31 +12,51 @@
 <p>Mon adresse : <%= @participant.email %></p>
 <div class="btn btn-primary">Valider mon panier <%= @total %> euros</div>
 <% @total = @participation.ticket.unit_price %>
-      <div class="row">
+
+      <div class=" row justify-content-center">
         <% @orders.each do |order| %>
+
+         <h3> <div><%= order.option.category %></div></h3>
+
             <% if order.option.category == 'Alimentaire' %>
+       <div class ="col-sm-12 col-md-4 col-lg-6 col-xl-6 col-xxl-6">
               <%= render 'show_option_card', option: order.option, order: order, orders: @orders %>
+              </div>
               <% @total += order.option.unit_price * order.quantity %>
             <% end %>
         <% end %>
+      </div>
+
+      <div class="row justify-content-center">
         <% @orders.each do |order| %>
             <% if order.option.category == 'Vestimentaire' %>
+             <div class ="col-sm-12 col-md-4 col-lg-6 col-xl-6 col-xxl-6">
               <%= render 'show_option_card', option: order.option, order: order, orders: @orders %>
+                </div>
               <% @total += order.option.unit_price * order.quantity %>
             <% end %>
         <% end %>
+      </div>
+      <div class="row justify-content-center">
         <% @orders.each do |order| %>
             <% if order.option.category == 'Autre' %>
-              <%= render 'show_option_card', option: order.option, order: order, orders: @orders %>
+                <div class ="col-sm-12 col-md-4 col-lg-6 col-xl-6 col-xxl-6">
+                  <%= render 'show_option_card', option: order.option, order: order, orders: @orders %>
+                </div>
               <% @total += order.option.unit_price * order.quantity %>
-            <% end %>
+          <% end %>
         <% end %>
+      </div>
+      <div class="row justify-content-center">
         <% @orders.each do |order| %>
             <% if order.option.category == 'Goodies' %>
+             <div class ="col-sm-12 col-md-4 col-lg-6 col-xl-6 col-xxl-6">
               <%= render 'show_option_card', option: order.option, order: order, orders: @orders %>
+              </div>
               <% @total += order.option.unit_price * order.quantity %>
             <% end %>
         <% end %>
+      </div>
       </div>
   </div>
 
