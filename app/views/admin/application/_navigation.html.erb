@@ -25,18 +25,19 @@
     </p>
     <% if @current_event %>
     <ul class="navigation__list">
+      
+      <li><%= link_to raw('<i class="fa-solid fa-arrow-left"></i> Revenir aux évènements'), admin_events_path, class: 'navigation__link' %></li>
       <li> <strong>Vous éditez : <%= @current_event.name %></strong></li>
-      <li><%= link_to raw('<i class="fa-solid fa-arrow-left"></i></i> Revenir aux évènements'), admin_events_path, class: 'navigation__link' %></li>
       </ul>
     <ul class="navigation__list">
       <ul class="navigation__list">
+        <li><%= link_to raw('<i class="fa-solid fa-sheet-plastic"></i> Général'), admin_event_path(@current_event), class: 'navigation__link' %></li>
         <li><%= link_to raw('<i class="fa fa-users"></i> Participations'), admin_event_participations_path(@current_event), class: 'navigation__link' %></li>
         <li><%= link_to raw('<i class="fa fa-ticket-alt"></i> Tickets'), admin_event_tickets_path(@current_event), class: 'navigation__link' %></li>
         <li><%= link_to raw('<i class="fa fa-sliders-h"></i> Options'), admin_event_options_path(@current_event), class: 'navigation__link' %></li>
       </ul>
     <% else %>
       <ul class="navigation__list">
-      <li><%= link_to raw("<i class='fa fa-calendar-check'></i> Voir tous"), admin_events_path, class: 'navigation__link' %></li>
 
         <p class="navigation__helper">Prochains évènements</p>
         <% Event.order(created_at: :desc).limit(3).each do |event| %>
