@@ -29,6 +29,11 @@ module Admin
       @event = Event.find(params[:id])
       session[:current_event] = @event.id
       @current_event = Event.find_by(id: session[:current_event])
+      @total = 0
+      @totalinscription = 0
+      @totalalimentaire = 0
+      @totalvestimentaire = 0
+      @totalgoodies = 0
     end
 
     def edit

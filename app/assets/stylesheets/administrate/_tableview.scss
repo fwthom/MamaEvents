@@ -67,27 +67,27 @@
 }
 
 .btn-rose {
-  background-color: $background-rose;
-  color: $color-text;
-  border-color: $background-rose;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  box-shadow: 0 2px 10px rgba(222, 46, 107, 0.3);
-  margin-bottom: 40px;
+  background-color: $background-rose !important;
+  color: $color-text !important;
+  border-color: $background-rose !important;
+  transition: background-color 0.3s ease, color 0.3s ease !important;
+  box-shadow: 0 2px 10px rgba(222, 46, 107, 0.3) !important;
 }
 
 .btn-rose:hover {
-  background-color: $very-rose;
-  border-color: $very-rose;
-  color: white;
-  box-shadow: 0 3px 10px rgba(222, 46, 107, 0.5);
-  transform: translateY(-2px);
+  background-color: $very-rose !important;
+  border-color: $very-rose !important;
+  color: white !important;
+  box-shadow: 0 3px 10px rgba(222, 46, 107, 0.5) !important;
+  transform: translateY(-2px) !important;
+  text-decoration: none !important;
 }
 
 .btn-rose:active {
-  background-color: $very-rose-hover;
-  border-color: $very-rose-hover;
-  color: white;
-  transform: translateY(1px);
+  background-color: $very-rose-hover !important;
+  border-color: $very-rose-hover !important;
+  color: white !important;
+  transform: translateY(1px) !important;
 }
 
 .label {
