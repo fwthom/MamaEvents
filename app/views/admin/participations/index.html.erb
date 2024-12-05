@@ -20,7 +20,7 @@
           <tr>
             <td><%= participation.bib_number %></td>
             <td>
-              <%= link_to participation.participant, admin_event_participant_path(@event, participation.participant) %>
+              <%= link_to "#{participation.participant.first_name} #{participation.participant.last_name}", admin_event_participant_path(@event, participation.participant) %>
             </td>
             <td>
               <span class="label label-primary"><%= participation.ticket.name %></span>
@@ -33,7 +33,7 @@
             <td><%= number_to_currency(participation.total_amount) %></td>
             <td><%= participation.status %></td>
             <td>
-              <%= link_to "Editer", edit_admin_event_participation_path(@event, participation), class: "btn btn-primary btn-sm" %>
+              <%= link_to "Editer", edit_admin_event_participation_path(@event, participation), class: "btn btn-rose btn-sm" %>
             </td>
           </tr>
         <% end %>
