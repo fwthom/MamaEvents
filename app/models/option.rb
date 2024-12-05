@@ -15,4 +15,3 @@ class Option < ApplicationRecord
   scope :goodies, -> { where(category: "Goodies") }
 
 end
-

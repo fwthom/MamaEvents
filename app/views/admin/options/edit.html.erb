@@ -1,6 +1,6 @@
 <div class="event-content-container">
   <%= render 'admin/options/old_option_form', option: @option %>
-  <%= form_with url: admin_event_option_path(@event, @option), method: :delete, data: { confirm: 'Êtes-vous sûr de vouloir supprimer cette option ?' } do %>
-  <%= submit_tag 'Supprimer l\'option', class: 'btn btn-danger' %>
+  <%= form_with url: admin_event_option_path(@event, @option), method: :delete, data: { turbo_confirm: 'Êtes-vous sûr de vouloir supprimer cette option ?' }, class:"d-flex justify-content-center" do %>
+  <%= submit_tag 'Supprimer', class: 'btn btn-danger text-capitalize' %>
 <% end %>
 </div>
