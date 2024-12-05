@@ -44,7 +44,7 @@ class ParticipationsController < ApplicationController
       compute_total_amount
 
       if @participation.save
-        redirect_to participation_path(@participation), notice: 'Participation enregistrée attente paiment'
+        redirect_to participation_path(@participation), notice: 'Participation enregistrée attente paiement'
         send_participation_message(@participation)
         @participation.bib_number ||= set_bib_number
 
