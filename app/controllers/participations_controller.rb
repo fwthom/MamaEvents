@@ -22,6 +22,7 @@ class ParticipationsController < ApplicationController
     @participant = @participation.participant
     @orders = @participation.orders
     # @alimentaire = @orders.where(option.category: 'alimentaire')
+    # @event = Event.find_by(id: @participation_event)
   end
 
     def edit
@@ -58,13 +59,15 @@ class ParticipationsController < ApplicationController
     def send_participation_message(participation)
       participant = participation.participant
       mailgun_client = Mailgun::Client.new ENV['MAILGUN_API_KEY']
+      puts'------------------------------'
+      puts mailgun_client
       message_params = {
-        from: "vincent@#{ENV['MAILGUN_DOMAIN_NAME']}",
+        from: "Mama-hello@#{ENV['MAILGUN_DOMAIN_NAME']}",
         to: participant.email,
         subject: "test email",
-        html: "<div class='text-center'> <h1>Bienvenue #{participant.first_name}</h1>
-        <h2>Ta participation a bien été enregistrée.
-        <a href='http://127.0.0.1:3000/participations/#{participant.id}'>Clique ici pour y accéder </a></h2>
+        html: "<div class='text-center'> <h1>Bienvenue à #{participation.ticket.event.name}  #{participant.first_name}</h1>
+        <h2>Ta participation a bien été enregistrée. N'oublie pas de la finaliser en te rendant sur ce lien
+        <a href='http://127.0.0.1:3000/participations/#{participant.id}'>lien</a></h2>
         </div>"
       }
 
