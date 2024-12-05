@@ -55,7 +55,6 @@ class ParticipationsController < ApplicationController
     end
 
 
-
     def send_participation_message(participation)
       participant = participation.participant
       mailgun_client = Mailgun::Client.new ENV['MAILGUN_API_KEY']

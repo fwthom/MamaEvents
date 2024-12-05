@@ -10,7 +10,7 @@ $focus-color: rgba(0, 123, 255, 0.3);
 
 // --- Réinitialisation et styles de base ---
 body {
-  font-family: 'Arial', sans-serif;
+  font-family: 'Poppins';
   line-height: 1.6;
   background-color: $background-color;
   margin: 0;
@@ -30,6 +30,8 @@ a:hover {
 h1, h2, h3, h4, h5, h6 {
   color: $color-text;
   margin-bottom: 0.5rem;
+  font-family: 'Poppins';
+
 }
 
 // --- Conteneurs généraux ---
