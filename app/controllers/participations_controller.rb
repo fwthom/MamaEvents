@@ -11,17 +11,17 @@ class ParticipationsController < ApplicationController
     # @participation.token = SecureRandom.urlsafe_base64(16, true)
     if @participation.save
       # redirect_to @event, notice: 'Participation enregistrée attente paiment'
-      redirect_to participation_path(@participation.participant), notice: 'Participation enregistrée attente paiment'
+      redirect_to participation_path(@participation.participant), notice: 'Participation enregistrée attente paiement'
     else
       render :new
     end
   end
 
   def show
-    # @participations = Participation.all
     @participation = Participation.find(params[:id])
     @participant = @participation.participant
     @orders = @participation.orders
+    # @alimentaire = @orders.where(option.category: 'alimentaire')
   end
 
     def edit
@@ -43,7 +43,7 @@ class ParticipationsController < ApplicationController
       end
       @participation.orders.where.not(option_id: orders_params.keys).destroy_all
       compute_total_amount
-      
+
       if @participation.save
         redirect_to participation_path(@participation), notice: 'Participation enregistrée attente paiment'
         send_participation_message(@participation)
@@ -51,9 +51,9 @@ class ParticipationsController < ApplicationController
 
       else
         render :edit, alert: "Erreur lors de la mise à jour de la participation."
-      end      
+      end
     end
-  
+
 
 
     def send_participation_message(participation)

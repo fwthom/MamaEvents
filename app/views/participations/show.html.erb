@@ -1,28 +1,46 @@
 
 
 <div class="text-center">
-<h1>Bienvenue
-<%= @participant.first_name %>
-<%= @participant.last_name %>
-</h2>
+  <h2><%= @participation.ticket.event.name %></h2>
+  <h3>Bienvenue
+    <%= @participant.first_name %>
+    <%= @participant.last_name %>
+  </h3>
 
-<h2><%= @participation.ticket.event.name %></h2>
-<h2><%= @participation.ticket.name %></h2>
+<h5>Vous pratiquez: <%= @participation.ticket.name %></h5>
 
-<p><%= @participant.email %></p>
-<p>je fais <%= @participation.ticket.name %></p>
+<p>Mon adresse : <%= @participant.email %></p>
+<div class="btn btn-primary">Valider mon panier <%= @total %> euros</div>
+<% @total = @participation.ticket.unit_price %>
+      <div class="row">
+        <% @orders.each do |order| %>
+            <% if order.option.category == 'Alimentaire' %>
+              <%= render 'show_option_card', option: order.option, order: order, orders: @orders %>
+              <% @total += order.option.unit_price * order.quantity %>
+            <% end %>
+        <% end %>
+        <% @orders.each do |order| %>
+            <% if order.option.category == 'Vestimentaire' %>
+              <%= render 'show_option_card', option: order.option, order: order, orders: @orders %>
+              <% @total += order.option.unit_price * order.quantity %>
+            <% end %>
+        <% end %>
+        <% @orders.each do |order| %>
+            <% if order.option.category == 'Autre' %>
+              <%= render 'show_option_card', option: order.option, order: order, orders: @orders %>
+              <% @total += order.option.unit_price * order.quantity %>
+            <% end %>
+        <% end %>
+        <% @orders.each do |order| %>
+            <% if order.option.category == 'Goodies' %>
+              <%= render 'show_option_card', option: order.option, order: order, orders: @orders %>
+              <% @total += order.option.unit_price * order.quantity %>
+            <% end %>
+        <% end %>
+      </div>
+  </div>
 
-<div class="row">
-  <% @orders.each do |order| %>
-    <div class="card col-2 me-2 my-2 p-3"><p><%= order.quantity %> x <%= order.option.name %>
-    <%= order.option.unit_price %>e <p>total <%= order.quantity * order.option.unit_price %> euros</p> </p>
 
 
-    <div class="btn btn-danger me-5">X</div>
-    </div>
-  <% end %>
-</div>
 
-<div class="btn btn-primary">Valider mon panier</div>
-
-</div>
+<%= console %>
