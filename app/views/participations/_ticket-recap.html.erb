@@ -1,9 +1,21 @@
-<li>
-    <p>
+<div class="row">
+<div class="col-1"></div>
+  <div class="col-1 text-center text-xl-end">
     <%= order.quantity %>
-    x
+  </div>
+  <div class="col-1 text-center text-xl-end">
+x
+</div>
+  <div class="col-5 text-center text-xl-start">
     <%= order.option.name %>
-    :
-    <%= order.quantity*order.option.unit_price %> euros
-    </p>
-</li>
+  </div>
+  <div class="col-3 text-center">
+    <p><%= order.option.unit_price*order.quantity %> euros</p>
+  </div>
+</div>
+
+<%#
+text-sm-end : Aligné à droite sur les petits écrans (≥576px).
+text-md-end : Aligné à droite sur les écrans moyens (≥768px).
+text-lg-end : Aligné à droite sur les écrans larges (≥992px).
+text-xl-end %>
