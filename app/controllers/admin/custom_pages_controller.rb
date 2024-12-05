@@ -10,6 +10,11 @@ module Admin
       else
         @tickets = @nextevent.tickets
       end
+      @total = 0
+      @totalinscription = 0
+      @totalalimentaire = 0
+      @totalvestimentaire = 0
+      @totalgoodies = 0
     end
 
     def events

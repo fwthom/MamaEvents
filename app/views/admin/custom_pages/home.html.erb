@@ -1,6 +1,6 @@
 
 <% if @nextevent === nil  %>
-  <div class="flash alert-dismissible fade show" role="alert">
+  <div class="flash flash-danger alert-dismissible fade show" role="alert">
     <span><strong>Oups!</strong> 😱 Pas d'évènement planifié pour le moment.</span>
     <a data-bs-dismiss="alert" aria-label="Close">
       <i class="fas fa-times"></i>
@@ -35,7 +35,7 @@
         <ul>
           <% @tickets.each do |ticket| %>
           <li>
-            <p><strong><%=ticket.name %> :</strong> <%=ticket.participations.count %> inscrits</p>
+            <p><strong><%=ticket.name %> : </strong> <%=ticket.participations.count %> inscrits</p>
           </li>
           <% end %>
         </ul>
@@ -44,14 +44,34 @@
         <h2>RECETTES</h2>
         <h3>grace à la <%= @nextevent.name %></h3>
 
+        <% @nextevent.participations.each do |participation| %>
+          <% @total += participation.total_amount %>
+          <% @totalinscription += participation.ticket.unit_price %>
+        <% end %>
 
-        <p class="bandeau"><strong>xxxxx €</strong></p>
+        <% @nextevent.orders.each do |order| %>
+
+          <% if order.option.category === "Alimentaire" %>
+            <% @totalalimentaire += order.option.unit_price * order.quantity %>
+          <% end %>
+
+          <% if order.option.category === "Vestimentaire" %>
+            <% @totalvestimentaire += order.option.unit_price * order.quantity %>
+          <% end %>
+
+          <% if order.option.category === "Goodies" %>
+            <% @totalgoodies += order.option.unit_price * order.quantity %>
+          <% end %>
+
+        <% end %>
+
+        <p class="bandeau"><strong><%= @total %> €</strong></p>
 
         <ul>
-          <li><p><strong>inscriptions :</strong> xxxxxx €</p></li>
-          <li><p><strong>alimentaire :</strong> xxxxxx €</p></li>
-          <li><p><strong>vestimentaire :</strong> xxxxxx €</p></li>
-          <li><p><strong>goodies :</strong> xxxxxx €</p></li>
+          <li><p><strong>inscriptions : </strong><%= @totalinscription %> €</p></li>
+          <li><p><strong>alimentaire : </strong><%= @totalalimentaire %> €</p></li>
+          <li><p><strong>vestimentaire : </strong><%= @totalvestimentaire %> €</p></li>
+          <li><p><strong>goodies : </strong> <%= @totalgoodies %> €</p></li>
         </ul>
       </div>
     </div>
