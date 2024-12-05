@@ -2,7 +2,7 @@
   justify-content: space-between;
   background: white;
   align-items: center;
-  border-bottom: 5px double $very-rose;
+  border-bottom: 4px solid $very-rose;
 }
 
 .navbar-calpin .navbar-collapse {
@@ -31,12 +31,11 @@
 }
 
 .navbar-calpin .nav-link-active {
-  text-decoration: underline;
-  text-underline-offset: 10px;
+  text-decoration: none;
   color: $very-rose;
   font-size: 16px;
   font-family: "Poppins", serif;
-  font-weight: 400;
+  font-weight: 600;
   font-style: normal;
   text-shadow: 0 4px 12px rgba(222, 46, 107, 0.3);
 }

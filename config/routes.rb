@@ -42,9 +42,7 @@ Rails.application.routes.draw do
   resources :participations, only: [:edit, :update, :show]
 
   resources :events, only: [:index, :show] do
-    resources :participants, only: [:new, :create] do
-      resources :participations, only: [:new, :create]
-    end
+    resources :participants, only: [:new, :create]
   end
 
   resources :participants do
