@@ -12,9 +12,13 @@ class PaymentsController < ApplicationController
 
 
   def create
+    Rails.logger.info "Received params: #{params.inspect}" # Log all incoming parameters
+
     amount = params[:amount].to_i * 100
-    amount = amount.to_i
     payment_method_id = params[:payment_method_id]
+    @payable = find_payable
+
+    Rails.logger.info "Payable: #{@payable.inspect}" # Log the payable object
 
     payment_intent = Stripe::PaymentIntent.create(
       amount: amount,
@@ -24,18 +28,24 @@ class PaymentsController < ApplicationController
       confirm: true,
       return_url: success_payments_url
     )
+
     @payment = Payment.create!(
       payment_reference: payment_intent.id,
       amount: amount / 100.0,
       status: payment_intent.status,
-      payable: find_payable
+      payable: @payable
     )
+
+    if payment_intent.status == "succeeded" && @payable.is_a?(Participation)
+      @payable.update(status: "confirmed")
+    end
 
     render json: { client_secret: payment_intent.client_secret }
   rescue Stripe::StripeError => e
-
+    Rails.logger.error "Stripe error: #{e.message}" # Log Stripe errors
     render json: { error: e.message }, status: :unprocessable_entity
   end
+
 
   def success
     render plain: "Payment Successful!"
