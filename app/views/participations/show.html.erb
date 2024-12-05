@@ -1,66 +1,99 @@
+<% if @participation.status != 'confirmed' %>
+  <%= link_to new_payment_path(participation_id: @participation.id), class:"text-decoration-none" do %>
+    <div class="flash alert-danger">
+      <span><strong>Attention!</strong> Votre participation a <%= @participation.ticket.event.name %> n'est pas encore confirmée. Procédez au paiement de <%= @participation.total_amount %></span>
+      <i class="fa-solid fa-arrow-right"></i>
+    </div>
+  <% end %>
+<% end %>
+
+<% if @participation.status != 'confirmed' %>
+  <%= link_to new_payment_path(@participation), class:"text-decoration-none" do %>
+    <div class="flash alert-danger">
+      <span><strong>Attention!</strong> Votre participation a <%= @participation.ticket.event.name %> n'est pas encore confirmée. Procédez au paiement de <%= @participation.total_amount %> euros</span>
+      <i class="fa-solid fa-arrow-right"></i>
+    </div>
+  <% end %>
+<% end %>
 
 
+
+<div class="card">
+
+<div class="p-3">
+<p style="text-align:left; margin-left:10px;"><%= @participant.email %></p>
 <div class="text-center">
   <h2><%= @participation.ticket.event.name %></h2>
   <h3>Bienvenue
     <%= @participant.first_name %>
-    <%= @participant.last_name %>
+
   </h3>
+  <h5>L'évènement commence le <%= @participation.ticket.event.date.day %> . <%= @participation.ticket.event.date.month %> . <%= @participation.ticket.event.date.year %></h5>
+  <p><%= @participation.ticket.event.description %></p>
 
-<h5>Vous pratiquez: <%= @participation.ticket.name %></h5>
 
-<p>Mon adresse : <%= @participant.email %></p>
-<div class="btn btn-primary">Valider mon panier <%= @total %> euros</div>
-<% @total = @participation.ticket.unit_price %>
+  <div class="row justify-content-center">
+  <div class="bg-white col-4 p-3">
+  <p><%= @participation.ticket.name %> <%= @participation.ticket.unit_price %> euros</p>
+
+
 
       <div class=" row justify-content-center">
+
+        <div class =" COLONNE col-12">
+
+
+  </br>
+      <ul class="list-unstyled">
         <% @orders.each do |order| %>
 
-         <h3> <div><%= order.option.category %></div></h3>
-
             <% if order.option.category == 'Alimentaire' %>
-       <div class ="col-sm-12 col-md-4 col-lg-6 col-xl-6 col-xxl-6">
-              <%= render 'show_option_card', option: order.option, order: order, orders: @orders %>
-              </div>
-              <% @total += order.option.unit_price * order.quantity %>
+
+             <%= render 'ticket-recap', option: order.option, order: order, orders: @orders %>
+
+
+
             <% end %>
         <% end %>
-      </div>
+
 
       <div class="row justify-content-center">
         <% @orders.each do |order| %>
             <% if order.option.category == 'Vestimentaire' %>
-             <div class ="col-sm-12 col-md-4 col-lg-6 col-xl-6 col-xxl-6">
-              <%= render 'show_option_card', option: order.option, order: order, orders: @orders %>
-                </div>
-              <% @total += order.option.unit_price * order.quantity %>
+
+
+              <%= render 'ticket-recap', option: order.option, order: order, orders: @orders %>
+
+
             <% end %>
         <% end %>
       </div>
       <div class="row justify-content-center">
         <% @orders.each do |order| %>
             <% if order.option.category == 'Autre' %>
-                <div class ="col-sm-12 col-md-4 col-lg-6 col-xl-6 col-xxl-6">
-                  <%= render 'show_option_card', option: order.option, order: order, orders: @orders %>
-                </div>
-              <% @total += order.option.unit_price * order.quantity %>
+
+                  <%= render 'ticket-recap', option: order.option, order: order, orders: @orders %>
+
           <% end %>
         <% end %>
       </div>
       <div class="row justify-content-center">
         <% @orders.each do |order| %>
             <% if order.option.category == 'Goodies' %>
-             <div class ="col-sm-12 col-md-4 col-lg-6 col-xl-6 col-xxl-6">
-              <%= render 'show_option_card', option: order.option, order: order, orders: @orders %>
-              </div>
-              <% @total += order.option.unit_price * order.quantity %>
+
+              <%= render 'ticket-recap', option: order.option, order: order, orders: @orders %>
+
+
             <% end %>
         <% end %>
       </div>
-      </div>
+    </div>
   </div>
+</div>
+</div>
+</card>
+</div>
+</div>
 
-
-
-
-<%= console %>
+</div>
+</card>

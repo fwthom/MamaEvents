@@ -2,6 +2,7 @@ class Participation < ApplicationRecord
   belongs_to :participant
   belongs_to :ticket
   belongs_to :payment, optional: true
+  has_one :payment, as: :payable
   has_many :orders, dependent: :destroy
   has_many :options, through: :orders
 

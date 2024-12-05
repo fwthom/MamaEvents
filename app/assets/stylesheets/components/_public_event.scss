@@ -1,5 +1,5 @@
 /* Container styling */
-.event-content-container {
+.p-event-content-container {
   max-width: 900px;
   margin: 20px auto;
   padding: 20px;
@@ -9,35 +9,33 @@
 }
 
 /* Title */
-.event-title {
+.p-event-title {
   text-align: center;
-  color: $color-text; /* Couleur principale */
+  color: #343a40; /* Couleur principale */
   margin-bottom: 20px;
-  font-size: 30px;
 }
 
 /* Button styles */
-.event-action-logo {
+.p-event-action-button {
   display: inline-block;
-  padding: 8px 16px;
+  padding: 10px 20px;
   font-size: 16px;
   font-weight: bold;
-  color: $very-rose;
+  border-radius: 20px;
+  background: #007bff; /* Couleur de Bootstrap */
+  color: white;
   text-align: center;
   text-decoration: none;
   transition: background-color 0.3s ease;
+  margin-top: 15px;
 }
 
-.event-action-logo:hover {
-  color: $very-rose-hover;
-}
-
-.btn-download {
-  margin: 16px;
+.p-event-action-button:hover {
+  background: #0056b3; /* Couleur au survol */
 }
 
 /* Card container */
-.card-container {
+.p-card-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Grid responsive */
   gap: 20px;
@@ -45,7 +43,7 @@
 }
 
 /* Individual card styling */
-.card-event {
+.p-card-event {
   background-color: white;
   border-radius: 8px;
   padding: 20px;
@@ -54,15 +52,15 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.card-event:hover {
+.p-card-event:hover {
   transform: translateY(-5px);
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
 }
 
 /* Card image */
-.event-image {
-  width: 100%;
-  height: auto;
+.p-event-image {
+  width: 100%; 
+  height: auto; 
   object-fit: cover; /* Assure que l'image couvre toute la zone de l'élément sans distorsion */
   border-radius: 8px;
   margin-bottom: 15px;
@@ -71,24 +69,24 @@
 }
 
 /* Card text */
-.card-event h3 {
+.p-card-event h3 {
   color: #343a40;
   font-size: 1.5rem;
   margin-bottom: 10px;
 }
 
-.card-event p {
+.p-card-event p {
   color: #495057;
   font-size: 1rem;
   margin-bottom: 10px;
 }
 
-.card-event strong {
+.p-card-event strong {
   font-weight: bold;
   color: #343a40;
 }
 
-.card-event .btn {
+.p-card-event .btn {
   font-size: 14px;
   padding: 8px 16px;
   border-radius: 8px;
@@ -98,11 +96,11 @@
 
 /* Adjustments for mobile */
 @media (max-width: 600px) {
-  .card-container {
+  .p-card-container {
     grid-template-columns: 1fr;
   }
 
-  .event-action-button {
+  .p-event-action-button {
     width: 100%;
     text-align: center;
   }

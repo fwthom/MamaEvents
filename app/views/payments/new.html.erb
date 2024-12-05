@@ -12,6 +12,10 @@
       <p><strong>Donateur:</strong> <%= @payable.first_name %> <%= @payable.last_name %></p>
       <p><strong>Adresse:</strong> <%= @payable.address %>, <%= @payable.postal_code %>, <%= @payable.city %></p>
     </div>
+    <% elsif @payable.is_a?(Participation) %>
+  <h1>Paiment pour votre participation</h1>
+  <p>Ticket: <%= @payable.ticket.name %></p>
+  <p>Montant total: <%= number_to_currency(@payable.total_amount, unit: "€") %></p> 
   <% end %>
 
   <%= render "payments/stripe_form", payment: @payment %>

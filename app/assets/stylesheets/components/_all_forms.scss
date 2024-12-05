@@ -1,0 +1,50 @@
+.registration-container {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #f8f9fa; /* Couleur de fond de Bootstrap */
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+.form-group label {
+  font-weight: 400;
+  color: rgb(87, 87, 87);
+  margin-bottom: 5px;
+}
+
+.form-control,
+.form-select {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  padding: 10px;
+  transition: border-color 0.3s;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: $very-rose;
+  box-shadow: 0 0 5px black;
+}
+
+.btn-submit {
+  background-color: $very-rose;
+  border: none;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  border-radius: 4px;
+  transition: $background-rose 0.3s, transform 0.2s;
+}
+
+.btn-submit:hover {
+  background-color: $very-rose-hover;
+  transform: translateY(-2px);
+}
+
+.btn-submit:active {
+  background-color: darken($very-rose, 10%);
+  transform: translateY(0);
+}

@@ -1,33 +1,35 @@
-<div class=" me-2 my-2 card-option mb-4 shadow-sm">
-  <div class="col-4">
-  <% if option.emoji.present? %>
-    <div class="card-option-emoji text-center">
-      <span class="emoji-display"><%= option.emoji %></span>
-    </div>
-  <% end %>
-</div>
-<div class="col-0"></div>
-<div class="col-8">
-  <div class="card-option-content justify-content-center">
-    <div class="card-option-details">
-      <h4 class="card-option-title"><%= option.name %></h4>
-      <% if option.description.present? %>
-        <p class="card-option-description"><%= option.description %></p>
-      <% end %>
 
-      <p class="card-option-price"><strong>Prix unitaire : <%= option.unit_price %> €</strong></p>
-      <p> quantité <%= order.quantity %></p>
-      <p> total <%= option.unit_price * order.quantity %> euros</p>
+
+
+
+
+
+  <div class="d-flex">
+    <div class="col-1">
+    <p>FOIS</p>
     </div>
 
 
-    <div class="card-option-quantity mt-3">
-      <div class="form-group">
-</div>
+    <div class="col-1 justify-content-center border border-1">
 
 
+    </div>
 
+    <div class="col-6 border border-1">
+
+      <div class=" justify-content-center">
+        <div class="">
+          <h4 class="">
+            <%= option.name %>
+          </h4>
+          <% if option.description.present? %>
+            <p class=""><%= option.description %></p>
+          <% end %>
+
+          <p class="card-option-price"><strong>Prix unitaire : <%= option.unit_price %> €</strong></p>
+          <p> quantité <%= order.quantity %></p>
+          <p> total <%= option.unit_price * order.quantity %> euros</p>
+        </div>
       </div>
     </div>
   </div>
-</div>

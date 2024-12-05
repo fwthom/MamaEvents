@@ -1,0 +1,12 @@
+<% if @participation.status != "confirmed" %>
+  <div class="alert alert-warning">
+    Votre participation n'a pas encore été payée.
+    <%= link_to new_payment_path(participation_id: @participation.id), class: "text-decoration-none" do %>
+      Cliquez ici pour procéder au paiement.
+    <% end %>
+  </div>
+<% else %>
+  <div class="alert alert-success">
+    Merci, votre participation a été confirmée !
+  </div>
+<% end %>

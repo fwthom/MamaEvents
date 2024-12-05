@@ -89,3 +89,17 @@
   color: white !important;
   transform: translateY(1px) !important;
 }
+
+.label {
+  display: inline-block;
+  padding: 0.2em 0.6em;
+  font-size: 0.8em;
+  font-weight: 700;
+  color: #fff;
+  background-color: #007bff; /* Adjust for your color scheme */
+  border-radius: 0.25em;
+}
+
+.label-secondary {
+  background-color: #6c757d; /* Adjust for your secondary color */
+}
