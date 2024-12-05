@@ -1,6 +1,10 @@
 
 <div class="container-home-dashboard" data-controller="countdown" data-countdown-event-date-value="<%= @event.date %> 10:00:00">
   <div class="header" >
+     <div class="d-flex align-items-center justify-content-center">
+        <h1 class="mx-3">Evénement dans :</h1>
+        <p id="next-event" class="countdown-timer" style ="font-size: 2rem" data-countdown-target="timer"></p>
+      </div>
       <div class="card-product">
         <% if @event.image.attached? %>
           <%= cl_image_tag @event.image.key %>
@@ -16,27 +20,23 @@
           </div>
 
           <h2><%= @event.name %></h2>
-          <p><%= truncate(@event.description, length: 100, separator: ' ', omission: '...') %></p>
-          <p><%=link_to "Voir l'évènement", event_path(@event) %></p>
+          <p><%= @event.description %></p>
           <p><%= @event.date %></p>
         </div>
       </div>
-      <div class="d-flex align-items-center justify-content-center">
-        <h1 class="mx-3">Evénement dans :</h1>
-        <p id="next-event" class="countdown-timer" data-countdown-target="timer"></p>
-      </div>
+
     </div>
 
     <div class="card-product justify-content-center">
       <div style="margin: 16px">
-        <h1 class="event-title">Modifier le statut de l'évènement</h1>
+        <h2 class="event-title">Statut de l'évènement</h2>
         <ul class="event-info-list">
           <li class="event-info-item" style="font-style: italic; font-size: 12px">Brouillon : l'évènement n'apparaît que pour vous</li>
           <li class="event-info-item" style="font-style: italic; font-size: 12px">Publié : l'évènement est visible, et les participants peuvent s'inscrire</li>
         </ul>
-        <%= simple_form_for @event, url: publish_admin_event_path(@event), html: { class: 'event-form-container' } do |f| %>
-          <%= f.input :status, collection: Event::STATUS_OPTIONS, as: :select, prompt: "Choisir un statut", input_html: { class: 'form-select' } %>
-          <%= f.submit "Enregistrer", class: "btn btn-rose" %>
+        <%= simple_form_for @event, url: publish_admin_event_path(@event) do |f| %>
+          <%= f.input :status,label: false, collection: Event::STATUS_OPTIONS, as: :select, prompt: "Choisir un statut" %>
+          <%= f.submit "Enregistrer", class:" btn-rose w-100" %>
         <% end %>
       </div>
     </div>
@@ -90,10 +90,17 @@
       </div>
     </div>
 
-    <div style="margin-top: 16px; text-align: center">
-      <%= link_to "Télécharger les options", download_options_xlsx_admin_event_path, class: "btn btn-rose", data: { turbo: false } %>
+     <div class="card-product justify-content-center">
+      <div style="margin: 16px">
+        <h2 class="event-title">Télécharger les données :</h2>
+        <div class="d-flex justify-content-between">
+          <%= link_to "Télécharger les options", download_options_xlsx_admin_event_path, class: "btn btn-rose btn-download", data: { turbo: false } %>
+          <%= link_to "Télécharger les n° de dossard", download_bib_numbers_xlsx_admin_event_path, class: "btn btn-rose btn-download", data: { turbo: false } %>
+        </div>
+      </div>
     </div>
-    <div style="margin-top: 16px; text-align: center">
-      <%= link_to "Télécharger les n° de dossard", download_bib_numbers_xlsx_admin_event_path, class: "btn btn-rose", data: { turbo: false } %>
-    </div>
+
+
+
+
 </div>

@@ -11,8 +11,9 @@
 /* Title */
 .event-title {
   text-align: center;
-  color: #343a40; /* Couleur principale */
+  color: $color-text; /* Couleur principale */
   margin-bottom: 20px;
+  font-size: 30px;
 }
 
 /* Button styles */
@@ -29,6 +30,10 @@
 
 .event-action-logo:hover {
   color: $very-rose-hover;
+}
+
+.btn-download {
+  margin: 16px;
 }
 
 /* Card container */
