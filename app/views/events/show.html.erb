@@ -1,16 +1,15 @@
 <div class="container-pages-publiques">
-  <div class="p-event-content-container">
+  <div class="p-ticket-content-container">
+    <h1>Les tickets pour <%= @event.name %></h1>
+    <div class="p-tickets-container">
       <% @tickets.each do |ticket| %>
-        <div class="row">
             <div class="p-card-ticket">
               <h3><%= ticket.name %></h3>
               <p><%= truncate(ticket.description, length: 100) %></p>
               <p><strong>Prix :</strong> <%= ticket.unit_price %> €</p>
             <%= link_to "Choisir", new_event_participant_path(@event, ticket_id: ticket.id), class: "btn btn-primary mt-3" %>
             </div>          
-        </div>
       <% end %>
-
-
+    </div>
 </div>
 </div>

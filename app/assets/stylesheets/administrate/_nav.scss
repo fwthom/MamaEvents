@@ -6,8 +6,6 @@
   padding: 20px 30px; /* Balanced padding */
   width: max-content; /* Adjust width dynamically to fit content */
   background-color: #FFDADE; /* Light pink */
-  border-right: 1px solid #E95286; /* Subtle border */
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Light shadow */
   position: relative; /* Ensure relative positioning for fixed elements inside */
 }
 
@@ -19,7 +17,6 @@
   font-weight: bold;
   color: #0E0000; /* Dark text color */
   text-align: left; /* Align text to the left */
-  border-bottom: 1px solid #E95286; /* Subtle bottom border */
 }
 
 /* Header Content */
@@ -27,6 +24,7 @@
   font-size: inherit; /* Match the font size of the header */
   font-weight: inherit; /* Match the weight of the header */
   color: inherit; /* Match the color of the header */
+  text-align: center;
 }
 
 
@@ -39,11 +37,13 @@
 
 /* Section Title */
 .navigation__section-title {
-  font-family: Arial, sans-serif;
+  padding-top: 16px;
+  border-top: 2px solid black;
+  font-family: 'Poppins';
   font-size: 18px;
   font-weight: bold;
   color: #0E0000; /* Dark text color */
-  text-align: center; /* Center section titles */
+  text-align: left; /* Center section titles */
   white-space: nowrap; /* Prevent wrapping of text */
 }
 
@@ -60,18 +60,19 @@
 .navigation__helper {
   font-size: 12px;
   color: #6c757d;
-  text-align: center;
-  margin-top: -20px;
+  text-align: left;
+  margin-top: 40px;
+  margin-bottom: 8px;
   font-style: italic;
 }
 
 /* Section Separator */
-.navigation__separator {
-  height: 1px;
-  background-color: #E95286; /* Accent color */
-  margin: 10px 0;
-  width: 100%; /* Full width separator */
-}
+// .navigation__separator {
+//   height: 1px;
+//   background-color: #E95286; /* Accent color */
+//   margin: 10px 0;
+//   width: 100%; /* Full width separator */
+// }
 
 /* Navigation Links Container */
 .navigation__list {
@@ -89,13 +90,18 @@
   text-decoration: none;
   padding: 8px 10px; /* Adjusted padding for spacing */
   border-radius: 5px;
-  font-family: Arial, sans-serif;
+  font-family: 'Poppins';
   transition: background-color 0.3s ease, color 0.3s ease;
   white-space: nowrap; /* Prevent wrapping of text */
   text-align: left; /* Ensure links remain left-aligned */
   width: 100%; /* Align links with section width */
 
   &:hover {
+    background-color: #E95286; /* Hover color */
+    color: #fff; /* White text */
+  }
+
+  &:active {
     background-color: #E95286; /* Hover color */
     color: #fff; /* White text */
   }
@@ -168,4 +174,8 @@
   background-color: #FFDADE; /* Light pink */
   padding: 5px; /* Compact padding */
   margin: 0; /* Remove any default margins */
+}
+
+.background {
+  background-color:#FFDADE ;
 }

@@ -1,4 +1,5 @@
 <nav class="navigation">
+  
   <!-- Header -->
   <div class="transparent-header">
     <div class="header-content">Admin</div>
@@ -7,7 +8,7 @@
   <!-- Asso Section -->
   <div class="navigation__section">
     <p class="navigation__section-title">
-      <i class="fa fa-building"></i> Asso
+      L'association
     </p>
     <ul class="navigation__list">
       <li><%= link_to raw('<i class="fa fa-home"></i> Accueil'), admin_root_path, class: 'navigation__link' %></li>
@@ -19,12 +20,14 @@
 
   <!-- Événements Section -->
   <div class="navigation__section">
-    <p class="navigation__section-title">
-      <%= link_to raw('<i class="fa fa-calendar"></i> Événements'), admin_events_path, class: 'navigation__section-title-link' %>
+       <p class="navigation__section-title">
+       Évènements
     </p>
     <% if @current_event %>
-      <p class="navigation__helper"> Actuel : <%= @current_event.name %></p>
-      <p class="navigation__helper"><%= link_to raw('<i class="fa fa-times-circle text-danger"></i> Effacer la sélection'), admin_clear_event_path, method: :delete, class: 'navigation__clear-link' %></p>
+    <ul class="navigation__list">
+      <li> <strong>Vous éditez : <%= @current_event.name %></strong></li>
+      <li><%= link_to raw('<i class="fa-solid fa-arrow-left"></i></i> Revenir aux évènements'), admin_events_path, class: 'navigation__link' %></li>
+      </ul>
     <ul class="navigation__list">
       <ul class="navigation__list">
         <li><%= link_to raw('<i class="fa fa-users"></i> Participations'), admin_event_participations_path(@current_event), class: 'navigation__link' %></li>
@@ -33,10 +36,12 @@
       </ul>
     <% else %>
       <ul class="navigation__list">
-        <p class="navigation__helper">Choisissez un évènement ci-dessous</p>
+      <li><%= link_to raw("<i class='fa fa-calendar-check'></i> Voir tous"), admin_events_path, class: 'navigation__link' %></li>
+
+        <p class="navigation__helper">Prochains évènements</p>
         <% Event.order(created_at: :desc).limit(3).each do |event| %>
-          <li><%= link_to raw("<i class='fa fa-calendar-check'></i> #{event.name}"), admin_event_path(event), class: 'navigation__link' %></li>
-        <% end %>
+          <li><%= link_to raw(" #{event.name}   <i class='fa-solid fa-arrow-right'></i>"), admin_event_path(event), class: 'navigation__link' %></li>
+        <% end %>        
       </ul>
     <% end %>
   </div>
