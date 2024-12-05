@@ -16,22 +16,19 @@
 }
 
 /* Button styles */
-.event-action-button {
+.event-action-logo {
   display: inline-block;
-  padding: 10px 20px;
+  padding: 8px 16px;
   font-size: 16px;
   font-weight: bold;
-  border-radius: 20px;
-  background: #007bff; /* Couleur de Bootstrap */
-  color: white;
+  color: $very-rose;
   text-align: center;
   text-decoration: none;
   transition: background-color 0.3s ease;
-  margin-top: 15px;
 }
 
-.event-action-button:hover {
-  background: #0056b3; /* Couleur au survol */
+.event-action-logo:hover {
+  color: $very-rose-hover;
 }
 
 /* Card container */
@@ -59,8 +56,8 @@
 
 /* Card image */
 .event-image {
-  width: 100%; 
-  height: auto; 
+  width: 100%;
+  height: auto;
   object-fit: cover; /* Assure que l'image couvre toute la zone de l'élément sans distorsion */
   border-radius: 8px;
   margin-bottom: 15px;

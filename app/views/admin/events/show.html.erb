@@ -1,37 +1,99 @@
-<div class="event-content-container">
 
-  <h1 class="event-title"><%= @event.name %></h1>
-  <h2 class="event-subtitle">Statut : <%= @event.status %></h2>
-  
-  <p class="event-description"><%= @event.description %></p>
-  <p class="event-location"><%= @event.location %></p>
-  <p class="event-date"><%= @event.date %></p>
+<div class="container-home-dashboard" data-controller="countdown" data-countdown-event-date-value="<%= @event.date %> 10:00:00">
+  <div class="header" >
+      <div class="card-product">
+        <% if @event.image.attached? %>
+          <%= cl_image_tag @event.image.key %>
+        <% else %>
+          <%= image_tag "logo.png", class: "event-image" %>
+        <% end %>
+        <div class="card-product-infos">
+          <div style="text-align: right">
+            <%= link_to edit_admin_event_path(@event), class: "event-action-logo" do %>
+              <span class="visually-hidden">Edit</span>
+              <i class="fas fa-edit event-edit-icon"></i>
+            <% end %>
+          </div>
 
-  <% if @event.image.attached? %>
-    <%= cl_image_tag @event.image.key, class: "event-image" %>
-  <% else %>
-    <%= image_tag "logo.png", class: "event-image" %>
-  <% end %>
+          <h2><%= @event.name %></h2>
+          <p><%= truncate(@event.description, length: 100, separator: ' ', omission: '...') %></p>
+          <p><%=link_to "Voir l'évènement", event_path(@event) %></p>
+          <p><%= @event.date %></p>
+        </div>
+      </div>
+      <div class="d-flex align-items-center justify-content-center">
+        <h1 class="mx-3">Evénement dans :</h1>
+        <p id="next-event" class="countdown-timer" data-countdown-target="timer"></p>
+      </div>
+    </div>
 
-  <%= link_to edit_admin_event_path(@event), class: "event-action-button" do %>
-    <span class="visually-hidden">Edit</span>
-    <i class="fas fa-edit event-edit-icon"></i>
-  <% end %>
+    <div class="card-product justify-content-center">
+      <div style="margin: 16px">
+        <h1 class="event-title">Modifier le statut de l'évènement</h1>
+        <ul class="event-info-list">
+          <li class="event-info-item" style="font-style: italic; font-size: 12px">Brouillon : l'évènement n'apparaît que pour vous</li>
+          <li class="event-info-item" style="font-style: italic; font-size: 12px">Publié : l'évènement est visible, et les participants peuvent s'inscrire</li>
+        </ul>
+        <%= simple_form_for @event, url: publish_admin_event_path(@event), html: { class: 'event-form-container' } do |f| %>
+          <%= f.input :status, collection: Event::STATUS_OPTIONS, as: :select, prompt: "Choisir un statut", input_html: { class: 'form-select' } %>
+          <%= f.submit "Enregistrer", class: "btn btn-rose" %>
+        <% end %>
+      </div>
+    </div>
 
-   <h1 class="event-title">Modifier le statut de l'évènement</h1>
-  <ul class="event-info-list">
-    <li class="event-info-item">Brouillon : l'évènement n'apparaît que pour vous</li>
-    <li class="event-info-item">Publié : l'évènement est visible, et les participants peuvent s'inscrire</li>
-  </ul>
+    <div class="affichage-des-chiffres">
+      <div class="inscriptions">
+        <h2> INSCRIPTIONS </h2>
+        <h3>à la <%= @event.name %></h3>
+        <p class="bandeau"><strong><%= @event.participations.count %> inscrits</strong></p>
+        <ul>
+          <% @tickets.each do |ticket| %>
+          <li>
+            <p><strong><%=ticket.name %> : </strong> <%=ticket.participations.count %> inscrits</p>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+      <div class="money">
+        <h2>RECETTES</h2>
+        <h3>grace à la <%= @event.name %></h3>
 
-  <%= simple_form_for @event, url: publish_admin_event_path(@event), html: { class: 'event-form-container' } do |f| %>
-    <%= f.input :status, collection: Event::STATUS_OPTIONS, as: :select, prompt: "Choisir un statut", input_html: { class: 'form-select' } %>
-    <%= f.submit "Enregistrer", class: "event-action-button" %>
-  <% end %>
+        <% @event.participations.each do |participation| %>
+          <% @total += participation.total_amount %>
+          <% @totalinscription += participation.ticket.unit_price %>
+        <% end %>
 
-  <%= link_to "Télécharger les options", download_options_xlsx_admin_event_path, class: "btn btn-primary", data: { turbo: false } %>
+        <% @event.orders.each do |order| %>
 
+          <% if order.option.category === "Alimentaire" %>
+            <% @totalalimentaire += order.option.unit_price * order.quantity %>
+          <% end %>
 
-  <%= link_to "Télécharger les n° de dossard", download_bib_numbers_xlsx_admin_event_path, class: "btn btn-primary", data: { turbo: false } %>
+          <% if order.option.category === "Vestimentaire" %>
+            <% @totalvestimentaire += order.option.unit_price * order.quantity %>
+          <% end %>
 
+          <% if order.option.category === "Goodies" %>
+            <% @totalgoodies += order.option.unit_price * order.quantity %>
+          <% end %>
+
+        <% end %>
+
+        <p class="bandeau"><strong><%= @total %> €</strong></p>
+
+        <ul>
+          <li><p><strong>inscriptions : </strong><%= @totalinscription %> €</p></li>
+          <li><p><strong>alimentaire : </strong><%= @totalalimentaire %> €</p></li>
+          <li><p><strong>vestimentaire : </strong><%= @totalvestimentaire %> €</p></li>
+          <li><p><strong>goodies : </strong> <%= @totalgoodies %> €</p></li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="margin-top: 16px; text-align: center">
+      <%= link_to "Télécharger les options", download_options_xlsx_admin_event_path, class: "btn btn-rose", data: { turbo: false } %>
+    </div>
+    <div style="margin-top: 16px; text-align: center">
+      <%= link_to "Télécharger les n° de dossard", download_bib_numbers_xlsx_admin_event_path, class: "btn btn-rose", data: { turbo: false } %>
+    </div>
 </div>
