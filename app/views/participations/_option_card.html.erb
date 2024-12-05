@@ -19,7 +19,8 @@
       <div class="form-group">
         <%= label_tag "orders[#{option.id}][quantity]", "Quantité", class: "form-label" %>
         <div class="input-group">
-          <%= number_field_tag "orders[#{option.id}][quantity]", order&.quantity || 0, min: 0, class: "form-control quantity-input", data: { unit_price: option.unit_price, target: "price-calculator.quantity" }, id: "quantity_#{option.id}", step: 1 %>
+<%= number_field_tag "orders[#{option.id}][quantity]", order&.quantity || 0, min: 0, class: "form-control quantity-input", style: "width: 80px;", data: { unit_price: option.unit_price, target: "price-calculator.quantity" }, id: "quantity_#{option.id}", step: 1 %>
+
         </div>
       </div>
     </div>
