@@ -1,99 +1,24 @@
 <% if @participation.status != 'confirmed' %>
-  <%= link_to new_payment_path(participation_id: @participation.id), class:"text-decoration-none" do %>
+  <%= link_to new_payment_path(participation_id: @participation.id), class: "text-decoration-none" do %>
     <div class="flash alert-danger">
-      <span><strong>Attention!</strong> Votre participation a <%= @participation.ticket.event.name %> n'est pas encore confirmée. Procédez au paiement de <%= @participation.total_amount %></span>
+      <span>
+        <strong>Attention!</strong> Votre participation à <%= @participation.ticket.event.name %> n'est pas encore confirmée. Procédez au paiement de <%= @participation.total_amount %> euros
+      </span>
       <i class="fa-solid fa-arrow-right"></i>
     </div>
   <% end %>
 <% end %>
 
-<% if @participation.status != 'confirmed' %>
-  <%= link_to new_payment_path(@participation), class:"text-decoration-none" do %>
-    <div class="flash alert-danger">
-      <span><strong>Attention!</strong> Votre participation a <%= @participation.ticket.event.name %> n'est pas encore confirmée. Procédez au paiement de <%= @participation.total_amount %> euros</span>
-      <i class="fa-solid fa-arrow-right"></i>
-    </div>
-  <% end %>
-<% end %>
+<div class="container">
+  <div class="p-3 text-center">
+    <h3>Merci <%= @participant.first_name %> pour votre inscription à la</h3>
+    <h2><%= @participation.ticket.event.name %></h2>
+    <p>Voici le récapitulatif de votre commande :</p>
 
+    <%= render "shared/receipt", participation: @participation %>
 
-
-<div class="card">
-
-<div class="p-3">
-<p style="text-align:left; margin-left:10px;"><%= @participant.email %></p>
-<div class="text-center">
-  <h2><%= @participation.ticket.event.name %></h2>
-  <h3>Bienvenue
-    <%= @participant.first_name %>
-
-  </h3>
-  <h5>L'évènement commence le <%= @participation.ticket.event.date.day %> . <%= @participation.ticket.event.date.month %> . <%= @participation.ticket.event.date.year %></h5>
-  <p><%= @participation.ticket.event.description %></p>
-
-
-  <div class="row justify-content-center">
-  <div class="bg-white col-4 p-3">
-  <p><%= @participation.ticket.name %> <%= @participation.ticket.unit_price %> euros</p>
-
-
-
-      <div class=" row justify-content-center">
-
-        <div class =" COLONNE col-12">
-
-
-  </br>
-      <ul class="list-unstyled">
-        <% @orders.each do |order| %>
-
-            <% if order.option.category == 'Alimentaire' %>
-
-             <%= render 'ticket-recap', option: order.option, order: order, orders: @orders %>
-
-
-
-            <% end %>
-        <% end %>
-
-
-      <div class="row justify-content-center">
-        <% @orders.each do |order| %>
-            <% if order.option.category == 'Vestimentaire' %>
-
-
-              <%= render 'ticket-recap', option: order.option, order: order, orders: @orders %>
-
-
-            <% end %>
-        <% end %>
-      </div>
-      <div class="row justify-content-center">
-        <% @orders.each do |order| %>
-            <% if order.option.category == 'Autre' %>
-
-                  <%= render 'ticket-recap', option: order.option, order: order, orders: @orders %>
-
-          <% end %>
-        <% end %>
-      </div>
-      <div class="row justify-content-center">
-        <% @orders.each do |order| %>
-            <% if order.option.category == 'Goodies' %>
-
-              <%= render 'ticket-recap', option: order.option, order: order, orders: @orders %>
-
-
-            <% end %>
-        <% end %>
-      </div>
+    <div class="text-center mt-4">
+      <%= link_to 'Procéder au paiement', new_payment_path(participation_id: @participation.id), class: 'btn btn-rose' %>
     </div>
   </div>
 </div>
-</div>
-</card>
-</div>
-</div>
-
-</div>
-</card>

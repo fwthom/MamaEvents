@@ -1,0 +1,35 @@
+<div class="receipt" style="background-color: var(--background-rose); border: 2px dotted #000; padding: 20px; margin: 0 auto; width: 50%; max-width: 400px;">
+  <div style="border-bottom: 1px solid #000; padding-bottom: 10px; margin-bottom: 10px;">
+    <p style="margin: 0; font-weight: bold;">Évènement : <%= participation.ticket.event.name %></p>
+    <p style="margin: 0; font-weight: bold;">Billet : <%= participation.ticket.name %></p>
+    <p style="margin: 0; text-align: right;"><%= number_to_currency(participation.ticket.unit_price, unit: "€") %></p>
+  </div>
+
+  <% ["Alimentaire", "Vestimentaire", "Autre", "Goodies"].each do |category| %>
+    <% category_orders = participation.orders.select { |order| order.option.category == category } %>
+    <% if category_orders.any? %>
+      <div style="border-bottom: 1px solid #000; padding-bottom: 10px; margin-bottom: 10px;">
+        <h5 style="margin: 0; text-align: left; text-transform: uppercase;"><%= category %></h5>
+        <% category_orders.each do |order| %>
+        <div style="display: flex; justify-content: space-between; margin: 5px 0;"> <!-- Spacing included -->
+          <span><%= order.option.name %> x <%= order.quantity %></span>
+          <span><%= number_to_currency(order.option.unit_price * order.quantity, unit: "€") %></span>
+        </div>
+      <% end %>
+      </div>
+    <% end %>
+  <% end %>
+
+  <div style="border-top: 2px solid #000; padding-top: 10px; font-weight: bold;">
+    <div style="display: flex; justify-content: space-between;">
+      <span>Total :</span>
+      <span>
+        <%= number_to_currency(
+        participation.orders.sum { |order| order.option.unit_price * order.quantity } + participation.ticket.unit_price,
+        unit: "€"
+      ) %>
+
+      </span>
+    </div>
+  </div>
+</div>
