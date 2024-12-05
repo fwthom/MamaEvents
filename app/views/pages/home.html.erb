@@ -1,6 +1,6 @@
 <div class="container-pages-publiques">
   <% if @nextevent != nil %>
-    <%= link_to new_event_participant_path(@nextevent), class:"text-decoration-none" do %>
+    <%= link_to event_path(@nextevent), class:"text-decoration-none" do %>
       <div class="flash alert-dismissible fade show">
         <span><strong>Yay!</strong> 🎉 Les inscriptions à la <%= @nextevent.name %> sont ouvertes </span>
         <i class="fa-solid fa-arrow-right"></i>
