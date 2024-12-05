@@ -22,8 +22,14 @@
             <td>
               <%= link_to participation.participant, admin_event_participant_path(@event, participation.participant) %>
             </td>
-            <td><%= participation.ticket.name %></td>
-            <td><%= participation.options.pluck(:name).join(", ") %></td>
+            <td>
+              <span class="label label-primary"><%= participation.ticket.name %></span>
+            </td>
+            <td>
+              <% participation.options.pluck(:name).each do |option_name| %>
+                <span class="label label-secondary"><%= option_name %></span>
+              <% end %>
+            </td>
             <td><%= number_to_currency(participation.total_amount) %></td>
             <td><%= participation.status %></td>
             <td>

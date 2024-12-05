@@ -10,7 +10,6 @@ class ParticipationsController < ApplicationController
     @participation.status = "created"
     # @participation.token = SecureRandom.urlsafe_base64(16, true)
     if @participation.save
-      # redirect_to @event, notice: 'Participation enregistrée attente paiment'
       redirect_to participation_path(@participation.participant), notice: 'Participation enregistrée attente paiement'
     else
       render :new
