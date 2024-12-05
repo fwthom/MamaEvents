@@ -7,7 +7,7 @@ export default class extends Controller {
 
   connect() {
     console.log("Stimulus connecté !");
-    console.log("Date de l'événement :", this.eventDateValue);
+    console.log("Date de l'évènement :", this.eventDateValue);
 
     if (!this.eventDateValue) {
       console.error("Aucune date fournie !");

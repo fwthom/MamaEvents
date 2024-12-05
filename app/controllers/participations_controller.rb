@@ -86,7 +86,7 @@ private
   end
 
   def set_bib_number
-    # Récupérer les participations associées au même ticket (et donc au même événement)
+    # Récupérer les participations associées au même ticket (et donc au même évènement)
     max_bib = Participation.where(ticket: @participation.ticket)
     .maximum(:bib_number) || 0
 
