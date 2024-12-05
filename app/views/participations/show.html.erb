@@ -7,6 +7,12 @@
       <i class="fa-solid fa-arrow-right"></i>
     </div>
   <% end %>
+<% else %>
+  <div class="flash alert-success">
+    <span>
+      <strong>Merci!</strong> Votre paiement a bien été reçu, et votre participation est confirmée.
+    </span>
+  </div>
 <% end %>
 
 <div class="container">
@@ -17,8 +23,10 @@
 
     <%= render "shared/receipt", participation: @participation %>
 
-    <div class="text-center mt-4">
-      <%= link_to 'Procéder au paiement', new_payment_path(participation_id: @participation.id), class: 'btn btn-rose' %>
-    </div>
+    <% if @participation.status != 'confirmed' %>
+      <div class="text-center mt-4">
+        <%= link_to 'Procéder au paiement', new_payment_path(participation_id: @participation.id), class: 'btn btn-rose' %>
+      </div>
+    <% end %>
   </div>
 </div>

@@ -51,6 +51,13 @@ export default class extends Controller {
         return;
       }
 
+      // Retrieve hidden fields for payable IDs
+      const participationId = this.formTarget.querySelector("[name='participation_id']")?.value;
+      const donationId = this.formTarget.querySelector("[name='donation_id']")?.value;
+
+      console.log("Participation ID:", participationId);
+      console.log("Donation ID:", donationId);
+
       const { paymentMethod, error } = await this.stripe.createPaymentMethod({
         type: "card",
         card: this.cardNumber, // Use the individual cardNumber element
@@ -70,6 +77,8 @@ export default class extends Controller {
         body: JSON.stringify({
           amount: parseFloat(amount),
           payment_method_id: paymentMethod.id,
+          participation_id: participationId, // Add participation_id
+          donation_id: donationId, // Add donation_id
         }),
       });
 
@@ -98,4 +107,5 @@ export default class extends Controller {
       this.errorTarget.textContent = "An unexpected error occurred.";
     }
   }
+
 }

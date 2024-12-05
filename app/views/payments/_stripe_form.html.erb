@@ -1,19 +1,24 @@
 <div data-controller="stripe">
   <form data-stripe-target="form" data-action="stripe#submit">
     <% if @payable.present? %>
+      <!-- Hidden Field for Amount -->
       <input type="hidden" name="amount" id="amount"
              value="<%= @payable.is_a?(Donation) ? @payable.amount : @payable.total_amount %>"
              data-stripe-target="amount">
+
+      <!-- Hidden Fields for Payable Type -->
       <% if @payable.is_a?(Donation) %>
         <input type="hidden" name="donation_id" value="<%= @payable.id %>">
       <% elsif @payable.is_a?(Participation) %>
         <input type="hidden" name="participation_id" value="<%= @payable.id %>">
       <% end %>
     <% else %>
+      <!-- Error Message if Payable Not Found -->
       <div class="alert alert-danger">
         Une erreur s'est produite. Aucun élément payable n'a été trouvé.
       </div>
     <% end %>
+
     <!-- Card Number Field -->
     <div class="mb-3">
       <label for="card-number-element" class="form-label">Numéro de carte</label>
