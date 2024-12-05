@@ -1,35 +1,26 @@
-
-
-
-
-
-
-  <div class="d-flex">
+<div class="d-flex">
     <div class="col-1">
-    <p>FOIS</p>
+     <p>FOIS</p>
     </div>
 
 
-    <div class="col-1 justify-content-center border border-1">
+  <div class="col-1 justify-content-center border border-1"></div>
 
+  <div class="col-6 border border-1">
 
-    </div>
+    <div class=" justify-content-center">
+      <div class="">
+        <h4 class="">
+          <%= option.name %>
+        </h4>
+        <% if option.description.present? %>
+          <p class=""><%= option.description %></p>
+        <% end %>
 
-    <div class="col-6 border border-1">
-
-      <div class=" justify-content-center">
-        <div class="">
-          <h4 class="">
-            <%= option.name %>
-          </h4>
-          <% if option.description.present? %>
-            <p class=""><%= option.description %></p>
-          <% end %>
-
-          <p class="card-option-price"><strong>Prix unitaire : <%= option.unit_price %> €</strong></p>
-          <p> quantité <%= order.quantity %></p>
-          <p> total <%= option.unit_price * order.quantity %> euros</p>
-        </div>
+        <p class="card-option-price"><strong>Prix unitaire : <%= option.unit_price %> €</strong></p>
+        <p> quantité <%= order.quantity %></p>
+        <p> total <%= option.unit_price * order.quantity %> euros</p>
       </div>
     </div>
   </div>
+</div>
