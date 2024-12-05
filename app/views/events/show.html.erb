@@ -7,8 +7,8 @@
               <h3><%= ticket.name %></h3>
               <p><%= truncate(ticket.description, length: 100) %></p>
               <p><strong>Prix :</strong> <%= ticket.unit_price %> €</p>
-            <%= link_to "Choisir", new_event_participant_path(@event, ticket_id: ticket.id), class: "btn btn-primary mt-3" %>
-            </div>          
+            <%= link_to "Choisir", new_event_participant_path(@event, ticket_id: ticket.id), class: "btn btn-rose mt-3" %>
+            </div>
       <% end %>
     </div>
 </div>

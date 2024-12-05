@@ -3,9 +3,8 @@
   max-width: 900px;
   margin: 20px auto;
   padding: 20px;
-  background: #f8f9fa; /* Couleur de fond de Bootstrap */
+  background: white; /* Couleur de fond de Bootstrap */
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 /* Title */
@@ -59,8 +58,8 @@
 
 /* Card image */
 .p-event-image {
-  width: 100%; 
-  height: auto; 
+  width: 100%;
+  height: auto;
   object-fit: cover; /* Assure que l'image couvre toute la zone de l'élément sans distorsion */
   border-radius: 8px;
   margin-bottom: 15px;

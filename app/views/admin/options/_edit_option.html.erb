@@ -15,26 +15,26 @@ modifier
 
 
         <h1>Que souhaitez-vous proposer ? </h1>
-        <%= simple_form_for [@event, option], 
+        <%= simple_form_for [@event, option],
           url: admin_event_option_path(@event, option),
-          method: @option.new_record? ? :post : :patch do |f| %>  
+          method: @option.new_record? ? :post : :patch do |f| %>
           <%= f.input :name %>
           <%= f.input :description %>
           <%= f.input :category, as: :select, collection: ["Alimentaire", "Vestimentaire", "Autre"] %>
           <%= f.input :unit_price %>
-          <%= f.input :ticket_ids, 
-                      as: :check_boxes, 
-                      collection: @tickets, 
-                      label_method: :name, 
-                      value_method: :id, 
-                      label: "Sélectionner des tickets" %>  
+          <%= f.input :ticket_ids,
+                      as: :check_boxes,
+                      collection: @tickets,
+                      label_method: :name,
+                      value_method: :id,
+                      label: "Sélectionner des tickets" %>
           <%= f.submit "Enregistrer", class:"rounded-button primary"%>
         <% end %>
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-        <button type="button" class="btn btn-primary">Enregistrer</button>
+        <button type="button" class="btn btn-rose" data-bs-dismiss="modal">Annuler</button>
+        <button type="button" class="btn btn-rose">Enregistrer</button>
       </div>
     </div>
   </div>

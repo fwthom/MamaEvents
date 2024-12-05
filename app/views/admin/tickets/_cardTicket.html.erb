@@ -1,6 +1,14 @@
 <div class="card-ticket">
-  <h3><%= ticket.name %></h3>
-  <p><%= truncate(ticket.description, length: 100) %></p>
-  <p><strong>Prix :</strong> <%= ticket.unit_price %> €</p>
-  <%= link_to "Modifier", edit_admin_event_ticket_path(@event, ticket), class: "btn btn-secondary event-action-button" %>
+  <div style="height: 70px;">
+    <h3><%= ticket.name %></h3>
+  </div>
+  <div style="height: 90px;">
+    <p><%= truncate(ticket.description, length: 100) %></p>
+  </div>
+  <div>
+    <p><strong>Prix :</strong> <%= ticket.unit_price %> €</p>
+  </div>
+  <div>
+    <%= link_to "Modifier", edit_admin_event_ticket_path(@event, ticket), class: "btn btn-rose event-action-button" %>
+  </div>
 </div>

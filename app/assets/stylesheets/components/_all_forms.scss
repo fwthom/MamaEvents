@@ -2,7 +2,7 @@
   max-width: 600px;
   margin: 20px auto;
   padding: 20px;
-  background: #f8f9fa; /* Couleur de fond de Bootstrap */
+  background: rgba(255, 218, 222,0.2); /* Couleur de fond de Bootstrap */
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -21,6 +21,8 @@
   font-size: 1rem;
   padding: 10px;
   transition: border-color 0.3s;
+  color: $color-text;
+  background-color: white;
 }
 
 .form-control:focus,
