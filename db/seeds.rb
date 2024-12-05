@@ -35,8 +35,8 @@ event_1 = Event.create!(
   description: "Passer un moment convivial de sport avec la marche ou la course, mais également de fête (musique, tombola et barbecue pour clôturer la journée).",
   date: Date.new(2025, 10, 05),
   charity: charity,
-  status: "publié"
-
+  status: "publié",
+  location: "Premesques"
 )
 
 
@@ -45,8 +45,8 @@ event_2 = Event.create!(
   description: "Passer un moment convivial de sport entre mère et fille avec la mama 2025.",
   date: Date.new(2026, 5, 5),
   charity: charity,
-  status: "brouillon"
-
+  status: "brouillon",
+  location: "Lille"
 )
 
 
@@ -113,7 +113,7 @@ i = 0
     ticket: ticket,
     status: "confirmed",
     total_amount: 0,
-    payment_id: nil, 
+    payment_id: nil,
     bib_number: i,
     )
 

@@ -34,14 +34,16 @@
   }
 }
 
-// .navbar-calpin .nav-link-active {
-//   text-decoration: none;
-//   color: $very-rose;
-//   font-size: 16px;
-//   font-family: "Poppins", serif;
-//   font-style: normal;
-//   text-shadow: 0 4px 12px rgba(222, 46, 107, 0.3);
-// }
+
+.navbar-calpin .nav-link-active {
+  text-decoration: none;
+  color: $very-rose;
+  font-size: 16px;
+  font-family: "Poppins", serif;
+  font-weight: 600;
+  font-style: normal;
+  text-shadow: 0 2px 12px rgba(222, 46, 107, 0.3);
+}
 
 
 .navbar-calpin .nav-item {
