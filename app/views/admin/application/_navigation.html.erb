@@ -18,7 +18,7 @@
   </div>
   <div class="navigation__separator"></div>
 
-  <!-- Événements Section -->
+  <!-- évènements Section -->
   <div class="navigation__section">
        <p class="navigation__section-title">
        Évènements
@@ -49,9 +49,7 @@
 
   <!-- User Info Section -->
   <div class="navigation__section navigation__user-info">
-    <p class="navigation__user-info__name">
-      <%= current_user.first_name %> <%= current_user.last_name %>
-    </p>
+
     <%= link_to raw('<i class="fa fa-sign-out-alt"></i> Déconnexion'), destroy_user_session_path, method: :delete, class: 'navigation__user-info__logout' %>
   </div>
 </nav>

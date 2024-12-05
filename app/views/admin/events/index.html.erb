@@ -6,6 +6,8 @@
 
   <hr>
 
+
+<% if @events.brouillon.any? %>
   <h2>En cours de rédaction</h2>
   <div class="card-container">
     <% @events.brouillon.each do |event| %>
@@ -22,8 +24,10 @@
       </div>
     <% end %>
   </div>
-
   <hr>
+<% end %>
+
+
 
   <h2>Publiés</h2>
   <div class="card-container">

@@ -44,7 +44,7 @@ class ParticipationsController < ApplicationController
       compute_total_amount
 
       if @participation.save
-        redirect_to participation_path(@participation), notice: 'Participation enregistrée attente paiment'
+        redirect_to participation_path(@participation), notice: 'Participation enregistrée attente paiement'
         send_participation_message(@participation)
         @participation.bib_number ||= set_bib_number
 
@@ -86,7 +86,7 @@ private
   end
 
   def set_bib_number
-    # Récupérer les participations associées au même ticket (et donc au même événement)
+    # Récupérer les participations associées au même ticket (et donc au même évènement)
     max_bib = Participation.where(ticket: @participation.ticket)
     .maximum(:bib_number) || 0
 

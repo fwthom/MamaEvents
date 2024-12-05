@@ -18,7 +18,7 @@ module Admin
     def create
       @option = Option.new(option_params)
       @option.event = @event
-      if @option.save!
+      if @option.save
         redirect_to admin_event_options_path(@event)
       else
         render :new, status: :unprocessable_entity

@@ -32,10 +32,13 @@
   border-radius: 8px;
   overflow: hidden;
   margin: 20px auto;
+  text-align: left;
+  position: relative;
+
 }
 
 .card-product img {
-  width: 120px;
+  width: 33%;
   height: 100%;
   object-fit: cover;
   margin-left: 16px;
@@ -44,6 +47,7 @@
 
 .card-product-infos {
   padding: 16px;
+  width: 100%
 }
 
 .card-product-infos h2 {

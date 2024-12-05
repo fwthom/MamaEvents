@@ -15,7 +15,7 @@ module Admin
       @event.date = Date.parse(params[:event][:date])
       @event.charity = Charity.first
       @event.status = "brouillon"
-      if @event.save!
+      if @event.save
         redirect_to admin_event_path(@event)
       else
         render :new, status: :unprocessable_entity
@@ -55,7 +55,7 @@ module Admin
       if @event.update(event_params)
         redirect_to admin_event_path(@event), notice: "Statut modifié avec succès."
       else
-        render :publication, alert: "Erreur lors du changement de statut de l'événement."
+        render :publication, alert: "Erreur lors du changement de statut de l'évènement."
       end
     end
 
