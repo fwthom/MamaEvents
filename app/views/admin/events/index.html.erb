@@ -1,11 +1,12 @@
 <div class="event-content-container">
   <h1><%= Event.publies.count + Event.brouillon.count %> évènements dans la base</h1>
 
-  <h2>Nouvel évènement</h2>
   <%= link_to "Créer un évènement", new_admin_event_path, class: "btn btn-primary event-action-button" %>
 
   <hr>
 
+
+<% if @events.brouillon.any? %>
   <h2>En cours de rédaction</h2>
   <div class="card-container">
     <% @events.brouillon.each do |event| %>
@@ -22,8 +23,10 @@
       </div>
     <% end %>
   </div>
-
   <hr>
+<% end %>
+
+
 
   <h2>Publiés</h2>
   <div class="card-container">

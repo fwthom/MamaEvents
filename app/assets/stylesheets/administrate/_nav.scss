@@ -43,7 +43,7 @@
   font-size: 18px;
   font-weight: bold;
   color: #0E0000; /* Dark text color */
-  text-align: left; /* Center section titles */
+  text-align: center; /* Center section titles */
   white-space: nowrap; /* Prevent wrapping of text */
 }
 
@@ -139,16 +139,16 @@
 
 /* User Info Section */
 .navigation__user-info {
+  font-size: 12px;
+  width: 100%;
   background-color: #fff; /* White background */
-  padding: 15px;
   border-radius: 5px;
   text-align: center;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  position: absolute; /* Ensure it's fixed within the navigation */
-  bottom: 20px; /* Stick to the bottom of the navigation */
-  left: 0;
-  right: 0; /* Center horizontally within the navigation */
-  margin: auto; /* Ensure proper alignment */
+  margin-top: 64px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+
   width: calc(100% - 40px); /* Adjust for navigation padding */
 }
 

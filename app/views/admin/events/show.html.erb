@@ -6,20 +6,16 @@
         <p id="next-event" class="countdown-timer" style ="font-size: 2rem" data-countdown-target="timer"></p>
       </div>
       <div class="card-product">
+        <%= link_to edit_admin_event_path(@event), class: "event-action-logo" do %>
+          <i class="fas fa-edit event-edit-icon"></i>
+        <% end %>
         <% if @event.image.attached? %>
-          <%= cl_image_tag @event.image.key %>
+          <%= cl_image_tag @event.image.key, class: "card-product img" %>
         <% else %>
-          <%= image_tag "logo.png", class: "event-image" %>
+          <%= image_tag "logo.png", class: "card-product img" %>
         <% end %>
         <div class="card-product-infos">
-          <div style="text-align: right">
-            <%= link_to edit_admin_event_path(@event), class: "event-action-logo" do %>
-              <span class="visually-hidden">Edit</span>
-              <i class="fas fa-edit event-edit-icon"></i>
-            <% end %>
-          </div>
-
-          <h2><%= @event.name %></h2>
+          <h1><%= @event.name %></h1>
           <p><%= @event.description %></p>
           <p><%= @event.date %></p>
         </div>
@@ -94,8 +90,8 @@
       <div style="margin: 16px">
         <h2 class="event-title">Télécharger les données :</h2>
         <div class="d-flex justify-content-between">
-          <%= link_to "Télécharger les options", download_options_xlsx_admin_event_path, class: "btn btn-rose btn-download", data: { turbo: false } %>
-          <%= link_to "Télécharger les n° de dossard", download_bib_numbers_xlsx_admin_event_path, class: "btn btn-rose btn-download", data: { turbo: false } %>
+          <%= link_to "Options", download_options_xlsx_admin_event_path, class: "btn btn-rose btn-download", data: { turbo: false } %>
+          <%= link_to "N° de dossard", download_bib_numbers_xlsx_admin_event_path, class: "btn btn-rose btn-download", data: { turbo: false } %>
         </div>
       </div>
     </div>
