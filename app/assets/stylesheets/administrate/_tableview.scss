@@ -14,6 +14,7 @@
   padding: 12px 16px;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
+  border-bottom: none;
 }
 
 .card-body {
@@ -38,16 +39,21 @@
   font-size: 1rem;
   font-weight: bold;
   text-transform: uppercase;
+  background-color: white;
+  border-bottom: 2px solid rgb(92, 22, 68);
+  color: $color-text;
 }
 
 .table td {
   padding: 12px;
-  border-bottom: 1px solid $background-rose;
+  border-bottom: 1px solid rgba(92, 22, 68, 0.4);
   font-size: 0.95rem;
+  background-color: white;
+  color: $color-text
 }
 
 .table tbody tr:nth-child(even) {
-  background-color: $background-rose;
+  background-color: white;
 }
 
 .table tbody tr:hover {
@@ -101,5 +107,5 @@
 }
 
 .label-secondary {
-  background-color: $lichen; /* Adjust for your secondary color */
+  background-color: $color-text; /* Adjust for your secondary color */
 }
