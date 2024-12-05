@@ -1,41 +1,34 @@
 <div class="event-content-container" data-controller="duplicate-options">
   <h2>Options de l'évènement</h2>
-  <p>Attention, n'oubliez pas de lier chaque option aux tickets avec lesquels elles seront proposées.</p>
-  
-  <% if @event.options.any? %>
-    <% if @event.tickets.any? %>
-      <% if @event.options.alimentaire.any? %>  
-        <h2>Les options alimentaires</h2>
-        <% @event.options.alimentaire.order(:name).each do |option| %>
-          <%= render 'admin/options/cardOption', option: option %>
-        <% end %>
-      <% end %>
+  <p>Chaque option doit être liée aux tickets avec lesquels elles seront proposées.</p>
+  <%= link_to 'Nouvelle option', new_admin_event_option_path(@event), class: 'btn btn-primary text-capitalize' %>
 
-      <% if @event.options.vestimentaire.any? %>
-        <h2>Les options vestimentaires</h2>
-        <% @event.options.vestimentaire.order(:name).each  do |option| %>
-          <%= render 'admin/options/cardOption', option: option %>
-        <% end %>
+    <% if @event.options.alimentaire.any? %>
+      <h2>Les options alimentaires</h2>
+      <% @event.options.alimentaire.order(:name).each do |option| %>
+        <%= render 'admin/options/cardOption', option: option %>
       <% end %>
-
-      <% if @event.options.goodies.any? %>
-        <h2>Les goodies</h2>
-        <% @event.options.goodies.order(:name).each  do |option| %>
-          <%= render 'admin/options/cardOption', option: option %>
-        <% end %>
+    <% end %>
+    <% if @event.options.vestimentaire.any? %>
+      <h2>Les options vestimentaires</h2>
+      <% @event.options.vestimentaire.order(:name).each  do |option| %>
+        <%= render 'admin/options/cardOption', option: option %>
       <% end %>
-
+    <% end %>
+    <% if @event.options.goodies.any? %>
+      <h2>Les goodies</h2>
+      <% @event.options.goodies.order(:name).each  do |option| %>
+        <%= render 'admin/options/cardOption', option: option %>
+      <% end %>
+    <% end %>
+    <% if @event.options.autre.any? %>
       <h2>Autres</h2>
       <% @event.options.autre.order(:name).each  do |option| %>
         <%= render 'admin/options/cardOption', option: option %>
       <% end %>
-      
-    <% else %>
-      <h2>Voici vos options. Vous n'avez pas de tickets liés.</h2>
     <% end %>
-  <% elsif @event.tickets.any? %>
-    <h2>Vous n'avez pas encore créé d'options.</h2>
-  <% end %>
 
-  <%= link_to 'Créer nouvelle option', new_admin_event_option_path(@event), class: 'btn btn-primary' %>
+
+
+
 </div>

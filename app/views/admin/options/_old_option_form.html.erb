@@ -1,19 +1,18 @@
-<%= simple_form_for [@event, @option], 
+<%= simple_form_for [@event, @option],
   url: @option.new_record? ? admin_event_options_path(@event) : admin_event_option_path(@event, @option),
-  method: @option.new_record? ? :post : :patch do |f| %>  
+  method: @option.new_record? ? :post : :patch do |f| %>
   <%= f.input :name %>
   <%= f.input :description %>
   <%= f.input :emoji %>
-  <%= f.input :category, as: :select, collection: Option::CATEGORIES, prompt: "Sélectionnez une catégorie" %>  
+  <%= f.input :category, as: :select, collection: Option::CATEGORIES, prompt: "Sélectionnez une catégorie" %>
   <%= f.input :unit_price %>
-  <%= f.input :ticket_ids, 
-              as: :check_boxes, 
-              collection: @tickets, 
-              label_method: :name, 
-              value_method: :id, 
-              label: "Sélectionner les tickets à associer " %>  
-  <div class="form-actions">
+  <%= f.input :ticket_ids,
+              as: :check_boxes,
+              collection: @tickets,
+              label_method: :name,
+              value_method: :id,
+              label: "Sélectionner les tickets à associer " %>
+  <div class="form-actions m-0 d-flex justify-content-center mb-2">
     <%= f.submit "Enregistrer", class: "rounded-button primary" %>
-    <%= link_to "Annuler", admin_event_options_path(@event), class: "rounded-button secondary" %>
   </div>
 <% end %>
