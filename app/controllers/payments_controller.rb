@@ -17,7 +17,9 @@ class PaymentsController < ApplicationController
     amount = params[:amount].to_i * 100
     payment_method_id = params[:payment_method_id]
     @payable = find_payable
+    @@payable = @payable
 
+    p "ˆˆˆˆˆˆˆˆˆ"
     Rails.logger.info "Payable: #{@payable.inspect}" # Log the payable object
 
     payment_intent = Stripe::PaymentIntent.create(
@@ -35,7 +37,6 @@ class PaymentsController < ApplicationController
       status: payment_intent.status,
       payable: @payable
     )
-
     if payment_intent.status == "succeeded" && @payable.is_a?(Participation)
       @payable.update(status: "confirmed")
     end
@@ -48,12 +49,13 @@ class PaymentsController < ApplicationController
 
 
   def success
-    render plain: "Payment Successful!"
+    redirect_to participation_path(@@payable)
   end
 
   private
 
   def find_payable
+
     if params[:donation_id].present?
       Donation.find_by(id: params[:donation_id])
     elsif params[:participation_id].present?
