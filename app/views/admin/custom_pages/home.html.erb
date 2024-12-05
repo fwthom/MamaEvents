@@ -10,7 +10,7 @@
 <% else %>
 <div class="container-home-dashboard" data-controller="countdown" data-countdown-event-date-value="<%= @nextevent.date %> 10:00:00">
   <div class="header" >
-    <h1>Prochain événement dans</h1>
+    <h1>Prochain évènement dans</h1>
     <p id="next-event" class="countdown-timer" data-countdown-target="timer"></p>
       <div class="card-product">
         <% if @nextevent.image.attached? %>
