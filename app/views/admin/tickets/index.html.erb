@@ -1,19 +1,20 @@
 <div class="event-content-container">
-  
+
+  <h2>Les tickets de la <%= @event.name %></h2>
   <% if @event.tickets.any? %>
     <div class="container">
-      <% @tickets.each do |ticket| %>
-        <div class="row">
-          <span class="col-sm-12 col-xl-4 my-2">
-            <%= render 'admin/tickets/cardTicket', ticket: ticket %>
-          </span>
-        </div>
-      <% end %>
+      <div class="row d-flex">
+        <% @tickets.each do |ticket| %>
+            <span class="col-4 my-2">
+              <%= render 'admin/tickets/cardTicket', ticket: ticket %>
+            </span>
+        <% end %>
+       </div>
     </div>
   <% else %>
     <h2>Vous n'avez pas encore créé de tickets.</h2>
   <% end %>
 
   <h2>Ajouter un ticket</h2>
-  <%= link_to 'Créer un nouveau ticket', new_admin_event_ticket_path(@event), class: 'btn btn-primary event-action-button' %>
+  <%= link_to 'Créer un nouveau ticket', new_admin_event_ticket_path(@event), class: 'btn btn-rose event-action-button' %>
 </div>

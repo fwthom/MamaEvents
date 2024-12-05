@@ -12,7 +12,7 @@
         <h3><%= event.name %></h3>
         <p><%= truncate(event.description, length: 100) %></p>
         <p><strong>Date :</strong> <%= event.date %></p>
-        <%= link_to "Ouvrir", event_path(event), class: "btn btn-secondary p-event-action-button" %>
+        <%= link_to "S'inscrire", event_path(event), class: "btn btn-rose p-event-action-button" %>
       </div>
     <% end %>
   </div>

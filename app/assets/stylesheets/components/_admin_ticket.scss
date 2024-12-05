@@ -24,6 +24,9 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 300px;
+  margin-bottom: 32px;
+  margin-top: 32px;
 }
 
 .card-ticket:hover {
@@ -66,7 +69,7 @@
   font-size: 16px;
   font-weight: bold;
   border-radius: 20px;
-  background: #007bff;
+  background: $very-rose;
   color: white;
   text-align: center;
   text-decoration: none;
@@ -75,7 +78,7 @@
 }
 
 .event-action-button:hover {
-  background: #0056b3;
+  background: $very-rose-hover;
 }
 
 /* Ajustements pour mobile */
