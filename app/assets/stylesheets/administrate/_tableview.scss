@@ -1,14 +1,14 @@
 /* Table Container */
 .card {
-  border: 1px solid #f8c4d9;
-  background-color: #ffe6f0;
+  border: 1px solid white;
+  background-color: white;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .card-header {
-  background-color: #f8c4d9;
-  color: #ffffff;
+  background-color: white;
+  color: $color-text;
   font-size: 1.5rem;
   font-weight: bold;
   padding: 12px 16px;
@@ -29,7 +29,7 @@
 }
 
 .table thead {
-  background-color: #f8c4d9;
+  background-color: $background-rose;
   color: #ffffff;
 }
 
@@ -42,16 +42,16 @@
 
 .table td {
   padding: 12px;
-  border-bottom: 1px solid #f1a6c4;
+  border-bottom: 1px solid $background-rose;
   font-size: 0.95rem;
 }
 
 .table tbody tr:nth-child(even) {
-  background-color: #ffe6f0;
+  background-color: $background-rose;
 }
 
 .table tbody tr:hover {
-  background-color: #fad2e3;
+  background-color: $background-rose;
 }
 
 /* Buttons */
@@ -96,10 +96,10 @@
   font-size: 0.8em;
   font-weight: 700;
   color: #fff;
-  background-color: #007bff; /* Adjust for your color scheme */
+  background-color: $very-rose; /* Adjust for your color scheme */
   border-radius: 0.25em;
 }
 
 .label-secondary {
-  background-color: #6c757d; /* Adjust for your secondary color */
+  background-color: $lichen; /* Adjust for your secondary color */
 }
