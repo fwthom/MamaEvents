@@ -54,7 +54,6 @@ class ParticipationsController < ApplicationController
     end
 
 
-
     def send_participation_message(participation)
       participant = participation.participant
       mailgun_client = Mailgun::Client.new ENV['MAILGUN_API_KEY']
@@ -89,8 +88,11 @@ private
     # Récupérer les participations associées au même ticket (et donc au même évènement)
     max_bib = Participation.where(ticket: @participation.ticket)
     .maximum(:bib_number) || 0
+    raise
 
     # Assigner le numéro de dossard
     @participation.bib_number = max_bib + 1
+    @participation.save
+    
   end
 end
