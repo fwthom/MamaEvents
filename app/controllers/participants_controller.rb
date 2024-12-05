@@ -4,7 +4,7 @@ class ParticipantsController < ApplicationController
   def new
     @event = Event.find(params[:event_id])
     @participant = Participant.new
-    @ticket_id = params[:ticket_id] 
+    @ticket_id = params[:ticket_id]
   end
 
   def create
@@ -13,7 +13,7 @@ class ParticipantsController < ApplicationController
     @participant.event = @event
     if @participant.save
       @participant.status = "created"
-      ticket = Ticket.find(params["ticket_id"])
+      ticket = Ticket.find(params[:participant][:ticket_id])
       @participation = Participation.create(participant: @participant, ticket: ticket, status: "created")
       redirect_to edit_participation_path(@participation)
     else
