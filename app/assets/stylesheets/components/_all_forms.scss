@@ -1,24 +1,16 @@
 .registration-container {
-  margin: 30px auto;
-  max-width: 500px;
-}
-
-.registration-title {
-  font-size: 2rem;
-  font-weight: bold;
-  margin-bottom: 20px;
-  color: black;
-}
-
-.form-container {
-  background-color: #fff;
-  border: 1px solid black;
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #f8f9fa; /* Couleur de fond de Bootstrap */
   border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+
 
 .form-group label {
-  font-weight: bold;
-  color: grey;
+  font-weight: 400;
+  color: rgb(87, 87, 87);
   margin-bottom: 5px;
 }
 
