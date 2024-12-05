@@ -25,10 +25,15 @@
   color: $very-rose;
   font-size: 16px;
   font-family: "Poppins", serif;
-  font-weight: 400;
+  // font-weight: 400;
   font-style: normal;
   text-shadow: 0 4px 12px rgba(222, 46, 107, 0.3);
+  .active-bold {
+    font-weight: bold !important;
+    
+  }
 }
+
 
 .navbar-calpin .nav-link-active {
   text-decoration: none;

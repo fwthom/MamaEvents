@@ -1,29 +1,16 @@
-<div class="event-header text-center mb-4">
-  <h1><%= @event.name %></h1>
-</div>
-
-<div class="tickets-container">
-  <div class="row">
-    <% @tickets.each do |ticket| %>
-      <div class="col-12 mb-4">
-        <div class="ticket-card d-flex shadow-sm">
-          <div class="ticket-card-details p-3">
-            <h5 class="ticket-card-title mb-2"><%= ticket.name %></h5>
-            <p class="ticket-card-description mb-2"><%= truncate(ticket.description, length: 100, separator: ' ', omission: '...') %></p>
-            <p class="ticket-card-price mb-1"><strong>Prix:</strong> <%= ticket.unit_price %> €</p>
-            
-            <% if ticket.remote? %>
-              <!-- Badge remote si le ticket est distanciel -->
-              <span class="badge bg-info text-dark mb-0">Distanciel</span>
-            <% end %>
-
-            <!-- Bouton "Choisir" -->
-            <div class="text-center">
-              <%= link_to "Choisir", new_event_participant_path(@event, ticket_id: ticket.id), class: "btn btn-primary mt-3" %>
-            </div>
-          </div>
+<div class="container-pages-publiques">
+  <div class="p-event-content-container">
+      <% @tickets.each do |ticket| %>
+        <div class="row">
+            <div class="p-card-ticket">
+              <h3><%= ticket.name %></h3>
+              <p><%= truncate(ticket.description, length: 100) %></p>
+              <p><strong>Prix :</strong> <%= ticket.unit_price %> €</p>
+            <%= link_to "Choisir", new_event_participant_path(@event, ticket_id: ticket.id), class: "btn btn-primary mt-3" %>
+            </div>          
         </div>
-      </div>
-    <% end %>
-  </div>
+      <% end %>
+
+
+</div>
 </div>

@@ -3,7 +3,6 @@
 @import "avatar";
 @import "event-dashboard-card";
 @import "event-editor";
-@import "event-index-card";
 @import "footer";
 @import "form_legend_clear";
 @import "navbar";
@@ -11,8 +10,10 @@
 @import "tableau";
 @import "titles";
 @import "cards_options";
-@import "cards_events";
-@import "cards_tickets";
-@import "public_components";
+@import "admin_event";
+@import "public_event";
+@import "admin_ticket";
+@import "public_ticket";
+@import "all_forms";
 
 

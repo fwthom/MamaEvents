@@ -1,0 +1,58 @@
+.registration-container {
+  margin: 30px auto;
+  max-width: 500px;
+}
+
+.registration-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: black;
+}
+
+.form-container {
+  background-color: #fff;
+  border: 1px solid black;
+  border-radius: 8px;
+}
+
+.form-group label {
+  font-weight: bold;
+  color: grey;
+  margin-bottom: 5px;
+}
+
+.form-control,
+.form-select {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  padding: 10px;
+  transition: border-color 0.3s;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: $very-rose;
+  box-shadow: 0 0 5px black;
+}
+
+.btn-submit {
+  background-color: $very-rose;
+  border: none;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  border-radius: 4px;
+  transition: $background-rose 0.3s, transform 0.2s;
+}
+
+.btn-submit:hover {
+  background-color: $very-rose-hover;
+  transform: translateY(-2px);
+}
+
+.btn-submit:active {
+  background-color: darken($very-rose, 10%);
+  transform: translateY(0);
+}

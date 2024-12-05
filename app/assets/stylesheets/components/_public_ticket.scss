@@ -1,0 +1,54 @@
+/* Container de tickets */
+.p-ticket-content-container {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Style des tickets dans l'index */
+.p-ticket-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+/* Carte de ticket */
+.p-card-ticket {
+  margin-bottom:16px;
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.p-card-ticket:hover {
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+
+/* Button spécifique pour chaque ticket */
+.card-ticket .btn {
+  font-size: 14px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease;
+}
+
+/* Ajustements pour mobile */
+@media (max-width: 600px) {
+  .p-ticket-container {
+    grid-template-columns: 1fr;
+  }
+
+  .p-event-action-button {
+    width: 100%;
+    text-align: center;
+  }
+}

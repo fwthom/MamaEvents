@@ -1,5 +1,5 @@
 <div class="registration-container">
-  <h1 class="registration-title text-center">M'inscrire</h1>
+  <h1 class="registration-title text-center">S'inscrire à <%= @event.name %></h1>
   <div class="form-container p-4 shadow-sm rounded">
     <%= simple_form_for([@event, @participant], local: true) do |f| %>
       <div class="form-group mb-3">
