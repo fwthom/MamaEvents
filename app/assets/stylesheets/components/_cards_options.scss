@@ -11,6 +11,21 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombre légère */
 }
 
+/* Styles de la card dans participation */
+.card-option-recap {
+  // max-width: 400px;
+  // max-height: 300px;
+  // border: 1px solid #ddd; /* Bordure fine */
+  // border-radius: 5px; /* Coins arrondis */
+  // padding: 16px; /* Espacement interne */
+  // margin: 10px 0; /* Espacement externe */
+  // display: flex; /* Pour aligner le contenu horizontalement */
+  justify-content: space-between; /* Espace entre contenu et bouton */
+  // align-items: center; /* Alignement vertical centré */
+  background-color: #fff; /* Fond blanc */
+  // box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombre légère */
+}
+
 /* Section pour l'emoji (si présent) */
 .card-option-emoji {
   margin-right: 15px;
@@ -26,6 +41,7 @@
 
 .emoji-display {
   font-size: 3rem; /* Taille de l'emoji */
+  justify-content: center;
 }
 
 /* Contenu principal de la carte-option */
@@ -36,6 +52,7 @@
   align-items: center;
   width: 100%;
 }
+
 
 .card-option-description {
   margin: 8px 0;
