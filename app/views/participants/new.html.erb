@@ -1,6 +1,7 @@
+  <div class="container-pages-publiques">
+
 <div class="registration-container">
-  <h1 class="registration-title text-center">S'inscrire à <%= @event.name %></h1>
-  <div class="form-container p-4 shadow-sm rounded">
+  <h1>S'inscrire à <%= @event.name %></h1>
     <%= simple_form_for([@event, @participant], local: true) do |f| %>
       <div class="form-group mb-3">
         <%= f.input :first_name, label: 'Prénom', input_html: { class: 'form-control' } %>
@@ -31,5 +32,6 @@
         <%= f.submit "M'inscrire", class: "btn btn-primary btn-submit w-100" %>
       </div>
     <% end %>
-  </div>
 </div>
+</div>
+
