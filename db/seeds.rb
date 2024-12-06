@@ -36,24 +36,24 @@ event_1 = Event.create!(
   date: Date.new(2025, 10, 05),
   charity: charity,
   status: "publié",
-  location: "Premesques"
+  location: "597 rue du Retour, 59840 Prémesques"
 )
 
 
 Event.create!(
-  name: "La MAMA 2026",
-  description: "Passer un moment convivial de sport entre mère et fille avec la mama 2025.",
+  name: "La MAMA 2025",
+  description: "Participez à une course mère-fille Passer un moment convivial de sport entre mère et fille avec la mama 2025.",
   date: Date.new(2025, 05, 05),
   charity: charity,
   status: "brouillon",
-  location: "Lille"
+  location: "Monument aux pigeons voyageurs, Av. Mathias Delobel, 59800 Lille"
 )
 
 
 # Create tickets for the event (both presentiel and distanciel)
 Ticket.create!(
   name: "Marche 5km",
-  description: "Une marche dynamique sur 5 km. Bonne humeur assurée !",
+  description: "Une marche dynamique sur 5 km. Bonne humeur assurée.",
   unit_price: 12.0,
   event: event_1
 )
@@ -89,7 +89,7 @@ options = [
   Option.create!(name: "T-shirt S", description: "T-shirt taille S floqué YUL 2025", unit_price: 10.0, category: "Vestimentaire", event: event_1, emoji: "🎽"),
   Option.create!(name: "T-shirt M", description: "T-shirt taille M floqué YUL 2025", unit_price: 10.0, category: "Vestimentaire", event: event_1, emoji: "🎽"),
   Option.create!(name: "T-shirt L", description: "T-shirt taille L floqué YUL 2025", unit_price: 10.0, category: "Vestimentaire", event: event_1, emoji: "🎽"),
-  Option.create!(name: "Perruque", description: "N'en prenez pas si vous avez conservé celle de l'an dernier", unit_price: 0, category: "Goodies", event: event_1, emoji: "🎀"),
+  Option.create!(name: "Perruque rose", description: "Pour ne pas être découvert d'un cheveu", unit_price: 0, category: "Goodies", event: event_1, emoji: "🎀"),
   Option.create!(name: "Mug", description: "Au plus près de l'asso dès 7h du mat !", unit_price: 8, category: "Goodies", event: event_1, emoji: "☕️"),
   Option.create!(name: "Yulette", description: "Un porte-clés très très personnalisé", unit_price: 5, category: "Goodies", event: event_1, emoji: "🔑")
 ]
@@ -167,6 +167,16 @@ end
 
   participation.total_amount = ticket.unit_price 
   participation.save!
+
+  Donation.create!(
+    first_name: participant.first_name,
+    last_name: participant.last_name,
+    amount: [20, 50, 10].sample,
+    status: "confirmed",
+    address: "23 Avenue des Saules",
+    city: "Lille",
+    postal_code: "59000"
+  )
 end
 
 puts "Created #{Event.count} events, #{Ticket.count} tickets, #{Option.count} options, #{Participant.count} participants, #{Participation.count} participations and #{Order.count} orders."
