@@ -1,7 +1,7 @@
 <div class="event-content-container" data-controller="duplicate-options">
   <h2>Options de l'évènement</h2>
   <p>Chaque option doit être liée aux tickets avec lesquels elles seront proposées.</p>
-  <%= link_to 'Nouvelle option', new_admin_event_option_path(@event), class: 'btn btn-primary text-capitalize' %>
+  <%= link_to 'Nouvelle option', new_admin_event_option_path(@event), class: 'btn btn-rose text-capitalize' %>
 
     <% if @event.options.alimentaire.any? %>
       <h2>Les options alimentaires</h2>
