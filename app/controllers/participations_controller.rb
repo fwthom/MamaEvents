@@ -55,19 +55,94 @@ class ParticipationsController < ApplicationController
 
 
     def send_participation_message(participation)
-      participant = participation.participant
-      mailgun_client = Mailgun::Client.new ENV['MAILGUN_API_KEY']
+      @participation = participation
+      @participant = @participation.participant
+      @ticket = @participation.ticket
+      @event_name = @ticket.event.name
+      @orders = @participation.orders.group_by { |order| order.option.category }
+      @total_price = @orders.values.flatten.sum { |order| order.option.unit_price * order.quantity } + @ticket.unit_price
+
+      email_body = <<~HTML
+        <!DOCTYPE html>
+        <html lang="fr">
+        <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Email Confirmation</title>
+        </head>
+        <body style="margin: 0; padding: 0; font-family: Arial, sans-serif; background-color: #f9f9f9; line-height: 1.6;">
+          <!-- Pink Top Overlay with Logo -->
+          <div style="background-color: #FFDADE; padding: 20px; text-align: center;">
+            <a href="https://www.mama-events.me" style="text-decoration: none;">
+              <img src="https://mes-amis-mes-amours.fr/wp-content/uploads/2022/02/logo-e1644931773707.png" alt="Mama Events Logo" style="width: 150px; height: auto;">
+            </a>
+          </div>
+
+          <!-- Main Email Content -->
+          <div style="padding: 30px; background-color: #ffffff; margin: 20px; border-radius: 10px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">
+            <h1 style="color: #333333; text-align: center;">Bienvenue, #{@participant.first_name}!</h1>
+            <h2 style="color: #555555; text-align: center;">Votre participation a bien été enregistrée.</h2>
+
+            <div class="receipt" style="background-color: #fff; border: 2px dotted #000; padding: 20px; margin: 20px auto; width: 50%; max-width: 400px;">
+              <div style="border-bottom: 1px solid #000; padding-bottom: 10px; margin-bottom: 10px;">
+                <p style="margin: 0; font-weight: bold;">Évènement : #{@event_name}</p>
+                <p style="margin: 0; font-weight: bold;">Billet : #{@ticket.name}</p>
+                <p style="margin: 0; text-align: right;">#{@ticket.unit_price} €</p>
+              </div>
+
+              <!-- Categories -->
+              #{@orders.map do |category, orders|
+                <<~CATEGORY_HTML
+                  <div style="border-bottom: 1px solid #000; padding-bottom: 10px; margin-bottom: 10px;">
+                    <h5 style="margin: 0; text-align: left; text-transform: uppercase;">#{category}</h5>
+                    #{orders.map do |order|
+                      <<~ORDER_HTML
+                        <div style="display: flex; justify-content: space-between; margin: 5px 0;">
+                          <span>#{order.option.name} x #{order.quantity}</span>
+                          <span>#{order.option.unit_price * order.quantity} €</span>
+                        </div>
+                      ORDER_HTML
+                    end.join}
+                  </div>
+                CATEGORY_HTML
+              end.join}
+
+              <div style="border-top: 2px solid #000; padding-top: 10px; font-weight: bold; margin-top: 20px;">
+                <div style="display: flex; justify-content: space-between;">
+                  <span>Total :</span>
+                  <span>#{@total_price} €</span>
+                </div>
+              </div>
+            </div>
+
+            <p style="color: #555555; text-align: center; margin-top: 30px;">
+              Si vous n'avez pas encore payé, retrouvez votre récapitulatif et lien de paiement ci-dessous:
+            </p>
+            <p style="text-align: center; margin-top: 20px;">
+              <a href="https://www.mama-events.me/participations/#{@participation.id}" style="background-color: #ff8ba7; color: #ffffff; padding: 12px 25px; text-decoration: none; border-radius: 5px; font-weight: bold;">Cliquez ici pour y accéder</a>
+            </p>
+          </div>
+
+          <!-- Pink Bottom Overlay -->
+          <div style="background-color: #FFDADE; padding: 20px; text-align: center; margin-top: 30px;">
+            <p style="color: #ffffff; font-size: 14px; margin: 0; line-height: 1.8;">
+              © 2024 Mama Events. Tous droits réservés. <br>
+              <a href="https://www.mama-events.me" style="color: #ffffff; text-decoration: underline; margin-top: 10px; display: inline-block;">Visitez notre site Web</a>
+            </p>
+          </div>
+        </body>
+        </html>
+      HTML
+
+      mailgun_client = Mailgun::Client.new(ENV['MAILGUN_API_KEY'])
       message_params = {
         from: "mama-bienvenue@#{ENV['MAILGUN_DOMAIN_NAME']}",
-        to: participant.email,
-        subject: "test email",
-        html: "<div class='text-center'> <h1>Bienvenue #{participant.first_name}</h1>
-        <h2>Votre participation a bien été enregistrée.
-        <a href='https://www.mama-event.me/participations/#{participant.id}'>Cliquez ici pour y accéder </a></h2>
-        </div>"
+        to: @participant.email,
+        subject: "Confirmation de participation à #{@event_name}",
+        html: email_body
       }
 
-      mailgun_client.send_message ENV['MAILGUN_DOMAIN_NAME'], message_params
+      mailgun_client.send_message(ENV['MAILGUN_DOMAIN_NAME'], message_params)
     end
 
 private
@@ -92,6 +167,6 @@ private
     # Assigner le numéro de dossard
     @participation.bib_number = max_bib + 1
     @participation.save
-    
+
   end
 end
