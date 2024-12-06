@@ -1,5 +1,5 @@
 <nav class="navigation">
-  
+
   <!-- Header -->
   <div class="transparent-header">
     <div class="header-content">Admin</div>
@@ -25,7 +25,7 @@
     </p>
     <% if @current_event %>
     <ul class="navigation__list">
-      
+
       <li><%= link_to raw('<i class="fa-solid fa-arrow-left"></i> Revenir aux évènements'), admin_events_path, class: 'navigation__link' %></li>
       <li> <strong>Vous éditez : <%= @current_event.name %></strong></li>
       </ul>
@@ -38,11 +38,10 @@
       </ul>
     <% else %>
       <ul class="navigation__list">
-
         <p class="navigation__helper">Prochains évènements</p>
         <% Event.order(created_at: :desc).limit(3).each do |event| %>
           <li><%= link_to raw(" #{event.name}   <i class='fa-solid fa-arrow-right'></i>"), admin_event_path(event), class: 'navigation__link' %></li>
-        <% end %>        
+        <% end %>
       </ul>
     <% end %>
   </div>
