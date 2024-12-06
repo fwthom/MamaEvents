@@ -40,14 +40,6 @@ event_1 = Event.create!(
 )
 
 
-Event.create!(
-  name: "La MAMA 2025",
-  description: "Participez à une course mère-fille Passer un moment convivial de sport entre mère et fille avec la mama 2025.",
-  date: Date.new(2025, 05, 05),
-  charity: charity,
-  status: "brouillon",
-  location: "Monument aux pigeons voyageurs, Av. Mathias Delobel, 59800 Lille"
-)
 
 
 # Create tickets for the event (both presentiel and distanciel)
