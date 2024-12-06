@@ -5,6 +5,7 @@ Participation.destroy_all
 Event.destroy_all
 Charity.destroy_all
 User.destroy_all
+Donation.destroy_all
 
 # Users
 User.create!(
