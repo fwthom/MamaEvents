@@ -14,9 +14,9 @@
     <p id="next-event" class="countdown-timer" data-countdown-target="timer"></p>
       <div class="card-product">
         <% if @nextevent.image.attached? %>
-          <%= cl_image_tag @nextevent.image.key %>
+          <%= cl_image_tag @nextevent.image.key, class: "card-product img" %>
         <% else %>
-          <%= image_tag "logo.png", class: "event-image" %>
+          <%= image_tag "logo.png", class: "card-product img" %>
         <% end %>
         <div class="card-product-infos">
           <h2><%= @nextevent.name %></h2>
