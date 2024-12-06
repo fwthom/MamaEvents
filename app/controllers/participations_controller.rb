@@ -73,7 +73,7 @@ class ParticipationsController < ApplicationController
         <body style="margin: 0; padding: 0; font-family: Arial, sans-serif; background-color: #f9f9f9; line-height: 1.6;">
           <!-- Pink Top Overlay with Logo -->
           <div style="background-color: #FFDADE; padding: 20px; text-align: center;">
-            <a href="https://www.mama-events.me" style="text-decoration: none;">
+            <a href="https://www.mama-event.me" style="text-decoration: none;">
               <img src="https://mes-amis-mes-amours.fr/wp-content/uploads/2022/02/logo-e1644931773707.png" alt="Mama Events Logo" style="width: 150px; height: auto;">
             </a>
           </div>
@@ -119,7 +119,7 @@ class ParticipationsController < ApplicationController
               Si vous n'avez pas encore payé, retrouvez votre récapitulatif et lien de paiement ci-dessous:
             </p>
             <p style="text-align: center; margin-top: 20px;">
-              <a href="https://www.mama-events.me/participations/#{@participation.id}" style="background-color: #ff8ba7; color: #ffffff; padding: 12px 25px; text-decoration: none; border-radius: 5px; font-weight: bold;">Cliquez ici pour y accéder</a>
+              <a href="https://www.mama-event.me/participations/#{@participation.id}" style="background-color: #ff8ba7; color: #ffffff; padding: 12px 25px; text-decoration: none; border-radius: 5px; font-weight: bold;">Cliquez ici pour y accéder</a>
             </p>
           </div>
 
@@ -127,7 +127,7 @@ class ParticipationsController < ApplicationController
           <div style="background-color: #FFDADE; padding: 20px; text-align: center; margin-top: 30px;">
             <p style="color: #ffffff; font-size: 14px; margin: 0; line-height: 1.8;">
               © 2024 Mama Events. Tous droits réservés. <br>
-              <a href="https://www.mama-events.me" style="color: #ffffff; text-decoration: underline; margin-top: 10px; display: inline-block;">Visitez notre site Web</a>
+              <a href="https://www.mama-event.me" style="color: #ffffff; text-decoration: underline; margin-top: 10px; display: inline-block;">Visitez notre site Web</a>
             </p>
           </div>
         </body>
