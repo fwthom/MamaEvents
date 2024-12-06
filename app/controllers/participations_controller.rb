@@ -58,12 +58,12 @@ class ParticipationsController < ApplicationController
       participant = participation.participant
       mailgun_client = Mailgun::Client.new ENV['MAILGUN_API_KEY']
       message_params = {
-        from: "vincent@#{ENV['MAILGUN_DOMAIN_NAME']}",
+        from: "mama-bienvenue@#{ENV['MAILGUN_DOMAIN_NAME']}",
         to: participant.email,
         subject: "test email",
         html: "<div class='text-center'> <h1>Bienvenue #{participant.first_name}</h1>
-        <h2>Ta participation a bien été enregistrée.
-        <a href='http://127.0.0.1:3000/participations/#{participant.id}'>Clique ici pour y accéder </a></h2>
+        <h2>Votre participation a bien été enregistrée.
+        <a href='https://www.mama-event.me/participations/#{participant.id}'>Cliquez ici pour y accéder </a></h2>
         </div>"
       }
 
