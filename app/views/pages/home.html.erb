@@ -7,10 +7,24 @@
       </div>
     <% end %>
   <% end %>
-  <div class="titre-home d-flex">
-        <h1>Mes Amis Mes Amours, une association qui sensibilise et lutte contre le cancer du sein via le financement de prothèses capillaires</h1>
-        <%= image_tag "perruque.jpg" %>
+
+
+ <div class="row" >
+  <div class="col-sm-12 col-md-7 col-lg-7 col-xl-7 col-xxl-7 d-flex align-items-center">
+    <h1 class="titre-home d-flex align-items-center">Mes Amis Mes Amours, une association qui sensibilise et lutte contre le cancer du sein via le financement de prothèses capillaires</h1>
   </div>
+
+
+  <div class="col-sm-12 col-md-5 col-lg-5 col-xl-5 col-xxl-5 d-flex align-items-center">
+    <div>
+      <%= image_tag("perruque.jpg", class: "img-fluid") %>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+
+
 
 
 
@@ -39,4 +53,5 @@
         <i class="fa-regular fa-handshake"></i>
       </div>
     </div>
+  </div>
 </div>
