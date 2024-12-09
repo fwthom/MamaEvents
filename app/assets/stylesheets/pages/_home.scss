@@ -6,24 +6,28 @@
   min-height: 100vh;
 }
 .titre-home {
-  align-items: center;
+  // align-items: center;
+  font-family: "Gloria Hallelujah", cursive;
   margin: 16px;
-  text-align: right;
+  height:400px;
+  font-weight: 400;
+  font-style: normal;
+  // text-align: right;
   border-bottom: 5px double $very-rose;
 }
 
-.titre-home h1 {
-  font-family: "Gloria Hallelujah", cursive;
-  font-weight: 400;
-  font-style: normal;
-  color: $color-text;
-  text-shadow: 0 4px 8px rgba(92, 22, 68, 0.15);
-}
+// .titre-home h1 {
+//   font-family: "Gloria Hallelujah", cursive;
+//   font-weight: 400;
+//   font-style: normal;
+//   color: $color-text;
+//   text-shadow: 0 4px 8px rgba(92, 22, 68, 0.15);
+// }
 
-.titre-home img {
-  height: 400px;
-  margin-left: 16px;
-}
+// .titre-home img {
+//   height: 400px;
+//   margin-left: 16px;
+// }
 
 .cards-home {
   display: grid;
