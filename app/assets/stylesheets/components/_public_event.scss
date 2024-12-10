@@ -58,8 +58,8 @@
 
 /* Card image */
 .p-event-image {
-  width: 100%;
-  height: auto;
+  width: auto;
+  height: 100%;
   object-fit: cover; /* Assure que l'image couvre toute la zone de l'élément sans distorsion */
   border-radius: 8px;
   margin-bottom: 15px;
